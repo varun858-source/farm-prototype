@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About &amp; Field Trust Charter — Mission, Founding Story &amp; Partners | MAATI</title>
+  <meta name="description" content="Plainspoken mission statement, farmer data ownership pledge, founding timeline (2021–2026), and FPO & university research partners behind Maati." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ====================================================================
+       SOLID TOP NAVIGATION BAR
+       ==================================================================== -->
+  <header class="site-header">
+    <div class="nav-inner">
+      <a href="index.html" class="brand-logo" aria-label="Maati Home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+            <path d="M12 22V10M12 10C12 6 15.5 3 20 3C20 7.5 17 11 12 10ZM12 13C12 9 8.5 6 4 6C4 10.5 7 14 12 13Z"/>
+            <path d="M4 22h16"/>
+          </svg>
+        </span>
+        <span>
+          MAATI
+          <span class="brand-sub">Field &amp; Herd Platform</span>
+        </span>
+      </a>
+
+      <nav class="primary-nav" aria-label="Primary Navigation">
+        <a href="index.html" class="nav-link" data-i18n="navHome">Home</a>
+        <a href="crop-tech.html" class="nav-link" data-i18n="navCrop">Crop Tech</a>
+        <a href="livestock-tech.html" class="nav-link" data-i18n="navLivestock">Livestock Tech</a>
+        <a href="market-finance.html" class="nav-link" data-i18n="navMarket">Market &amp; Finance</a>
+        <a href="advisory.html" class="nav-link" data-i18n="navAdvisory">Advisory</a>
+        <a href="satellite-weather.html" class="nav-link" data-i18n="navSatellite">Satellite &amp; Weather</a>
+        <a href="about.html" class="nav-link active" data-i18n="navAbout">About</a>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="lang-select-wrap" title="Select Language">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+          <select class="lang-select" aria-label="Select Language">
+            <option value="en">EN · English</option>
+            <option value="hi">हिन्दी · Hindi</option>
+            <option value="mr">मराठी · Marathi</option>
+            <option value="ta">தமிழ் · Tamil</option>
+            <option value="te">తెలుగు · Telugu</option>
+            <option value="pa">ਪੰਜਾਬੀ · Punjabi</option>
+            <option value="kn">ಕನ್ನಡ · Kannada</option>
+            <option value="gu">ગુજરાતી · Gujarati</option>
+          </select>
+        </div>
+
+        <a href="#login" class="nav-login-link" data-open-modal="login" data-i18n="navLogin">Log in</a>
+        <a href="#get-started" class="btn btn-burgundy" data-open-modal="signup" data-i18n="navGetStarted">Get Started</a>
+
+        <button type="button" id="mobile-menu-btn" class="mobile-menu-toggle" aria-label="Toggle Menu" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M3 6h18M3 12h18M3 18h18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Full-Screen Mobile Menu Drawer -->
+    <div class="mobile-drawer" id="mobile-drawer" aria-label="Mobile Navigation">
+      <div class="mobile-nav-list">
+        <a href="index.html" class="mobile-nav-link"><span data-i18n="navHome">Home</span> <span>→</span></a>
+        <a href="crop-tech.html" class="mobile-nav-link"><span data-i18n="navCrop">Crop Tech</span> <span>→</span></a>
+        <a href="livestock-tech.html" class="mobile-nav-link"><span data-i18n="navLivestock">Livestock Tech</span> <span>→</span></a>
+        <a href="market-finance.html" class="mobile-nav-link"><span data-i18n="navMarket">Market &amp; Finance</span> <span>→</span></a>
+        <a href="advisory.html" class="mobile-nav-link"><span data-i18n="navAdvisory">Advisory</span> <span>→</span></a>
+        <a href="satellite-weather.html" class="mobile-nav-link"><span data-i18n="navSatellite">Satellite &amp; Weather</span> <span>→</span></a>
+        <a href="about.html" class="mobile-nav-link active"><span data-i18n="navAbout">About</span> <span>→</span></a>
+      </div>
+      <div class="mobile-drawer-footer">
+        <a href="#get-started" class="btn btn-burgundy btn-lg" data-open-modal="signup" data-i18n="navGetStarted">Get Started — Try the App</a>
+        <a href="#login" class="btn btn-outline-green btn-lg" data-open-modal="login" data-i18n="navLogin">Log in to Existing Farm Account</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ====================================================================
+         QUIET, EDITORIAL MISSION STATEMENT HERO (MINIMAL COLOR BLOCKING)
+         ==================================================================== -->
+    <section class="interior-hero-quiet">
+      <div class="container">
+        <div style="max-width: 880px;">
+          <span class="eyebrow eyebrow-green">ABOUT MAATI · OUR MISSION &amp; TRUST CHARTER</span>
+          <h1 class="h1-hero">We build plainspoken field and herd tools so a 2-acre family farm has the same clarity as a 2,000-acre estate.</h1>
+          <p class="lead-copy" style="margin-bottom: 1.5rem;">
+            Maati exists for working farmers, dairy cooperative members, and Farmer Producer Organizations (FPOs). We started with a simple observation: rural families do not run separate businesses for their soil, their crops, their buffaloes, and their mandi sales — yet agricultural software kept forcing them into disconnected, English-only apps built for urban desktops.
+          </p>
+          <p class="lead-copy">
+            Every instrument we build must pass two tests before it ships: <strong>First</strong>, can a farmer use it with one thumb in bright midday sun on a ₹6,000 phone over patchy 2G/3G? <strong>Second</strong>, does it state its uncertainty honestly rather than pretending a computer screen knows more than the person standing in the soil?
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         FOUR-POINT DATA & FIELD HONESTY CHARTER
+         ==================================================================== -->
+    <section class="section-cream section-pad" id="data-pledge">
+      <div class="container">
+        <div style="max-width: 760px; margin-bottom: 2.75rem;" class="reveal-up">
+          <span class="mono-tag" style="color: var(--burgundy);">THE MAATI FIELD CHARTER</span>
+          <h2 class="h2-section" style="margin-top: 0.35rem;">Four rules we never compromise on</h2>
+        </div>
+
+        <div class="grid-2">
+          <article style="border-top: 3px solid var(--green-tea); padding-top: 1.35rem;" class="reveal-up">
+            <span class="mono-tag" style="color: var(--burgundy);">PRINCIPLE 01 · DATA OWNERSHIP</span>
+            <h3 class="h3-card" style="margin-top: 0.35rem;">Your plot and herd records belong to you</h3>
+            <p>
+              A farmer’s land boundary, yield history, and dairy ledger are their personal livelihood asset. We never sell farm-level data to commodity speculators or agro-chemical marketers. Credit and insurance packets are shared only when the farmer explicitly approves via SMS passkey.
+            </p>
+          </article>
+
+          <article style="border-top: 3px solid var(--green-tea); padding-top: 1.35rem;" class="reveal-up">
+            <span class="mono-tag" style="color: var(--burgundy);">PRINCIPLE 02 · DATA HONESTY</span>
+            <h3 class="h3-card" style="margin-top: 0.35rem;">We show confidence ranges, never fake certainty</h3>
+            <p>
+              Agriculture deals with living soil and shifting monsoons. Whether we are diagnosing leaf blight (e.g., 94.2% match) or projecting wheat harvest (18.6–20.2 quintals/acre), we always display the confidence interval and underlying inputs plainly.
+            </p>
+          </article>
+
+          <article style="border-top: 3px solid var(--green-tea); padding-top: 1.35rem;" class="reveal-up">
+            <span class="mono-tag" style="color: var(--burgundy);">PRINCIPLE 03 · ZERO INPUT KICKBACKS</span>
+            <h3 class="h3-card" style="margin-top: 0.35rem;">Unbiased biological and generic chemical advice</h3>
+            <p>
+              We do not take commission from pesticide or feed manufacturers. Every disease diagnosis lists cultural and biological remedies first, and generic active-ingredient dosages (approved by state agricultural universities) second.
+            </p>
+          </article>
+
+          <article style="border-top: 3px solid var(--green-tea); padding-top: 1.35rem;" class="reveal-up">
+            <span class="mono-tag" style="color: var(--burgundy);">PRINCIPLE 04 · RADICAL ACCESSIBILITY</span>
+            <h3 class="h3-card" style="margin-top: 0.35rem;">Voice, WhatsApp, and 2G SMS are first-class citizens</h3>
+            <p>
+              Every advisory and alert feature works in 12 Indian languages across spoken voice calls, compressed WhatsApp threads, and plain 2G SMS — so literacy or bandwidth never locks a family out.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         FOUNDING STORY & FIELD TIMELINE BLOCK (2021 – 2026)
+         ==================================================================== -->
+    <section class="section-cream section-pad" id="timeline">
+      <div class="container">
+        <div style="max-width: 760px; margin-bottom: 2.75rem;" class="reveal-up">
+          <span class="mono-tag" style="color: var(--burgundy);">FOUNDING STORY &amp; TIMELINE</span>
+          <h2 class="h2-section" style="margin-top: 0.35rem;">Five years of boots in the soil (2021 – 2026)</h2>
+          <p>
+            Maati was founded by agronomists, rural dairy veterinarians, and systems engineers who grew up in farming districts across Maharashtra, Gujarat, and Punjab.
+          </p>
+        </div>
+
+        <div style="display: flex; flex-direction: column; border-top: 3px solid var(--green-tea);">
+          <div style="display: grid; grid-template-columns: 180px 1fr; gap: 1.5rem; padding: 1.65rem 0; border-bottom: 2px solid var(--green-tea);" class="reveal-up">
+            <div class="mono-tag" style="font-size: 1rem; color: var(--burgundy);">2021 · KHARIF</div>
+            <div>
+              <h3 class="h3-card" style="margin-bottom: 0.35rem;">First 40-Farm Notebook &amp; Camera Trial (Niphad &amp; Anand)</h3>
+              <p> Started inside two village FPO sheds collecting 38,000 real-field leaf blight images and pairing them with daily buffalo milk pouring records.</p>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 180px 1fr; gap: 1.5rem; padding: 1.65rem 0; border-bottom: 2px solid var(--green-tea);" class="reveal-up">
+            <div class="mono-tag" style="font-size: 1rem; color: var(--burgundy);">2022 · RABI</div>
+            <div>
+              <h3 class="h3-card" style="margin-bottom: 0.35rem;">Launch of Low-Data WhatsApp &amp; 2G SMS Advisory</h3>
+              <p>Built our sub-50 KB leaf-photo compression pipeline and 5-language voice bot after seeing farmers struggle with 80 MB app downloads on field edges.</p>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 180px 1fr; gap: 1.5rem; padding: 1.65rem 0; border-bottom: 2px solid var(--green-tea);" class="reveal-up">
+            <div class="mono-tag" style="font-size: 1rem; color: var(--burgundy);">2024 · MONSOON</div>
+            <div>
+              <h3 class="h3-card" style="margin-bottom: 0.35rem;">Sentinel-2 NDVI Stress Mapping &amp; Open-Book Credit Pilots</h3>
+              <p>Integrated 5-day orbital NDVI passes with 14 district cooperative banks and NBFCs to unlock 7% p.a. working capital for thin-file tenant and smallholder farmers.</p>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 180px 1fr; gap: 1.5rem; padding: 1.65rem 0; border-bottom: 2px solid var(--green-tea);" class="reveal-up">
+            <div class="mono-tag" style="font-size: 1rem; color: var(--burgundy);">2026 · TODAY</div>
+            <div>
+              <h3 class="h3-card" style="margin-bottom: 0.35rem;">1,48,400+ Farms, 6.2 Lakh Acres &amp; 12 Local Languages</h3>
+              <p>Operating across 9 states with 180+ partner FPOs, district dairy unions, drone service entrepreneurs, and institutional procurement desks.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         PARTNERS, RESEARCH INSTITUTIONS & PRESS STRIP
+         ==================================================================== -->
+    <section class="section-cream section-pad" id="partners">
+      <div class="container">
+        <div style="max-width: 760px; margin-bottom: 2.25rem;" class="reveal-up">
+          <span class="mono-tag" style="color: var(--burgundy);">ECOSYSTEM COLLABORATORS &amp; FIELD AUDITS</span>
+          <h2 class="h2-section" style="margin-top: 0.35rem;">Validated alongside public research &amp; cooperative networks</h2>
+        </div>
+
+        <div class="grid-4 reveal-up" style="margin-bottom: 3rem;">
+          <div style="border: 2px solid var(--green-tea); padding: 1.35rem;">
+            <span class="mono-tag">AGRONOMY VALIDATION</span>
+            <h3 class="h3-card" style="font-size: 1.2rem; margin-top: 0.4rem;">4 State Agricultural Universities</h3>
+            <p style="font-size: 0.9rem;">Multi-season dosage &amp; soil probe calibration trials across alluvial, black cotton, and red loamy soils.</p>
+          </div>
+
+          <div style="border: 2px solid var(--green-tea); padding: 1.35rem;">
+            <span class="mono-tag">COOPERATIVE REACH</span>
+            <h3 class="h3-card" style="font-size: 1.2rem; margin-top: 0.4rem;">184 Farmer Producer Orgs (FPOs)</h3>
+            <p style="font-size: 0.9rem;">Village-level input desks, weighbridge grading centers, and shared agricultural drone hubs.</p>
+          </div>
+
+          <div style="border: 2px solid var(--green-tea); padding: 1.35rem;">
+            <span class="mono-tag">DAIRY UNIONS</span>
+            <h3 class="h3-card" style="font-size: 1.2rem; margin-top: 0.4rem;">32 District Milk Unions</h3>
+            <p style="font-size: 0.9rem;">Automated milk collection slip integration and village ration-balancing advisory camps.</p>
+          </div>
+
+          <div style="border: 2px solid var(--green-tea); padding: 1.35rem;">
+            <span class="mono-tag">WEATHER &amp; ORBITAL</span>
+            <h3 class="h3-card" style="font-size: 1.2rem; margin-top: 0.4rem;">IMD + ESA Sentinel-2 Feeds</h3>
+            <p style="font-size: 0.9rem;">Public meteorological telemetry fused with 10m optical and radar satellite crop monitoring.</p>
+          </div>
+        </div>
+
+        <div id="contact" style="border: 3px solid var(--green-tea); padding: 2.25rem;" class="reveal-up">
+          <div class="grid-2" style="align-items: center;">
+            <div>
+              <span class="mono-tag" style="color: var(--burgundy);">FIELD DESKS &amp; PARTNERSHIPS</span>
+              <h3 class="h2-section" style="font-size: 1.85rem; margin-top: 0.35rem;">Onboard your FPO, Dairy Cooperative, or Rural Bank</h3>
+              <p>
+                Our field agronomy and veterinary deployment teams work directly in district blocks across Maharashtra, Gujarat, Madhya Pradesh, Punjab, Haryana, Uttar Pradesh, Tamil Nadu, Telangana, and Karnataka.
+              </p>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 0.85rem; align-items: flex-start;">
+              <div class="mono-tag">TOLL-FREE FARMER HELPLINE: 1800-120-4455</div>
+              <div class="mono-tag">INSTITUTIONAL &amp; FPO DESK: PARTNERS@MAATI.AGRI</div>
+              <div style="display: flex; gap: 0.85rem; flex-wrap: wrap; margin-top: 0.4rem;">
+                <a href="#get-started" class="btn btn-burgundy" data-open-modal="signup">Request Field Deployment →</a>
+                <a href="index.html" class="btn btn-outline-green">Return to Home Page</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Shared 4-Column Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        <div>
+          <a href="index.html" class="brand-logo" style="color: var(--honey-cream); margin-bottom: 1rem;">
+            <span class="brand-mark" style="background-color: var(--honey-cream); color: var(--green-tea); border-color: var(--honey-cream);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                <path d="M12 22V10M12 10C12 6 15.5 3 20 3C20 7.5 17 11 12 10ZM12 13C12 9 8.5 6 4 6C4 10.5 7 14 12 13Z"/>
+                <path d="M4 22h16"/>
+              </svg>
+            </span>
+            <span>MAATI</span>
+          </a>
+          <p style="font-size: 0.95rem; margin-bottom: 1.25rem;">
+            Grounded, plainspoken agricultural and dairy intelligence built for working farmers, FPO cooperatives, rural lenders, and institutional buyers.
+          </p>
+          <p class="mono-tag">TOLL-FREE KISAN DESK: 1800-120-4455</p>
+        </div>
+
+        <div>
+          <h3 class="footer-col-title">Product (6 USPs)</h3>
+          <ul class="footer-links">
+            <li><a href="crop-tech.html#disease-detection">Crop Disease &amp; Pest Detection</a></li>
+            <li><a href="crop-tech.html#yield-prediction">Per-Field Yield Prediction</a></li>
+            <li><a href="crop-tech.html#soil-health">Soil Health Analysis (NPK/pH)</a></li>
+            <li><a href="livestock-tech.html#cattle-health">Cattle Health Monitoring</a></li>
+            <li><a href="livestock-tech.html#milk-prediction">Milk Yield &amp; Quality Prediction</a></li>
+            <li><a href="livestock-tech.html#feed-optimization">Automated Feed Optimization</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-col-title">Ecosystem</h3>
+          <ul class="footer-links">
+            <li><a href="market-finance.html">Market &amp; Finance Overview</a></li>
+            <li><a href="market-finance.html#price-forecast">Mandi Price Forecasting</a></li>
+            <li><a href="market-finance.html#credit-scoring">Plainspoken AI Credit Scoring</a></li>
+            <li><a href="advisory.html">Voice AI &amp; WhatsApp Advisory</a></li>
+            <li><a href="satellite-weather.html">NDVI &amp; Drone Spraying Maps</a></li>
+            <li><a href="satellite-weather.html#insurance-claims">Satellite Insurance Claims</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-col-title">Company</h3>
+          <ul class="footer-links">
+            <li><a href="about.html">About &amp; Mission</a></li>
+            <li><a href="about.html#data-pledge">Farmer Data Ownership Pledge</a></li>
+            <li><a href="about.html#timeline">Founding Story &amp; Timeline</a></li>
+            <li><a href="about.html#partners">FPO &amp; University Partners</a></li>
+            <li><a href="about.html#careers">Field Agronomy Careers</a></li>
+            <li><a href="about.html#press">Press &amp; Audit Reports</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-col-title">Support &amp; Language</h3>
+          <ul class="footer-links" style="margin-bottom: 1rem;">
+            <li><a href="advisory.html">24×7 Voice &amp; SMS Help Center</a></li>
+            <li><a href="advisory.html#whatsapp-bot">WhatsApp Bot Setup</a></li>
+            <li><a href="about.html#contact">Partner an FPO or Dairy Union</a></li>
+          </ul>
+          <label class="mono-tag" for="footer-lang-select" style="display: block; margin-bottom: 0.4rem;">SITE LANGUAGE</label>
+          <div class="lang-select-wrap" style="border-color: var(--honey-cream); width: 100%;">
+            <select id="footer-lang-select" class="lang-select" style="width: 100%;" aria-label="Footer Language Selector">
+              <option value="en">EN · English</option>
+              <option value="hi">हिन्दी · Hindi</option>
+              <option value="mr">मराठी · Marathi</option>
+              <option value="ta">தமிழ் · Tamil</option>
+              <option value="te">తెలుగు · Telugu</option>
+              <option value="pa">ਪੰਜਾਬੀ · Punjabi</option>
+              <option value="kn">ಕನ್ನಡ · Kannada</option>
+              <option value="gu">ગુજરાતી · Gujarati</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Maati AgriTech Platform. Built for the field, not just the boardroom.</span>
+        <span>Strict Flat 3-Color Accessibility Standard · Zero Farmer Data Sold to Third Parties</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Shared Modal -->
+  <div class="modal-backdrop" id="onboarding-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-card">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; padding-bottom: 0.85rem; border-bottom: 2px solid var(--green-tea);">
+        <div>
+          <span class="eyebrow eyebrow-burgundy" style="margin-bottom: 0.4rem;">MAATI FARM ACCOUNT</span>
+          <h2 class="h3-card" id="modal-title" style="margin-bottom: 0;">Start free with your first field or herd</h2>
+        </div>
+        <button type="button" id="modal-close-btn" class="btn btn-outline-green" style="padding: 0.35rem 0.65rem;" aria-label="Close modal">✕</button>
+      </div>
+      <p id="modal-subtitle" style="margin-bottom: 1.25rem; font-size: 0.95rem;">
+        No credit card needed. Add your mobile number and village pin code to begin.
+      </p>
+      <form id="modal-form">
+        <div class="form-field">
+          <label for="modal-phone">Mobile Number (SMS &amp; WhatsApp)</label>
+          <input type="tel" id="modal-phone" class="form-input" placeholder="+91 98230 XXXXX" required />
+        </div>
+        <div class="form-field">
+          <label for="modal-pincode">Village Pin Code / Mandi Block</label>
+          <input type="text" id="modal-pincode" class="form-input" placeholder="e.g. 422303 (Niphad, Nashik)" required />
+        </div>
+        <div class="form-field">
+          <label for="modal-role">Primary Farm Activity</label>
+          <select id="modal-role" class="form-input">
+            <option value="mixed">Mixed Crop + Dairy Livestock Farm</option>
+            <option value="fpo">FPO / Cooperative / Institutional Buyer</option>
+            <option value="crop">Crop &amp; Horticulture Farmer</option>
+            <option value="dairy">Dairy &amp; Cattle Herd Owner</option>
+          </select>
+        </div>
+        <button type="submit" id="modal-submit-btn" class="btn btn-burgundy btn-lg" style="width: 100%;">Create Free Farm Profile</button>
+        <div id="modal-feedback" style="display: none; margin-top: 1rem; padding: 0.85rem; background-color: var(--green-tea); color: var(--honey-cream); font-weight: 600; font-size: 0.92rem;"></div>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

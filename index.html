@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MAATI — One Platform for Everything Your Farm Needs | Field & Herd AgriTech</title>
+  <meta name="description" content="Grounded, field-tested AgriTech platform unifying crop intelligence, livestock intelligence, market & credit tools, local-language voice advisory, and satellite weather alerts." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ====================================================================
+       SOLID TOP NAVIGATION BAR + THIN SOLID BURGUNDY PROGRESS LINE
+       ==================================================================== -->
+  <header class="site-header">
+    <div class="nav-inner">
+      <a href="index.html" class="brand-logo" aria-label="Maati Home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+            <path d="M12 22V10M12 10C12 6 15.5 3 20 3C20 7.5 17 11 12 10ZM12 13C12 9 8.5 6 4 6C4 10.5 7 14 12 13Z"/>
+            <path d="M4 22h16"/>
+          </svg>
+        </span>
+        <span>
+          MAATI
+          <span class="brand-sub">Field &amp; Herd Platform</span>
+        </span>
+      </a>
+
+      <nav class="primary-nav" aria-label="Primary Navigation">
+        <a href="index.html" class="nav-link active" data-i18n="navHome">Home</a>
+        <a href="crop-tech.html" class="nav-link" data-i18n="navCrop">Crop Tech</a>
+        <a href="livestock-tech.html" class="nav-link" data-i18n="navLivestock">Livestock Tech</a>
+        <a href="market-finance.html" class="nav-link" data-i18n="navMarket">Market &amp; Finance</a>
+        <a href="advisory.html" class="nav-link" data-i18n="navAdvisory">Advisory</a>
+        <a href="satellite-weather.html" class="nav-link" data-i18n="navSatellite">Satellite &amp; Weather</a>
+        <a href="about.html" class="nav-link" data-i18n="navAbout">About</a>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="lang-select-wrap" title="Select Language">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+          <select class="lang-select" aria-label="Select Language">
+            <option value="en">EN · English</option>
+            <option value="hi">हिन्दी · Hindi</option>
+            <option value="mr">मराठी · Marathi</option>
+            <option value="ta">தமிழ் · Tamil</option>
+            <option value="te">తెలుగు · Telugu</option>
+            <option value="pa">ਪੰਜਾਬੀ · Punjabi</option>
+            <option value="kn">ಕನ್ನಡ · Kannada</option>
+            <option value="gu">ગુજરાતી · Gujarati</option>
+          </select>
+        </div>
+
+        <a href="#login" class="nav-login-link" data-open-modal="login" data-i18n="navLogin">Log in</a>
+        <a href="#get-started" class="btn btn-burgundy" data-open-modal="signup" data-i18n="navGetStarted">Get Started</a>
+
+        <button type="button" id="mobile-menu-btn" class="mobile-menu-toggle" aria-label="Toggle Menu" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M3 6h18M3 12h18M3 18h18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Thin solid Burgundy progress line directly under solid navigation bar -->
+    <div class="hero-progress-track" id="hero-progress-track" aria-hidden="true">
+      <div class="hero-progress-bar" id="hero-progress-bar"></div>
+    </div>
+
+    <!-- Full-Screen Mobile Menu Drawer -->
+    <div class="mobile-drawer" id="mobile-drawer" aria-label="Mobile Navigation">
+      <div class="mobile-nav-list">
+        <a href="index.html" class="mobile-nav-link active"><span data-i18n="navHome">Home</span> <span>→</span></a>
+        <a href="crop-tech.html" class="mobile-nav-link"><span data-i18n="navCrop">Crop Tech</span> <span>→</span></a>
+        <a href="livestock-tech.html" class="mobile-nav-link"><span data-i18n="navLivestock">Livestock Tech</span> <span>→</span></a>
+        <a href="market-finance.html" class="mobile-nav-link"><span data-i18n="navMarket">Market &amp; Finance</span> <span>→</span></a>
+        <a href="advisory.html" class="mobile-nav-link"><span data-i18n="navAdvisory">Advisory</span> <span>→</span></a>
+        <a href="satellite-weather.html" class="mobile-nav-link"><span data-i18n="navSatellite">Satellite &amp; Weather</span> <span>→</span></a>
+        <a href="about.html" class="mobile-nav-link"><span data-i18n="navAbout">About</span> <span>→</span></a>
+      </div>
+      <div class="mobile-drawer-footer">
+        <a href="#get-started" class="btn btn-burgundy btn-lg" data-open-modal="signup" data-i18n="navGetStarted">Get Started — Try the App</a>
+        <a href="#login" class="btn btn-outline-green btn-lg" data-open-modal="login" data-i18n="navLogin">Log in to Existing Farm Account</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ====================================================================
+         PINNED 400VH SCROLL-LINKED 240-FRAME IMAGE SEQUENCE HERO (HOME ONLY)
+         ==================================================================== -->
+    <section class="hero-sequence-section" id="hero-scroll-section" aria-label="Seedling to Harvest Growth Sequence">
+      <div class="hero-sticky-viewport">
+        <!-- Untinted, Unfiltered 240-Frame Macro Growth Time-Lapse Canvas -->
+        <canvas id="hero-canvas" width="1280" height="720" aria-label="Time-lapse of microgreen sprouts and a burgundy bloom growing in a terracotta pot"></canvas>
+
+        <!-- Top Functional Sequence HUD -->
+        <div class="hero-hud-top">
+          <div class="hero-status-pill">
+            <span class="status-dot" aria-hidden="true"></span>
+            <span id="hero-frame-counter">FRAME 001 / 240 · 0%</span>
+            <span>·</span>
+            <span id="hero-load-status">LOADING SEQUENCE...</span>
+          </div>
+
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; pointer-events: auto;">
+            <div class="hero-quick-controls" role="group" aria-label="Jump to growth beat">
+              <button type="button" class="hero-step-btn active" title="0–25%: One platform">01 · 0–25%</button>
+              <button type="button" class="hero-step-btn" title="25–50%: Every field watched">02 · 25–50%</button>
+              <button type="button" class="hero-step-btn" title="50–78%: Seedling to harvest">03 · 50–78%</button>
+              <button type="button" class="hero-step-btn" title="78–100%: Built for the field">04 · 78–100%</button>
+            </div>
+            <button type="button" id="toggle-reduced-motion" class="hero-status-pill" style="cursor: pointer;">
+              Static / Reduced Motion View
+            </button>
+          </div>
+        </div>
+
+        <!-- Four Flat Honey Cream Text Cards with Green Tea Headlines & Burgundy Body Text -->
+        <div class="hero-cards-layer">
+          <!-- Beat 1: 0–25% (Docked Bottom-Left) -->
+          <article class="hero-beat-card dock-left active" data-beat-index="0">
+            <div class="hero-beat-header">
+              <span class="hero-beat-step">STAGE 01 / 04 · EMERGENCE (0–25%)</span>
+              <span class="hero-beat-badge">UNIFIED FARM OS</span>
+            </div>
+            <h1 class="hero-beat-title" data-i18n="beat0Title">One platform for everything your farm needs</h1>
+            <p class="hero-beat-body" data-i18n="beat0Body">
+              Crop intelligence and livestock intelligence, backed by market, advisory, and satellite tools — in one place.
+            </p>
+            <div class="hero-beat-footer">
+              <a href="#get-started" class="btn btn-burgundy" data-open-modal="signup">Start free with your first field</a>
+              <a href="#flagship-pillars" class="btn btn-outline-green">Explore 6 Flagship Tools ↓</a>
+            </div>
+          </article>
+
+          <!-- Beat 2: 25–50% (Docked Bottom-Right) -->
+          <article class="hero-beat-card dock-right" data-beat-index="1">
+            <div class="hero-beat-header">
+              <span class="hero-beat-step">STAGE 02 / 04 · CANOPY WATCH (25–50%)</span>
+              <span class="hero-beat-badge">CROP &amp; SOIL</span>
+            </div>
+            <h2 class="hero-beat-title" data-i18n="beat1Title">Every field, watched closely</h2>
+            <p class="hero-beat-body" data-i18n="beat1Body">
+              Leaf-photo disease detection and soil health tracking catch problems while they’re still small.
+            </p>
+            <div class="hero-beat-footer">
+              <a href="crop-tech.html" class="btn btn-burgundy">Inspect Crop Tech Tools →</a>
+              <span class="mono-tag">NPK · MOISTURE · pH · VISION</span>
+            </div>
+          </article>
+
+          <!-- Beat 3: 50–78% (Docked Bottom-Left) -->
+          <article class="hero-beat-card dock-left" data-beat-index="2">
+            <div class="hero-beat-header">
+              <span class="hero-beat-step">STAGE 03 / 04 · FULL BLOOM (50–78%)</span>
+              <span class="hero-beat-badge">YIELD &amp; HERD</span>
+            </div>
+            <h2 class="hero-beat-title" data-i18n="beat2Title">From seedling to harvest, in view the whole way</h2>
+            <p class="hero-beat-body" data-i18n="beat2Body">
+              Yield predictions built from historical records, live weather, and soil conditions — so you know what’s coming.
+            </p>
+            <div class="hero-beat-footer">
+              <a href="livestock-tech.html" class="btn btn-burgundy">Explore Livestock &amp; Dairy Tech →</a>
+              <span class="mono-tag">CONFIDENCE RANGE FORECASTS</span>
+            </div>
+          </article>
+
+          <!-- Beat 4: 78–100% (Docked Bottom-Right) -->
+          <article class="hero-beat-card dock-right" data-beat-index="3">
+            <div class="hero-beat-header">
+              <span class="hero-beat-step">STAGE 04 / 04 · HARVEST READY (78–100%)</span>
+              <span class="hero-beat-badge">FIELD-TESTED</span>
+            </div>
+            <h2 class="hero-beat-title" data-i18n="beat3Title">Built for the field, not just the boardroom</h2>
+            <p class="hero-beat-body" data-i18n="beat3Body">
+              Grounded, plainspoken tools for working farmers, agri-businesses, and investors alike.
+            </p>
+            <div class="hero-beat-footer">
+              <a href="market-finance.html" class="btn btn-burgundy">See Mandi &amp; Credit Tools →</a>
+              <a href="advisory.html" class="btn btn-outline-green">12-Language Voice AI</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         ECOSYSTEM PROMISE BAND (SOLID GREEN TEA BLOCK)
+         ==================================================================== -->
+    <section class="section-green section-pad-compact">
+      <div class="container">
+        <div class="grid-2" style="align-items: center;">
+          <div>
+            <span class="eyebrow eyebrow-cream">WHY UNIFIED MATTERS</span>
+            <h2 class="h2-section">Most farms run crops and livestock together. Their tools shouldn’t live in separate worlds.</h2>
+          </div>
+          <div>
+            <p class="lead-copy" style="margin-bottom: 1.25rem;">
+              On a real family farm or cooperative, crop residue feeds the dairy shed, cattle manure rebuilds topsoil carbon, and milk payouts fund seed and fertilizer before harvest arrives. Maati connects field agronomy, dairy herd care, mandi pricing, local-language advisory, and orbital weather alerts into one clear record.
+            </p>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+              <a href="crop-tech.html" class="btn btn-cream">01 · Crop Intelligence</a>
+              <a href="livestock-tech.html" class="btn btn-cream">02 · Livestock Intelligence</a>
+              <a href="market-finance.html" class="btn btn-burgundy">03 · Market &amp; Credit</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SIX-CARD FLAGSHIP PILLARS GRID (CROP + LIVESTOCK USPs)
+         ==================================================================== -->
+    <section class="section-cream section-pad" id="flagship-pillars">
+      <div class="container">
+        <div class="section-header-split reveal-up">
+          <div class="header-left">
+            <span class="eyebrow eyebrow-green">SIX FLAGSHIP FIELD &amp; HERD PILLARS</span>
+            <h2 class="h2-section">Practical tools for the acre and the cattle shed</h2>
+            <p class="lead-copy">
+              Three core instruments for your crops and soil, paired with three core instruments for your dairy and livestock herd. Each built to give plain answers and an honest confidence range.
+            </p>
+          </div>
+          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+            <a href="crop-tech.html" class="btn btn-green">Open Crop Tech Page →</a>
+            <a href="livestock-tech.html" class="btn btn-burgundy">Open Livestock Tech Page →</a>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <!-- Pillar 1: Crop Disease & Pest Detection -->
+          <article class="card-structured reveal-up">
+            <div class="card-structured-head">
+              <span class="mono-tag">CROP PILLAR 01 / 03</span>
+              <span class="status-pill status-cream" style="background: var(--honey-cream); color: var(--green-tea);">LEAF CAMERA AI</span>
+            </div>
+            <div class="card-structured-body">
+              <div class="card-icon-box" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+                  <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+                </svg>
+              </div>
+              <h3 class="h3-card">Crop Disease &amp; Pest Detection</h3>
+              <p>
+                Snap a close-up leaf photo on any smartphone. Our field-trained computer vision flags fungal blights, rusts, and pest damage early — returning a confidence score and locally available organic and chemical dosage options.
+              </p>
+              <div style="border-top: 2px solid var(--green-tea); padding-top: 0.75rem; font-family: var(--font-mono); font-size: 0.8rem; color: var(--burgundy); font-weight: 700;">
+                INPUT: Phone Leaf Photo → OUTPUT: Diagnosis + Local Dosage
+              </div>
+            </div>
+            <a href="crop-tech.html#disease-detection" class="card-structured-foot">
+              <span>See Diagnosis Card &amp; Step Strip</span>
+              <span>→</span>
+            </a>
+          </article>
+
+          <!-- Pillar 2: Yield Prediction -->
+          <article class="card-structured reveal-up">
+            <div class="card-structured-head">
+              <span class="mono-tag">CROP PILLAR 02 / 03</span>
+              <span class="status-pill" style="background: var(--honey-cream); color: var(--green-tea);">HARVEST FORECAST</span>
+            </div>
+            <div class="card-structured-body">
+              <div class="card-icon-box" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <path d="M3 3v18h18"/>
+                  <path d="M7 16l4-5 4 3 5-7"/>
+                  <circle cx="20" cy="7" r="2"/>
+                </svg>
+              </div>
+              <h3 class="h3-card">Yield Prediction</h3>
+              <p>
+                Combines 5-year historical plot records, live village weather feeds, and soil moisture levels to estimate per-field harvest volume in quintals per acre — always shown with an honest confidence range.
+              </p>
+              <div style="border-top: 2px solid var(--green-tea); padding-top: 0.75rem; font-family: var(--font-mono); font-size: 0.8rem; color: var(--burgundy); font-weight: 700;">
+                INPUT: History + Weather + Soil → OUTPUT: Quintal/Acre Band
+              </div>
+            </div>
+            <a href="crop-tech.html#yield-prediction" class="card-structured-foot">
+              <span>Inspect Per-Field Forecast Chart</span>
+              <span>→</span>
+            </a>
+          </article>
+
+          <!-- Pillar 3: Soil Health Analysis -->
+          <article class="card-structured reveal-up">
+            <div class="card-structured-head">
+              <span class="mono-tag">CROP PILLAR 03 / 03</span>
+              <span class="status-pill" style="background: var(--honey-cream); color: var(--green-tea);">IMAGE OR SENSOR</span>
+            </div>
+            <div class="card-structured-body">
+              <div class="card-icon-box" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                  <path d="M8 14h8M10 17h4"/>
+                </svg>
+              </div>
+              <h3 class="h3-card">Soil Health Analysis</h3>
+              <p>
+                Works with either topsoil smartphone photos plus your Soil Health Card or connected LoRaWAN root probes. Tracks Nitrogen, Phosphorus, Potassium (NPK), moisture %, and pH trends across the whole season.
+              </p>
+              <div style="border-top: 2px solid var(--green-tea); padding-top: 0.75rem; font-family: var(--font-mono); font-size: 0.8rem; color: var(--burgundy); font-weight: 700;">
+                INPUT: Soil Image / Probe → OUTPUT: NPK, Moisture &amp; pH Curve
+              </div>
+            </div>
+            <a href="crop-tech.html#soil-health" class="card-structured-foot">
+              <span>View 16-Week Soil Trend Mockup</span>
+              <span>→</span>
+            </a>
+          </article>
+
+          <!-- Pillar 4: Cattle Health Monitoring -->
+          <article class="card-structured reveal-up">
+            <div class="card-structured-head">
+              <span class="mono-tag">LIVESTOCK PILLAR 01 / 03</span>
+              <span class="status-pill" style="background: var(--burgundy); color: var(--honey-cream); border-color: var(--honey-cream);">WEARABLE &amp; CAMERA</span>
+            </div>
+            <div class="card-structured-body">
+              <div class="card-icon-box" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                </svg>
+              </div>
+              <h3 class="h3-card">Cattle Health Monitoring</h3>
+              <p>
+                Reads rumination minutes, resting bouts, and feeding behavior from neck collars or shed cameras. Flags early fever/mastitis 36 hours before milk drops and pinpoints peak heat-cycle (estrus) windows.
+              </p>
+              <div style="border-top: 2px solid var(--green-tea); padding-top: 0.75rem; font-family: var(--font-mono); font-size: 0.8rem; color: var(--burgundy); font-weight: 700;">
+                INPUT: Collar / Shed Feed → OUTPUT: Healthy / Watch / Alert List
+              </div>
+            </div>
+            <a href="livestock-tech.html#cattle-health" class="card-structured-foot">
+              <span>Open Herd Status List Mockup</span>
+              <span>→</span>
+            </a>
+          </article>
+
+          <!-- Pillar 5: Milk Yield & Quality Prediction -->
+          <article class="card-structured reveal-up">
+            <div class="card-structured-head">
+              <span class="mono-tag">LIVESTOCK PILLAR 02 / 03</span>
+              <span class="status-pill" style="background: var(--burgundy); color: var(--honey-cream); border-color: var(--honey-cream);">DAIRY SENSOR</span>
+            </div>
+            <div class="card-structured-body">
+              <div class="card-icon-box" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <path d="M8 2h8l2 4v14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V6l2-4z"/>
+                  <path d="M6 12h12"/>
+                </svg>
+              </div>
+              <h3 class="h3-card">Milk Yield &amp; Quality Prediction</h3>
+              <p>
+                Connects parlor milk meters or cooperative collection analyzer logs to forecast per-animal and full-herd daily liters, Fat %, and SNF % — so dairy families can project cooperative payouts two weeks ahead.
+              </p>
+              <div style="border-top: 2px solid var(--green-tea); padding-top: 0.75rem; font-family: var(--font-mono); font-size: 0.8rem; color: var(--burgundy); font-weight: 700;">
+                INPUT: Analyzer + Lactation Stage → OUTPUT: Liters, Fat &amp; SNF
+              </div>
+            </div>
+            <a href="livestock-tech.html#milk-prediction" class="card-structured-foot">
+              <span>Inspect Milk &amp; Quality Forecast</span>
+              <span>→</span>
+            </a>
+          </article>
+
+          <!-- Pillar 6: Automated Feed Optimization -->
+          <article class="card-structured reveal-up">
+            <div class="card-structured-head">
+              <span class="mono-tag">LIVESTOCK PILLAR 03 / 03</span>
+              <span class="status-pill" style="background: var(--burgundy); color: var(--honey-cream); border-color: var(--honey-cream);">RATION BUILDER</span>
+            </div>
+            <div class="card-structured-body">
+              <div class="card-icon-box" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <rect x="3" y="4" width="18" height="16" rx="1"/>
+                  <path d="M7 8h10M7 12h10M7 16h6"/>
+                </svg>
+              </div>
+              <h3 class="h3-card">Automated Feed Optimization</h3>
+              <p>
+                Enter animal weight, breed (Murrah, Gir, Sahiwal, HF cross), and production goal to calculate a least-cost daily ration using your own dry crop stalks, green fodder, oilcakes, and local mineral mixtures.
+              </p>
+              <div style="border-top: 2px solid var(--green-tea); padding-top: 0.75rem; font-family: var(--font-mono); font-size: 0.8rem; color: var(--burgundy); font-weight: 700;">
+                INPUT: Weight + Breed + Goal → OUTPUT: Before/After Ration Mix
+              </div>
+            </div>
+            <a href="livestock-tech.html#feed-optimization" class="card-structured-foot">
+              <span>Compare Before &amp; After Rations</span>
+              <span>→</span>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         "BEYOND THE FARM GATE" — ECOSYSTEM PREVIEW (3 DEDICATED PAGES)
+         ==================================================================== -->
+    <section class="section-green section-pad" id="beyond-farm-gate">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <span class="eyebrow eyebrow-cream">BEYOND THE FARM GATE</span>
+          <h2 class="h2-section">Growing well is half the job. Selling fairly, getting credit, and staying ahead of weather is the rest.</h2>
+          <p class="lead-copy">
+            Every field and herd tool on Maati connects directly to three supporting ecosystem layers — each with its own dedicated workspace.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <!-- Preview 1: Market & Financial Tools -->
+          <article class="card-cream reveal-up">
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                <span class="eyebrow eyebrow-burgundy" style="margin-bottom: 0;">ECOSYSTEM 01</span>
+                <span class="mono-tag">MANDI · CREDIT · BUYERS</span>
+              </div>
+              <h3 class="h3-card">Market &amp; Financial Tools</h3>
+              <p style="margin-bottom: 1.25rem;">
+                Stop selling blind at the harvest trough. View 21-day mandi price forecasts, unlock working-capital credit built from verified land and crop history, and match graded lots directly with institutional buyers.
+              </p>
+              <ul style="display: flex; flex-direction: column; gap: 0.55rem; border-top: 2px solid var(--green-tea); padding-top: 1rem; font-weight: 600; font-size: 0.95rem;">
+                <li>• Short-term Mandi Price Forecasting charts</li>
+                <li>• Plainspoken AI Credit Scoring for thin-file farmers</li>
+                <li>• Two-sided Farmer ↔ Buyer supply-demand matching</li>
+              </ul>
+            </div>
+            <a href="market-finance.html" class="btn btn-burgundy" style="width: 100%; justify-content: space-between;">
+              <span>Open Market &amp; Finance Page</span>
+              <span>→</span>
+            </a>
+          </article>
+
+          <!-- Preview 2: Advisory & Accessibility -->
+          <article class="card-cream reveal-up">
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                <span class="eyebrow eyebrow-green" style="margin-bottom: 0;">ECOSYSTEM 02</span>
+                <span class="mono-tag">VOICE AI · WHATSAPP · SMS</span>
+              </div>
+              <h3 class="h3-card">Advisory &amp; Accessibility</h3>
+              <p style="margin-bottom: 1.25rem;">
+                Built for every literacy level and network condition. Farmers can speak their question in 12 local languages and hear plain spoken guidance, or use low-data WhatsApp and 2G SMS bots when mobile data drops.
+              </p>
+              <ul style="display: flex; flex-direction: column; gap: 0.55rem; border-top: 2px solid var(--green-tea); padding-top: 1rem; font-weight: 600; font-size: 0.95rem;">
+                <li>• Voice AI chatbot in local languages for low-literacy users</li>
+                <li>• Low-data WhatsApp &amp; basic-phone SMS crop advisory bots</li>
+                <li>• Government scheme (PM-KISAN, PMFBY, KUSUM) guidance</li>
+              </ul>
+            </div>
+            <a href="advisory.html" class="btn btn-green" style="width: 100%; justify-content: space-between;">
+              <span>Open Advisory &amp; Voice AI Page</span>
+              <span>→</span>
+            </a>
+          </article>
+
+          <!-- Preview 3: Satellite, Drone & Weather Intelligence -->
+          <article class="card-cream reveal-up">
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                <span class="eyebrow eyebrow-green" style="margin-bottom: 0;">ECOSYSTEM 03</span>
+                <span class="mono-tag">NDVI · DRONES · CLAIMS</span>
+              </div>
+              <h3 class="h3-card">Satellite, Drone &amp; Weather</h3>
+              <p style="margin-bottom: 1.25rem;">
+                Every 5 days, orbital passes scan large plots to flag hidden moisture or pest stress zones before a foot inspection could catch them — guiding targeted drone spraying, frost/flood alerts, and fast insurance payouts.
+              </p>
+              <ul style="display: flex; flex-direction: column; gap: 0.55rem; border-top: 2px solid var(--green-tea); padding-top: 1rem; font-weight: 600; font-size: 0.95rem;">
+                <li>• NDVI stress-map legend (Healthy / Stressed / Critical zones)</li>
+                <li>• Drone spraying prescription maps (68% less chemical waste)</li>
+                <li>• Hyperlocal weather alerts &amp; satellite-verified insurance claims</li>
+              </ul>
+            </div>
+            <a href="satellite-weather.html" class="btn btn-green" style="width: 100%; justify-content: space-between;">
+              <span>Open Satellite &amp; Weather Page</span>
+              <span>→</span>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         FIELD PROOF SECTION (HONEST SOLID STAT BLOCKS WITH COUNT-UPS)
+         ==================================================================== -->
+    <section class="section-cream section-pad">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <span class="eyebrow eyebrow-burgundy">FIELD-VERIFIED NUMBERS · Q3 2026</span>
+          <h2 class="h2-section">Measured across working farms, FPOs, and cooperative dairies</h2>
+          <p class="lead-copy">
+            Every figure below comes from active seasonal cohorts audited alongside partner Farmer Producer Organizations (FPOs) and district dairy unions.
+          </p>
+        </div>
+
+        <div class="grid-4">
+          <div class="card-structured reveal-up">
+            <div class="card-structured-head">
+              <span class="mono-tag">ACTIVE FARMERS</span>
+              <span class="mono-tag">9 STATES</span>
+            </div>
+            <div class="card-structured-body">
+              <div class="stat-value-burgundy" data-count-to="148400" data-comma="true" data-suffix="+">1,48,400+</div>
+              <p style="font-weight: 600;">Working smallholder &amp; mid-sized farms onboarded via mobile app, WhatsApp, and village FPO desks.</p>
+            </div>
+          </div>
+
+          <div class="card-structured reveal-up">
+            <div class="card-structured-head">
+              <span class="mono-tag">MONITORED LAND</span>
+              <span class="mono-tag">5-DAY PASS</span>
+            </div>
+            <div class="card-structured-body">
+              <div class="stat-value-burgundy" data-count-to="620000" data-comma="true">6,20,000</div>
+              <p style="font-weight: 600;">Acres watched weekly combining Sentinel-2 NDVI passes, village weather stations, and soil logs.</p>
+            </div>
+          </div>
+
+          <div class="card-structured reveal-up">
+            <div class="card-structured-head">
+              <span class="mono-tag">VOICE &amp; TEXT REACH</span>
+              <span class="mono-tag">LOW-DATA READY</span>
+            </div>
+            <div class="card-structured-body">
+              <div class="stat-value-burgundy" data-count-to="12">12</div>
+              <p style="font-weight: 600;">Supported local languages across voice AI, WhatsApp advisory, and 2G SMS alerts.</p>
+            </div>
+          </div>
+
+          <div class="card-structured reveal-up">
+            <div class="card-structured-head">
+              <span class="mono-tag">NET MARGIN UPLIFT</span>
+              <span class="mono-tag">3-SEASON COHORT</span>
+            </div>
+            <div class="card-structured-body">
+              <div class="stat-value-burgundy" data-count-to="18.4" data-decimals="1" data-prefix="+" data-suffix="%">+18.4%</div>
+              <p style="font-weight: 600;">Average net farm &amp; dairy margin gain from reduced spray waste, balanced feed, and timed mandi sales.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         CLOSING CTA BAND (SOLID GREEN TEA BACKGROUND, HONEY CREAM TEXT)
+         ==================================================================== -->
+    <section class="section-green section-pad">
+      <div class="container">
+        <div class="card-cream" style="background-color: var(--green-tea); color: var(--honey-cream); border: 3px solid var(--honey-cream); padding: 3rem;">
+          <div class="grid-2" style="align-items: center;">
+            <div>
+              <span class="eyebrow eyebrow-cream">GET STARTED IN 3 MINUTES</span>
+              <h2 class="h2-section">Start free with your first field or dairy shed today.</h2>
+              <p class="lead-copy">
+                Whether you farm 2 acres of vegetables and keep 3 buffaloes, or manage a 2,500-farmer FPO and procurement network — Maati works on the phone already in your pocket.
+              </p>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 1rem; align-items: flex-start;">
+              <div style="display: flex; flex-wrap: wrap; gap: 1rem; width: 100%;">
+                <a href="#get-started" class="btn btn-burgundy btn-lg" data-open-modal="signup">Start free with your first field →</a>
+                <a href="advisory.html" class="btn btn-outline-cream btn-lg">Talk to an advisor</a>
+              </div>
+              <p class="mono-tag">FREE FOR UP TO 5 ACRES &amp; 5 CATTLE · NO CREDIT CARD REQUIRED · WORKS ON 2G/3G</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ====================================================================
+       SHARED 4-COLUMN FOOTER (SOLID GREEN TEA BACKGROUND)
+       ==================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        <div>
+          <a href="index.html" class="brand-logo" style="color: var(--honey-cream); margin-bottom: 1rem;">
+            <span class="brand-mark" style="background-color: var(--honey-cream); color: var(--green-tea); border-color: var(--honey-cream);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                <path d="M12 22V10M12 10C12 6 15.5 3 20 3C20 7.5 17 11 12 10ZM12 13C12 9 8.5 6 4 6C4 10.5 7 14 12 13Z"/>
+                <path d="M4 22h16"/>
+              </svg>
+            </span>
+            <span>MAATI</span>
+          </a>
+          <p style="font-size: 0.95rem; margin-bottom: 1.25rem;">
+            Grounded, plainspoken agricultural and dairy intelligence built for working farmers, FPO cooperatives, rural lenders, and institutional buyers.
+          </p>
+          <p class="mono-tag">TOLL-FREE KISAN DESK: 1800-120-4455</p>
+        </div>
+
+        <div>
+          <h3 class="footer-col-title">Product (6 USPs)</h3>
+          <ul class="footer-links">
+            <li><a href="crop-tech.html#disease-detection">Crop Disease &amp; Pest Detection</a></li>
+            <li><a href="crop-tech.html#yield-prediction">Per-Field Yield Prediction</a></li>
+            <li><a href="crop-tech.html#soil-health">Soil Health Analysis (NPK/pH)</a></li>
+            <li><a href="livestock-tech.html#cattle-health">Cattle Health Monitoring</a></li>
+            <li><a href="livestock-tech.html#milk-prediction">Milk Yield &amp; Quality Prediction</a></li>
+            <li><a href="livestock-tech.html#feed-optimization">Automated Feed Optimization</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-col-title">Ecosystem</h3>
+          <ul class="footer-links">
+            <li><a href="market-finance.html">Market &amp; Finance Overview</a></li>
+            <li><a href="market-finance.html#price-forecast">Mandi Price Forecasting</a></li>
+            <li><a href="market-finance.html#credit-scoring">Plainspoken AI Credit Scoring</a></li>
+            <li><a href="advisory.html">Voice AI &amp; WhatsApp Advisory</a></li>
+            <li><a href="satellite-weather.html">NDVI &amp; Drone Spraying Maps</a></li>
+            <li><a href="satellite-weather.html#insurance-claims">Satellite Insurance Claims</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-col-title">Company</h3>
+          <ul class="footer-links">
+            <li><a href="about.html">About &amp; Mission</a></li>
+            <li><a href="about.html#data-pledge">Farmer Data Ownership Pledge</a></li>
+            <li><a href="about.html#timeline">Founding Story &amp; Timeline</a></li>
+            <li><a href="about.html#partners">FPO &amp; University Partners</a></li>
+            <li><a href="about.html#careers">Field Agronomy Careers</a></li>
+            <li><a href="about.html#press">Press &amp; Audit Reports</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-col-title">Support &amp; Language</h3>
+          <ul class="footer-links" style="margin-bottom: 1rem;">
+            <li><a href="advisory.html">24×7 Voice &amp; SMS Help Center</a></li>
+            <li><a href="advisory.html#whatsapp-bot">WhatsApp Bot Setup</a></li>
+            <li><a href="about.html#contact">Partner an FPO or Dairy Union</a></li>
+          </ul>
+          <label class="mono-tag" for="footer-lang-select" style="display: block; margin-bottom: 0.4rem;">SITE LANGUAGE</label>
+          <div class="lang-select-wrap" style="border-color: var(--honey-cream); width: 100%;">
+            <select id="footer-lang-select" class="lang-select" style="width: 100%;" aria-label="Footer Language Selector">
+              <option value="en">EN · English</option>
+              <option value="hi">हिन्दी · Hindi</option>
+              <option value="mr">मराठी · Marathi</option>
+              <option value="ta">தமிழ் · Tamil</option>
+              <option value="te">తెలుగు · Telugu</option>
+              <option value="pa">ਪੰਜਾਬੀ · Punjabi</option>
+              <option value="kn">ಕನ್ನಡ · Kannada</option>
+              <option value="gu">ગુજરાતી · Gujarati</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Maati AgriTech Platform. Built for the field, not just the boardroom.</span>
+        <span>Strict Flat 3-Color Accessibility Standard · Zero Farmer Data Sold to Third Parties</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ====================================================================
+       SHARED FIELD ONBOARDING / LOGIN MODAL
+       ==================================================================== -->
+  <div class="modal-backdrop" id="onboarding-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-card">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; padding-bottom: 0.85rem; border-bottom: 2px solid var(--green-tea);">
+        <div>
+          <span class="eyebrow eyebrow-burgundy" style="margin-bottom: 0.4rem;">MAATI FARM ACCOUNT</span>
+          <h2 class="h3-card" id="modal-title" style="margin-bottom: 0;">Start free with your first field or herd</h2>
+        </div>
+        <button type="button" id="modal-close-btn" class="btn btn-outline-green" style="padding: 0.35rem 0.65rem;" aria-label="Close modal">✕</button>
+      </div>
+      <p id="modal-subtitle" style="margin-bottom: 1.25rem; font-size: 0.95rem;">
+        No credit card needed. Add your mobile number and village pin code to begin.
+      </p>
+      <form id="modal-form">
+        <div class="form-field">
+          <label for="modal-phone">Mobile Number (SMS &amp; WhatsApp)</label>
+          <input type="tel" id="modal-phone" class="form-input" placeholder="+91 98230 XXXXX" required />
+        </div>
+        <div class="form-field">
+          <label for="modal-pincode">Village Pin Code / Mandi Block</label>
+          <input type="text" id="modal-pincode" class="form-input" placeholder="e.g. 422303 (Niphad, Nashik)" required />
+        </div>
+        <div class="form-field">
+          <label for="modal-role">Primary Farm Activity</label>
+          <select id="modal-role" class="form-input">
+            <option value="mixed">Mixed Crop + Dairy Livestock Farm</option>
+            <option value="crop">Crop &amp; Horticulture Farmer</option>
+            <option value="dairy">Dairy &amp; Cattle Herd Owner</option>
+            <option value="fpo">FPO / Cooperative / Institutional Buyer</option>
+          </select>
+        </div>
+        <button type="submit" id="modal-submit-btn" class="btn btn-burgundy btn-lg" style="width: 100%;">Create Free Farm Profile</button>
+        <div id="modal-feedback" style="display: none; margin-top: 1rem; padding: 0.85rem; background-color: var(--green-tea); color: var(--honey-cream); font-weight: 600; font-size: 0.92rem;"></div>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

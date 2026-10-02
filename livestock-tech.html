@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Livestock Tech — Cattle Health, Milk Prediction &amp; Feed Optimization | MAATI</title>
+  <meta name="description" content="Grounded dairy and livestock intelligence: early illness and heat-cycle detection, sensor-driven milk yield and Fat/SNF forecasting, and least-cost daily ration balancing." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ====================================================================
+       SOLID TOP NAVIGATION BAR
+       ==================================================================== -->
+  <header class="site-header">
+    <div class="nav-inner">
+      <a href="index.html" class="brand-logo" aria-label="Maati Home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+            <path d="M12 22V10M12 10C12 6 15.5 3 20 3C20 7.5 17 11 12 10ZM12 13C12 9 8.5 6 4 6C4 10.5 7 14 12 13Z"/>
+            <path d="M4 22h16"/>
+          </svg>
+        </span>
+        <span>
+          MAATI
+          <span class="brand-sub">Field &amp; Herd Platform</span>
+        </span>
+      </a>
+
+      <nav class="primary-nav" aria-label="Primary Navigation">
+        <a href="index.html" class="nav-link" data-i18n="navHome">Home</a>
+        <a href="crop-tech.html" class="nav-link" data-i18n="navCrop">Crop Tech</a>
+        <a href="livestock-tech.html" class="nav-link active" data-i18n="navLivestock">Livestock Tech</a>
+        <a href="market-finance.html" class="nav-link" data-i18n="navMarket">Market &amp; Finance</a>
+        <a href="advisory.html" class="nav-link" data-i18n="navAdvisory">Advisory</a>
+        <a href="satellite-weather.html" class="nav-link" data-i18n="navSatellite">Satellite &amp; Weather</a>
+        <a href="about.html" class="nav-link" data-i18n="navAbout">About</a>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="lang-select-wrap" title="Select Language">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+          <select class="lang-select" aria-label="Select Language">
+            <option value="en">EN · English</option>
+            <option value="hi">हिन्दी · Hindi</option>
+            <option value="mr">मराठी · Marathi</option>
+            <option value="ta">தமிழ் · Tamil</option>
+            <option value="te">తెలుగు · Telugu</option>
+            <option value="pa">ਪੰਜਾਬੀ · Punjabi</option>
+            <option value="kn">ಕನ್ನಡ · Kannada</option>
+            <option value="gu">ગુજરાતી · Gujarati</option>
+          </select>
+        </div>
+
+        <a href="#login" class="nav-login-link" data-open-modal="login" data-i18n="navLogin">Log in</a>
+        <a href="#get-started" class="btn btn-burgundy" data-open-modal="signup" data-i18n="navGetStarted">Get Started</a>
+
+        <button type="button" id="mobile-menu-btn" class="mobile-menu-toggle" aria-label="Toggle Menu" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M3 6h18M3 12h18M3 18h18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Full-Screen Mobile Menu Drawer -->
+    <div class="mobile-drawer" id="mobile-drawer" aria-label="Mobile Navigation">
+      <div class="mobile-nav-list">
+        <a href="index.html" class="mobile-nav-link"><span data-i18n="navHome">Home</span> <span>→</span></a>
+        <a href="crop-tech.html" class="mobile-nav-link"><span data-i18n="navCrop">Crop Tech</span> <span>→</span></a>
+        <a href="livestock-tech.html" class="mobile-nav-link active"><span data-i18n="navLivestock">Livestock Tech</span> <span>→</span></a>
+        <a href="market-finance.html" class="mobile-nav-link"><span data-i18n="navMarket">Market &amp; Finance</span> <span>→</span></a>
+        <a href="advisory.html" class="mobile-nav-link"><span data-i18n="navAdvisory">Advisory</span> <span>→</span></a>
+        <a href="satellite-weather.html" class="mobile-nav-link"><span data-i18n="navSatellite">Satellite &amp; Weather</span> <span>→</span></a>
+        <a href="about.html" class="mobile-nav-link"><span data-i18n="navAbout">About</span> <span>→</span></a>
+      </div>
+      <div class="mobile-drawer-footer">
+        <a href="#get-started" class="btn btn-burgundy btn-lg" data-open-modal="signup" data-i18n="navGetStarted">Get Started — Try the App</a>
+        <a href="#login" class="btn btn-outline-green btn-lg" data-open-modal="login" data-i18n="navLogin">Log in to Existing Farm Account</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ====================================================================
+         COMPACT PAGE-SPECIFIC HERO (LIVESTOCK TECH)
+         ==================================================================== -->
+    <section class="interior-hero">
+      <div class="container">
+        <div class="interior-hero-grid">
+          <div>
+            <span class="eyebrow eyebrow-cream">PILLAR GROUP 02 · LIVESTOCK &amp; DAIRY INTELLIGENCE</span>
+            <h1 class="h1-hero">Healthy cattle, predictable milk fat &amp; volume, and lower daily feed cost from your own farm fodder.</h1>
+            <p class="lead-copy" style="margin-bottom: 1.75rem;">
+              Missed heat cycles and late-detected mastitis silently drain dairy income. Maati translates collar movement, shed camera feeds, milk collection logs, and local fodder nutrition into plain daily actions for cows and buffaloes.
+            </p>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+              <a href="#cattle-health" class="btn btn-cream">01 · Cattle Health &amp; Heat Watch</a>
+              <a href="#milk-prediction" class="btn btn-cream">02 · Milk Yield &amp; Quality</a>
+              <a href="#feed-optimization" class="btn btn-burgundy">03 · Feed Ration Optimizer</a>
+            </div>
+          </div>
+
+          <!-- Supporting Flat Diagram: Dairy Shed Telemetry Flow -->
+          <div class="diagram-frame" aria-label="Livestock Intelligence System Diagram">
+            <div style="border-bottom: 2px solid var(--green-tea); padding-bottom: 0.65rem; margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center;">
+              <span class="mono-tag">SHED-TO-COOPERATIVE LOOP</span>
+              <span class="status-pill status-healthy">24×7 HERD WATCH</span>
+            </div>
+            <svg viewBox="0 0 460 230" width="100%" height="auto" role="img" aria-label="Diagram of Collar and Camera Inputs, Milk Analyzer, and Ration Engine">
+              <rect x="10" y="15" width="150" height="55" fill="#4B7B4E"/>
+              <text x="22" y="38" fill="#FACD8C" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">01. COLLAR / CAMERA</text>
+              <text x="22" y="56" fill="#FACD8C" font-family="Plus Jakarta Sans, sans-serif" font-size="11">Rumination &amp; estrus</text>
+
+              <rect x="10" y="87" width="150" height="55" fill="#4B7B4E"/>
+              <text x="22" y="110" fill="#FACD8C" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">02. MILK ANALYZER</text>
+              <text x="22" y="128" fill="#FACD8C" font-family="Plus Jakarta Sans, sans-serif" font-size="11">Liters, Fat % &amp; SNF %</text>
+
+              <rect x="10" y="159" width="150" height="55" fill="#4B7B4E"/>
+              <text x="22" y="182" fill="#FACD8C" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">03. FODDER &amp; WEIGHT</text>
+              <text x="22" y="200" fill="#FACD8C" font-family="Plus Jakarta Sans, sans-serif" font-size="11">Breed &amp; crop residue</text>
+
+              <path d="M160 42 L225 115 M160 115 L225 115 M160 186 L225 115" stroke="#4B7B4E" stroke-width="3" fill="none"/>
+
+              <rect x="225" y="25" width="225" height="180" fill="#FACD8C" stroke="#4B7B4E" stroke-width="3"/>
+              <rect x="225" y="25" width="225" height="36" fill="#660033"/>
+              <text x="238" y="48" fill="#FACD8C" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">DAILY SHED ACTION</text>
+
+              <text x="240" y="86" fill="#4B7B4E" font-family="Plus Jakarta Sans, sans-serif" font-size="12" font-weight="700">• 36-Hr Early Illness Alert</text>
+              <text x="240" y="114" fill="#4B7B4E" font-family="Plus Jakarta Sans, sans-serif" font-size="12" font-weight="700">• Optimal 12-Hr AI Window</text>
+              <text x="240" y="142" fill="#4B7B4E" font-family="Plus Jakarta Sans, sans-serif" font-size="12" font-weight="700">• 14-Day Milk Payout Est.</text>
+              <text x="240" y="170" fill="#660033" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">• -₹38/Day Balanced Ration</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         USP 1: CATTLE HEALTH MONITORING (ANIMAL-STATUS LIST MOCKUP)
+         ==================================================================== -->
+    <section class="section-cream section-pad" id="cattle-health">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <span class="eyebrow eyebrow-burgundy">LIVESTOCK USP 01 / 03 · WEARABLE OR CAMERA AI</span>
+          <h2 class="h2-section">Cattle Health &amp; Heat-Cycle Monitoring</h2>
+          <p class="lead-copy">
+            Before a cow or buffalo shows visible fever or a drop in the milk bucket, her cud-chewing (rumination) minutes fall and her standing bouts shift. Whether you use acoustic neck collars or a single solar camera in the cattle shed, Maati translates behavior into a simple animal-status list: <strong>Healthy</strong>, <strong>Watch</strong>, or <strong>Alert</strong>.
+          </p>
+        </div>
+
+        <!-- Numbered Process Step-Strip -->
+        <div class="step-strip reveal-up" aria-label="How Cattle Health Monitoring Works">
+          <div class="step-item">
+            <span class="step-num">STEP 01</span>
+            <h3 class="step-title">Collar or Shed Camera</h3>
+            <p class="step-desc">Tracks chew count, head movement, trough visits, and mounting behavior 24 hours a day.</p>
+          </div>
+          <div class="step-item">
+            <span class="step-num">STEP 02</span>
+            <h3 class="step-title">Per-Animal Baseline</h3>
+            <p class="step-desc">Learns each animal’s normal rumination (460–520 min/day) adjusted for breed and ambient heat.</p>
+          </div>
+          <div class="step-item">
+            <span class="step-num">STEP 03</span>
+            <h3 class="step-title">Illness &amp; Estrus Flags</h3>
+            <p class="step-desc">Distinguishes between restlessness from a heat cycle (estrus) and lethargy from early fever or mastitis.</p>
+          </div>
+          <div class="step-item">
+            <span class="step-num">STEP 04</span>
+            <h3 class="step-title">Plain Status List</h3>
+            <p class="step-desc">Sends a clear WhatsApp/SMS alert with the exact time window for Artificial Insemination (AI) or vet check.</p>
+          </div>
+        </div>
+
+        <!-- Honest Animal-Status List Mockup -->
+        <div class="mockup-shell reveal-up">
+          <div class="mockup-topbar">
+            <span class="mono-tag">MORNING SHED CHECK · PATEL DAIRY FARM (ANAND CLUSTER)</span>
+            <div class="mockup-tabs" role="tablist" aria-label="Filter Herd Status">
+              <button type="button" class="tab-btn active" data-herd-filter="all">All Herd (6)</button>
+              <button type="button" class="tab-btn" data-herd-filter="alert">Alert (1)</button>
+              <button type="button" class="tab-btn" data-herd-filter="watch">Watch / Heat Window (2)</button>
+              <button type="button" class="tab-btn" data-herd-filter="healthy">Healthy (3)</button>
+            </div>
+          </div>
+
+          <div class="mockup-body" style="padding: 0;">
+            <table class="data-table" aria-label="Cattle Health Status List">
+              <thead>
+                <tr>
+                  <th>Animal Tag &amp; Breed</th>
+                  <th>Rumination (24h)</th>
+                  <th>Movement &amp; Feed</th>
+                  <th>Status</th>
+                  <th>Plainspoken Shed Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-animal-status="alert">
+                  <td>
+                    <strong>Tag #204 · "Kali"</strong><br/>
+                    <span class="mono-tag">Murrah Buffalo · Lactation #3</span>
+                  </td>
+                  <td>
+                    <strong style="color: var(--burgundy);">295 min/day</strong><br/>
+                    <span class="mono-tag">(-38% vs 7-day avg)</span>
+                  </td>
+                  <td>Trough visits down 42% · Lying prolonged</td>
+                  <td><span class="status-pill status-alert">ALERT · ILLNESS RISK</span></td>
+                  <td><strong>Check udder quarters for sub-clinical mastitis &amp; take rectal temp before evening milking.</strong></td>
+                </tr>
+
+                <tr data-animal-status="watch">
+                  <td>
+                    <strong>Tag #109 · "Nandini"</strong><br/>
+                    <span class="mono-tag">Gir Cross · 68 Days Post-Calving</span>
+                  </td>
+                  <td>
+                    <strong>415 min/day</strong><br/>
+                    <span class="mono-tag">(-12% estrus dip)</span>
+                  </td>
+                  <td>Restlessness +64% · Chin-resting observed</td>
+                  <td><span class="status-pill status-watch">WATCH · HEAT WINDOW</span></td>
+                  <td><strong>Peak Estrus Window: Book Artificial Insemination (AI) technician between 2:00 PM – 6:00 PM today.</strong></td>
+                </tr>
+
+                <tr data-animal-status="watch">
+                  <td>
+                    <strong>Tag #118 · "Lakshmi"</strong><br/>
+                    <span class="mono-tag">HF Cross · Lactation #2</span>
+                  </td>
+                  <td>
+                    <strong>438 min/day</strong><br/>
+                    <span class="mono-tag">(Mild afternoon dip)</span>
+                  </td>
+                  <td>Panting rate elevated 1:00 PM – 4:00 PM</td>
+                  <td><span class="status-pill status-watch">WATCH · HEAT STRESS</span></td>
+                  <td><strong>Shed THI reached 81. Run foggers for 15 mins at 1:30 PM and provide cool drinking water.</strong></td>
+                </tr>
+
+                <tr data-animal-status="healthy">
+                  <td>
+                    <strong>Tag #104 · "Kamdhenu"</strong><br/>
+                    <span class="mono-tag">Gir Cross · Lactation #3</span>
+                  </td>
+                  <td>
+                    <strong>492 min/day</strong><br/>
+                    <span class="mono-tag">(Optimal baseline)</span>
+                  </td>
+                  <td>Normal 9 feeding bouts · Steady cud chew</td>
+                  <td><span class="status-pill status-healthy">HEALTHY</span></td>
+                  <td>Routine milking &amp; standard balanced ration.</td>
+                </tr>
+
+                <tr data-animal-status="healthy">
+                  <td>
+                    <strong>Tag #209 · "Ganga"</strong><br/>
+                    <span class="mono-tag">Murrah Buffalo · Lactation #4</span>
+                  </td>
+                  <td>
+                    <strong>510 min/day</strong><br/>
+                    <span class="mono-tag">(Optimal baseline)</span>
+                  </td>
+                  <td>Strong dry-matter intake · Peak milk fat 7.1%</td>
+                  <td><span class="status-pill status-healthy">HEALTHY</span></td>
+                  <td>Routine milking; maintain bypass-fat top-dress.</td>
+                </tr>
+
+                <tr data-animal-status="healthy">
+                  <td>
+                    <strong>Tag #112 · "Saraswati"</strong><br/>
+                    <span class="mono-tag">Sahiwal · Confirmed Pregnant (M5)</span>
+                  </td>
+                  <td>
+                    <strong>485 min/day</strong><br/>
+                    <span class="mono-tag">(Optimal baseline)</span>
+                  </td>
+                  <td>Calm resting pattern · Normal weight gain</td>
+                  <td><span class="status-pill status-healthy">HEALTHY</span></td>
+                  <td>Continue mineral mixture; dry-off scheduled in 65 days.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         USP 2: MILK YIELD & QUALITY PREDICTION
+         ==================================================================== -->
+    <section class="section-green section-pad" id="milk-prediction">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <span class="eyebrow eyebrow-cream">LIVESTOCK USP 02 / 03 · SENSOR &amp; COOPERATIVE SLIP INTEGRATION</span>
+          <h2 class="h2-section">Milk Yield &amp; Quality Prediction</h2>
+          <p class="lead-copy">
+            Dairy societies pay by both volume and Fat / SNF (Solid-Not-Fat) percentage. Maati ingests daily cooperative collection slips or inline parlor sensors, combines them with lactation day and ambient temperature, and forecasts your 14-day yield and quality score.
+          </p>
+        </div>
+
+        <!-- Numbered Process Step-Strip -->
+        <div class="step-strip reveal-up" aria-label="How Milk Yield Prediction Works">
+          <div class="step-item">
+            <span class="step-num">INPUT 01</span>
+            <h3 class="step-title">Sensor or Society Slip</h3>
+            <p class="step-desc">Reads morning &amp; evening liters, Fat %, SNF %, and milk conductivity automatically.</p>
+          </div>
+          <div class="step-item">
+            <span class="step-num">INPUT 02</span>
+            <h3 class="step-title">Lactation &amp; Weather Model</h3>
+            <p class="step-desc">Accounts for days-in-milk curve, pregnancy status, and night temperature humidity index (THI).</p>
+          </div>
+          <div class="step-item">
+            <span class="step-num">OUTPUT</span>
+            <h3 class="step-title">14-Day Yield &amp; Quality Score</h3>
+            <p class="step-desc">Projects daily liters and Fat/SNF payout band per animal or for the whole milking herd.</p>
+          </div>
+        </div>
+
+        <!-- Interactive Milk Forecast Mockup -->
+        <div class="mockup-shell reveal-up">
+          <div class="mockup-topbar" style="border-bottom-color: var(--honey-cream);">
+            <span class="mono-tag">INTERACTIVE MILK YIELD &amp; FAT/SNF QUALITY FORECAST</span>
+            <div class="mockup-tabs" role="tablist" aria-label="Select Herd or Animal">
+              <button type="button" class="tab-btn active" data-milk-animal="herd">Full Herd (24 Milking)</button>
+              <button type="button" class="tab-btn" data-milk-animal="gir104">Tag #104 (Gir)</button>
+              <button type="button" class="tab-btn" data-milk-animal="murrah209">Tag #209 (Murrah)</button>
+              <button type="button" class="tab-btn" data-milk-animal="hf118">Tag #118 (HF Cross)</button>
+            </div>
+          </div>
+
+          <div class="mockup-body">
+            <div class="grid-2" style="align-items: center;">
+              <div>
+                <div class="mono-tag" id="milk-animal-title" style="margin-bottom: 0.4rem;">
+                  Full Milking Herd (24 Animals — 14 Murrah Buffalo, 10 Gir &amp; HF Cows)
+                </div>
+                <div class="stat-value-burgundy" id="milk-daily-yield" style="margin-bottom: 0.35rem;">
+                  268.5 Liters / Day
+                </div>
+                <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                  <span class="status-pill status-healthy" id="milk-fat-snf">Avg Fat: 5.8% · Avg SNF: 8.8%</span>
+                  <span class="status-pill status-alert" id="milk-daily-payout">₹14,230 / Day Cooperative Payout</span>
+                </div>
+                <p id="milk-forecast-note" style="font-weight: 600; margin-bottom: 1rem;">
+                  14-day forecast projects +4.2% volume rise as 2 fresh-calved Murrah buffaloes enter peak lactation.
+                </p>
+                <div style="border-top: 2px solid var(--green-tea); padding-top: 0.85rem; font-family: var(--font-mono); font-size: 0.82rem;">
+                  QUALITY GRADE: A+ · SOMATIC CELL CONDUCTIVITY: NORMAL · ZERO ANTIBIOTIC RESIDUE
+                </div>
+              </div>
+
+              <div style="border: 2px solid var(--green-tea); padding: 1.15rem;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.65rem;">
+                  <span class="mono-tag">14-DAY VOLUME &amp; QUALITY TRAJECTORY</span>
+                  <span class="mono-tag" style="color: var(--burgundy);">— ACTUAL + 14D FORECAST</span>
+                </div>
+                <svg viewBox="0 0 620 205" width="100%" height="auto" role="img" aria-label="14-Day Milk Yield Forecast Chart">
+                  <line x1="40" y1="40" x2="585" y2="40" stroke="#4B7B4E" stroke-width="1" stroke-dasharray="3 3"/>
+                  <line x1="40" y1="90" x2="585" y2="90" stroke="#4B7B4E" stroke-width="1" stroke-dasharray="3 3"/>
+                  <line x1="40" y1="140" x2="585" y2="140" stroke="#4B7B4E" stroke-width="1" stroke-dasharray="3 3"/>
+                  <line x1="40" y1="175" x2="585" y2="175" stroke="#4B7B4E" stroke-width="2.5"/>
+                  <line x1="40" y1="25" x2="40" y2="175" stroke="#4B7B4E" stroke-width="2.5"/>
+
+                  <line x1="310" y1="25" x2="310" y2="175" stroke="#660033" stroke-width="2" stroke-dasharray="4 3"/>
+                  <rect x="268" y="22" width="84" height="20" fill="#660033"/>
+                  <text x="278" y="36" fill="#FACD8C" font-family="JetBrains Mono, monospace" font-size="10" font-weight="700">TODAY</text>
+
+                  <polyline id="svg-milk-line" points="40,145 130,132 220,118 310,104 400,92 490,82 580,74" fill="none" stroke="#660033" stroke-width="4"/>
+
+                  <circle cx="40" cy="145" r="5" fill="#4B7B4E"/>
+                  <circle cx="130" cy="132" r="5" fill="#4B7B4E"/>
+                  <circle cx="220" cy="118" r="5" fill="#4B7B4E"/>
+                  <circle cx="310" cy="104" r="6" fill="#660033"/>
+                  <circle cx="400" cy="92" r="5" fill="#660033"/>
+                  <circle cx="490" cy="82" r="5" fill="#660033"/>
+                  <circle cx="580" cy="74" r="6" fill="#660033"/>
+
+                  <text x="35" y="196" fill="#4B7B4E" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">DAY -10</text>
+                  <text x="125" y="196" fill="#4B7B4E" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">DAY -5</text>
+                  <text x="290" y="196" fill="#660033" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">TODAY</text>
+                  <text x="465" y="196" fill="#4B7B4E" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">DAY +7</text>
+                  <text x="545" y="196" fill="#660033" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">DAY +14</text>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         USP 3: AUTOMATED FEED OPTIMIZATION (BEFORE/AFTER RATION COMPARISON)
+         ==================================================================== -->
+    <section class="section-cream section-pad" id="feed-optimization">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <span class="eyebrow eyebrow-green">LIVESTOCK USP 03 / 03 · LEAST-COST BALANCED NUTRITION</span>
+          <h2 class="h2-section">Automated Feed Optimization</h2>
+          <p class="lead-copy">
+            Feed accounts for 65% to 70% of the cost of producing a liter of milk. Most dairy farmers either over-spend on commercial bags or under-feed essential minerals. Maati takes your animal’s weight, breed, and production goal and builds a balanced daily ration from the dry stalks, green fodder, and oilcakes already in your village.
+          </p>
+        </div>
+
+        <!-- Numbered Process Step-Strip -->
+        <div class="step-strip reveal-up" aria-label="How Automated Feed Optimization Works">
+          <div class="step-item">
+            <span class="step-num">STEP 01</span>
+            <h3 class="step-title">Weight, Breed &amp; Stage</h3>
+            <p class="step-desc">Select breed (Murrah, Gir, Sahiwal, HF Cross), body weight, current milk liters, and pregnancy month.</p>
+          </div>
+          <div class="step-item">
+            <span class="step-num">STEP 02</span>
+            <h3 class="step-title">Select Available Fodder</h3>
+            <p class="step-desc">Tick the crop residues (wheat bhusa, jowar kadbi) and oilcakes (cottonseed, groundnut, mustard) you have on hand.</p>
+          </div>
+          <div class="step-item">
+            <span class="step-num">STEP 03</span>
+            <h3 class="step-title">Before / After Ration Mix</h3>
+            <p class="step-desc">Balances Crude Protein (CP), Total Digestible Nutrients (TDN), and Calcium-Phosphorus at the lowest daily cost.</p>
+          </div>
+        </div>
+
+        <!-- Interactive Before/After Ration Comparison Mockup -->
+        <div class="mockup-shell reveal-up">
+          <div class="mockup-topbar">
+            <span class="mono-tag">INTERACTIVE BEFORE / AFTER DAILY RATION COMPARISON</span>
+            <div class="mockup-tabs" role="tablist" aria-label="Select Animal Ration Profile">
+              <button type="button" class="tab-btn active" data-ration-profile="murrah-fat">Murrah Buffalo · High Fat Goal</button>
+              <button type="button" class="tab-btn" data-ration-profile="gir-volume">Gir Cow · Peak Volume Goal</button>
+              <button type="button" class="tab-btn" data-ration-profile="hf-dry">HF Cross · Dry-Period Transition</button>
+            </div>
+          </div>
+
+          <div class="mockup-body">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem; padding-bottom: 0.85rem; border-bottom: 2px solid var(--green-tea);">
+              <div>
+                <span class="mono-tag">ACTIVE RATION PROFILE:</span>
+                <h3 class="h3-card" id="ration-profile-label" style="margin-bottom: 0;">
+                  Murrah Buffalo (550 kg) · Goal: Higher Milk Fat % (7.0%+)
+                </h3>
+              </div>
+              <span class="status-pill status-alert" id="ration-outcome">
+                +0.42% Milk Fat Increase &amp; +1.1 Liters/Day
+              </span>
+            </div>
+
+            <table class="data-table" aria-label="Before and After Feed Ration Comparison">
+              <thead>
+                <tr>
+                  <th>Ration Component</th>
+                  <th>BEFORE (Traditional Unbalanced Mix)</th>
+                  <th>AFTER (Maati Balanced Ration Recommendation)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>01. Dry Fodder (Crop Residue)</strong></td>
+                  <td id="ration-dry-before">8.5 kg Wheat Straw (Unchopped)</td>
+                  <td><strong id="ration-dry-after">6.5 kg Chaffed Wheat Straw + 1.5 kg Legume Hay</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>02. Green Fodder</strong></td>
+                  <td id="ration-green-before">12.0 kg Hybrid Napier Only</td>
+                  <td><strong id="ration-green-after">14.0 kg Napier + 4.0 kg Berseem / Lucerne</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>03. Concentrates &amp; Oilcake</strong></td>
+                  <td id="ration-conc-before">5.2 kg Market Mixed Pellet (Uncalibrated)</td>
+                  <td><strong id="ration-conc-after">3.8 kg Cottonseed Cake + Crushed Maize + Bypass Fat (100g)</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>04. Minerals &amp; Buffer</strong></td>
+                  <td id="ration-min-before">None (Occasional Common Salt)</td>
+                  <td><strong id="ration-min-after">60g Area-Specific Chelated Mineral Mix + 30g Buffer</strong></td>
+                </tr>
+                <tr style="background-color: var(--green-tea); color: var(--honey-cream);">
+                  <td><strong>DAILY FEED COST PER ANIMAL</strong></td>
+                  <td id="ration-cost-before" style="font-family: var(--font-mono); font-weight: 700;">₹248 / animal / day</td>
+                  <td id="ration-cost-after" style="font-family: var(--font-mono); font-weight: 700; text-decoration: underline;">₹210 / animal / day (-₹38/day saved)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Closing Cross-Link Band -->
+    <section class="section-green section-pad-compact">
+      <div class="container">
+        <div class="grid-2" style="align-items: center;">
+          <div>
+            <span class="eyebrow eyebrow-cream">NEXT IN THE ECOSYSTEM</span>
+            <h2 class="h2-section" style="margin-bottom: 0.5rem;">Turn higher crop &amp; dairy output into stronger market prices and fair credit.</h2>
+          </div>
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: flex-end;">
+            <a href="market-finance.html" class="btn btn-burgundy btn-lg">Explore Market &amp; Finance →</a>
+            <a href="advisory.html" class="btn btn-cream btn-lg">Voice &amp; WhatsApp Advisory →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Shared 4-Column Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        <div>
+          <a href="index.html" class="brand-logo" style="color: var(--honey-cream); margin-bottom: 1rem;">
+            <span class="brand-mark" style="background-color: var(--honey-cream); color: var(--green-tea); border-color: var(--honey-cream);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                <path d="M12 22V10M12 10C12 6 15.5 3 20 3C20 7.5 17 11 12 10ZM12 13C12 9 8.5 6 4 6C4 10.5 7 14 12 13Z"/>
+                <path d="M4 22h16"/>
+              </svg>
+            </span>
+            <span>MAATI</span>
+          </a>
+          <p style="font-size: 0.95rem; margin-bottom: 1.25rem;">
+            Grounded, plainspoken agricultural and dairy intelligence built for working farmers, FPO cooperatives, rural lenders, and institutional buyers.
+          </p>
+          <p class="mono-tag">TOLL-FREE KISAN DESK: 1800-120-4455</p>
+        </div>
+
+        <div>
+          <h3 class="footer-col-title">Product (6 USPs)</h3>
+          <ul class="footer-links">
+            <li><a href="crop-tech.html#disease-detection">Crop Disease &amp; Pest Detection</a></li>
+            <li><a href="crop-tech.html#yield-prediction">Per-Field Yield Prediction</a></li>
+            <li><a href="crop-tech.html#soil-health">Soil Health Analysis (NPK/pH)</a></li>
+            <li><a href="livestock-tech.html#cattle-health">Cattle Health Monitoring</a></li>
+            <li><a href="livestock-tech.html#milk-prediction">Milk Yield &amp; Quality Prediction</a></li>
+            <li><a href="livestock-tech.html#feed-optimization">Automated Feed Optimization</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-col-title">Ecosystem</h3>
+          <ul class="footer-links">
+            <li><a href="market-finance.html">Market &amp; Finance Overview</a></li>
+            <li><a href="market-finance.html#price-forecast">Mandi Price Forecasting</a></li>
+            <li><a href="market-finance.html#credit-scoring">Plainspoken AI Credit Scoring</a></li>
+            <li><a href="advisory.html">Voice AI &amp; WhatsApp Advisory</a></li>
+            <li><a href="satellite-weather.html">NDVI &amp; Drone Spraying Maps</a></li>
+            <li><a href="satellite-weather.html#insurance-claims">Satellite Insurance Claims</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-col-title">Company</h3>
+          <ul class="footer-links">
+            <li><a href="about.html">About &amp; Mission</a></li>
+            <li><a href="about.html#data-pledge">Farmer Data Ownership Pledge</a></li>
+            <li><a href="about.html#timeline">Founding Story &amp; Timeline</a></li>
+            <li><a href="about.html#partners">FPO &amp; University Partners</a></li>
+            <li><a href="about.html#careers">Field Agronomy Careers</a></li>
+            <li><a href="about.html#press">Press &amp; Audit Reports</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-col-title">Support &amp; Language</h3>
+          <ul class="footer-links" style="margin-bottom: 1rem;">
+            <li><a href="advisory.html">24×7 Voice &amp; SMS Help Center</a></li>
+            <li><a href="advisory.html#whatsapp-bot">WhatsApp Bot Setup</a></li>
+            <li><a href="about.html#contact">Partner an FPO or Dairy Union</a></li>
+          </ul>
+          <label class="mono-tag" for="footer-lang-select" style="display: block; margin-bottom: 0.4rem;">SITE LANGUAGE</label>
+          <div class="lang-select-wrap" style="border-color: var(--honey-cream); width: 100%;">
+            <select id="footer-lang-select" class="lang-select" style="width: 100%;" aria-label="Footer Language Selector">
+              <option value="en">EN · English</option>
+              <option value="hi">हिन्दी · Hindi</option>
+              <option value="mr">मराठी · Marathi</option>
+              <option value="ta">தமிழ் · Tamil</option>
+              <option value="te">తెలుగు · Telugu</option>
+              <option value="pa">ਪੰਜਾਬੀ · Punjabi</option>
+              <option value="kn">ಕನ್ನಡ · Kannada</option>
+              <option value="gu">ગુજરાતી · Gujarati</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Maati AgriTech Platform. Built for the field, not just the boardroom.</span>
+        <span>Strict Flat 3-Color Accessibility Standard · Zero Farmer Data Sold to Third Parties</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Shared Modal -->
+  <div class="modal-backdrop" id="onboarding-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-card">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; padding-bottom: 0.85rem; border-bottom: 2px solid var(--green-tea);">
+        <div>
+          <span class="eyebrow eyebrow-burgundy" style="margin-bottom: 0.4rem;">MAATI FARM ACCOUNT</span>
+          <h2 class="h3-card" id="modal-title" style="margin-bottom: 0;">Start free with your first field or herd</h2>
+        </div>
+        <button type="button" id="modal-close-btn" class="btn btn-outline-green" style="padding: 0.35rem 0.65rem;" aria-label="Close modal">✕</button>
+      </div>
+      <p id="modal-subtitle" style="margin-bottom: 1.25rem; font-size: 0.95rem;">
+        No credit card needed. Add your mobile number and village pin code to begin.
+      </p>
+      <form id="modal-form">
+        <div class="form-field">
+          <label for="modal-phone">Mobile Number (SMS &amp; WhatsApp)</label>
+          <input type="tel" id="modal-phone" class="form-input" placeholder="+91 98230 XXXXX" required />
+        </div>
+        <div class="form-field">
+          <label for="modal-pincode">Village Pin Code / Mandi Block</label>
+          <input type="text" id="modal-pincode" class="form-input" placeholder="e.g. 388001 (Anand, Gujarat)" required />
+        </div>
+        <div class="form-field">
+          <label for="modal-role">Primary Farm Activity</label>
+          <select id="modal-role" class="form-input">
+            <option value="mixed">Mixed Crop + Dairy Livestock Farm</option>
+            <option value="dairy">Dairy &amp; Cattle Herd Owner</option>
+            <option value="crop">Crop &amp; Horticulture Farmer</option>
+            <option value="fpo">FPO / Cooperative / Institutional Buyer</option>
+          </select>
+        </div>
+        <button type="submit" id="modal-submit-btn" class="btn btn-burgundy btn-lg" style="width: 100%;">Create Free Farm Profile</button>
+        <div id="modal-feedback" style="display: none; margin-top: 1rem; padding: 0.85rem; background-color: var(--green-tea); color: var(--honey-cream); font-weight: 600; font-size: 0.92rem;"></div>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Satellite, Drone &amp; Weather — NDVI Stress Maps, Drone Spraying &amp; Claims | MAATI</title>
+  <meta name="description" content="5-day NDVI crop stress zone mapping, targeted drone spraying prescription maps, hyperlocal weather risk alerts (frost, drought, flood), and satellite-verified insurance claims." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ====================================================================
+       SOLID TOP NAVIGATION BAR
+       ==================================================================== -->
+  <header class="site-header">
+    <div class="nav-inner">
+      <a href="index.html" class="brand-logo" aria-label="Maati Home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+            <path d="M12 22V10M12 10C12 6 15.5 3 20 3C20 7.5 17 11 12 10ZM12 13C12 9 8.5 6 4 6C4 10.5 7 14 12 13Z"/>
+            <path d="M4 22h16"/>
+          </svg>
+        </span>
+        <span>
+          MAATI
+          <span class="brand-sub">Field &amp; Herd Platform</span>
+        </span>
+      </a>
+
+      <nav class="primary-nav" aria-label="Primary Navigation">
+        <a href="index.html" class="nav-link" data-i18n="navHome">Home</a>
+        <a href="crop-tech.html" class="nav-link" data-i18n="navCrop">Crop Tech</a>
+        <a href="livestock-tech.html" class="nav-link" data-i18n="navLivestock">Livestock Tech</a>
+        <a href="market-finance.html" class="nav-link" data-i18n="navMarket">Market &amp; Finance</a>
+        <a href="advisory.html" class="nav-link" data-i18n="navAdvisory">Advisory</a>
+        <a href="satellite-weather.html" class="nav-link active" data-i18n="navSatellite">Satellite &amp; Weather</a>
+        <a href="about.html" class="nav-link" data-i18n="navAbout">About</a>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="lang-select-wrap" title="Select Language">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+          <select class="lang-select" aria-label="Select Language">
+            <option value="en">EN · English</option>
+            <option value="hi">हिन्दी · Hindi</option>
+            <option value="mr">मराठी · Marathi</option>
+            <option value="ta">தமிழ் · Tamil</option>
+            <option value="te">తెలుగు · Telugu</option>
+            <option value="pa">ਪੰਜਾਬੀ · Punjabi</option>
+            <option value="kn">ಕನ್ನಡ · Kannada</option>
+            <option value="gu">ગુજરાતી · Gujarati</option>
+          </select>
+        </div>
+
+        <a href="#login" class="nav-login-link" data-open-modal="login" data-i18n="navLogin">Log in</a>
+        <a href="#get-started" class="btn btn-burgundy" data-open-modal="signup" data-i18n="navGetStarted">Get Started</a>
+
+        <button type="button" id="mobile-menu-btn" class="mobile-menu-toggle" aria-label="Toggle Menu" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M3 6h18M3 12h18M3 18h18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Full-Screen Mobile Menu Drawer -->
+    <div class="mobile-drawer" id="mobile-drawer" aria-label="Mobile Navigation">
+      <div class="mobile-nav-list">
+        <a href="index.html" class="mobile-nav-link"><span data-i18n="navHome">Home</span> <span>→</span></a>
+        <a href="crop-tech.html" class="mobile-nav-link"><span data-i18n="navCrop">Crop Tech</span> <span>→</span></a>
+        <a href="livestock-tech.html" class="mobile-nav-link"><span data-i18n="navLivestock">Livestock Tech</span> <span>→</span></a>
+        <a href="market-finance.html" class="mobile-nav-link"><span data-i18n="navMarket">Market &amp; Finance</span> <span>→</span></a>
+        <a href="advisory.html" class="mobile-nav-link"><span data-i18n="navAdvisory">Advisory</span> <span>→</span></a>
+        <a href="satellite-weather.html" class="mobile-nav-link active"><span data-i18n="navSatellite">Satellite &amp; Weather</span> <span>→</span></a>
+        <a href="about.html" class="mobile-nav-link"><span data-i18n="navAbout">About</span> <span>→</span></a>
+      </div>
+      <div class="mobile-drawer-footer">
+        <a href="#get-started" class="btn btn-burgundy btn-lg" data-open-modal="signup" data-i18n="navGetStarted">Get Started — Try the App</a>
+        <a href="#login" class="btn btn-outline-green btn-lg" data-open-modal="login" data-i18n="navLogin">Log in to Existing Farm Account</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ====================================================================
+         COMPACT PAGE-SPECIFIC HERO (SATELLITE, DRONE & WEATHER)
+         ==================================================================== -->
+    <section class="interior-hero">
+      <div class="container">
+        <div class="interior-hero-grid">
+          <div>
+            <span class="eyebrow eyebrow-cream">ECOSYSTEM PILLAR · ORBITAL, DRONE &amp; WEATHER INTELLIGENCE</span>
+            <h1 class="h1-hero">Spot hidden crop stress from orbit, spray only the zones that need it, and verify insurance claims in days.</h1>
+            <p class="lead-copy" style="margin-bottom: 1.75rem;">
+              You cannot walk every row of a 25-acre block or a 1,500-acre FPO cluster every week. Maati turns 5-day satellite passes and village weather feeds into plain zone maps, targeted drone flight plans, and fast-payout damage proof.
+            </p>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+              <a href="#ndvi-mapping" class="btn btn-cream">01 · NDVI Stress-Zone Map</a>
+              <a href="#drone-spraying" class="btn btn-cream">02 · Drone Spraying Optimization</a>
+              <a href="#weather-alerts" class="btn btn-cream">03 · Weather Risk Alerts</a>
+              <a href="#insurance-claims" class="btn btn-burgundy">04 · Insurance Claim Verification</a>
+            </div>
+          </div>
+
+          <div class="diagram-frame" aria-label="Orbital Pass to Field Action Diagram">
+            <div style="border-bottom: 2px solid var(--green-tea); padding-bottom: 0.65rem; margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center;">
+              <span class="mono-tag">10M RESOLUTION · 5-DAY PASS</span>
+              <span class="status-pill status-healthy">SENTINEL-2 + IMD</span>
+            </div>
+            <svg viewBox="0 0 460 220" width="100%" height="auto" role="img" aria-label="Diagram of NDVI Stress Zones, Drone Spraying, Weather Alerts, and Insurance Claims">
+              <rect x="12" y="16" width="205" height="88" fill="#4B7B4E"/>
+              <text x="24" y="40" fill="#FACD8C" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">01. NDVI STRESS LEGEND</text>
+              <text x="24" y="62" fill="#FACD8C" font-family="Plus Jakarta Sans, sans-serif" font-size="11">Healthy / Watch / Critical</text>
+              <text x="24" y="82" fill="#FACD8C" font-family="Plus Jakarta Sans, sans-serif" font-size="11">10m×10m canopy vigor</text>
+
+              <rect x="243" y="16" width="205" height="88" fill="#660033"/>
+              <text x="255" y="40" fill="#FACD8C" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">02. DRONE SPRAY MAP</text>
+              <text x="255" y="62" fill="#FACD8C" font-family="Plus Jakarta Sans, sans-serif" font-size="11">Treat only stressed zones</text>
+              <text x="255" y="82" fill="#FACD8C" font-family="Plus Jakarta Sans, sans-serif" font-size="11">-68% pesticide chemical</text>
+
+              <rect x="12" y="118" width="205" height="88" fill="#660033"/>
+              <text x="24" y="142" fill="#FACD8C" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">03. WEATHER RISK CARDS</text>
+              <text x="24" y="164" fill="#FACD8C" font-family="Plus Jakarta Sans, sans-serif" font-size="11">Frost, drought &amp; flood</text>
+              <text x="24" y="184" fill="#FACD8C" font-family="Plus Jakarta Sans, sans-serif" font-size="11">Crop-stage specific</text>
+
+              <rect x="243" y="118" width="205" height="88" fill="#4B7B4E"/>
+              <text x="255" y="142" fill="#FACD8C" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">04. CLAIM AUTOMATION</text>
+              <text x="255" y="164" fill="#FACD8C" font-family="Plus Jakarta Sans, sans-serif" font-size="11">Pre/post-event NDVI proof</text>
+              <text x="255" y="184" fill="#FACD8C" font-family="Plus Jakarta Sans, sans-serif" font-size="11">11-day faster payout</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         FEATURE 1: NDVI SATELLITE STRESS-MAP LEGEND & INTERACTIVE GRID
+         ==================================================================== -->
+    <section class="section-cream section-pad" id="ndvi-mapping">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <span class="eyebrow eyebrow-green">FEATURE 01 / 04 · ORBITAL CHLOROPHYLL VIGOR ANALYSIS</span>
+          <h2 class="h2-section">NDVI Crop Stress Mapping &amp; Zone Legend</h2>
+          <p class="lead-copy">
+            Rather than overwhelming farmers with raw false-color satellite imagery, Maati translates Normalized Difference Vegetation Index (NDVI) reflectance into a plain 3-zone field grid: <strong>Healthy Canopy</strong>, <strong>Watch / Mild Stress</strong>, and <strong>Critical Stress Zone</strong>.
+          </p>
+        </div>
+
+        <!-- 3-Tier Stress-Map Legend Strip -->
+        <div class="grid-3 reveal-up" style="margin-bottom: 2rem;">
+          <div style="border: 3px solid var(--green-tea); background-color: var(--green-tea); color: var(--honey-cream); padding: 1.35rem;">
+            <div class="mono-tag" style="margin-bottom: 0.35rem;">ZONE A · NDVI 0.65 TO 0.85</div>
+            <h3 class="h3-card" style="margin-bottom: 0.35rem;">Healthy Vigorous Canopy</h3>
+            <p style="font-size: 0.92rem;">Active chlorophyll photosynthesis and full row closure. No additional spray or booster needed.</p>
+          </div>
+
+          <div style="border: 3px solid var(--green-tea); background-color: var(--honey-cream); color: var(--green-tea); padding: 1.35rem;">
+            <div class="mono-tag" style="margin-bottom: 0.35rem;">ZONE B · NDVI 0.40 TO 0.64</div>
+            <h3 class="h3-card" style="margin-bottom: 0.35rem;">Stressed / Watch Zone</h3>
+            <p style="font-size: 0.92rem;">Early moisture dip or mild foliar nitrogen slowdown. Inspect drip lateral pressure or border wind rows.</p>
+          </div>
+
+          <div style="border: 3px solid var(--green-tea); background-color: var(--burgundy); color: var(--honey-cream); padding: 1.35rem;">
+            <div class="mono-tag" style="margin-bottom: 0.35rem;">ZONE C · NDVI BELOW 0.40</div>
+            <h3 class="h3-card" style="margin-bottom: 0.35rem;">Critical Stress Zone</h3>
+            <p style="font-size: 0.92rem;">Severe root waterlogging, emitter blockage, or pest hotspot. Queued automatically for scout &amp; drone pass.</p>
+          </div>
+        </div>
+
+        <!-- Interactive 16-Sector NDVI Field Grid Mockup -->
+        <div class="mockup-shell reveal-up">
+          <div class="mockup-topbar">
+            <span class="mono-tag">INTERACTIVE 22-ACRE BLOCK NDVI STRESS GRID · CLICK ANY SECTOR TO INSPECT</span>
+            <span class="mono-tag">PASS DATE: 26 SEP · CLOUD COVER: 0%</span>
+          </div>
+
+          <div class="mockup-body">
+            <div class="grid-2" style="align-items: center;">
+              <!-- 4x4 Interactive Sector Grid -->
+              <div>
+                <div class="field-sector-grid" role="grid" aria-label="16-Sector NDVI Field Map">
+                  <button type="button" class="sector-cell zone-healthy" data-sector-id="A1"><span>SEC A1</span><span>NDVI 0.78</span><span>HEALTHY</span></button>
+                  <button type="button" class="sector-cell zone-healthy" data-sector-id="A2"><span>SEC A2</span><span>NDVI 0.76</span><span>HEALTHY</span></button>
+                  <button type="button" class="sector-cell zone-watch" data-sector-id="A3"><span>SEC A3</span><span>NDVI 0.52</span><span>WATCH</span></button>
+                  <button type="button" class="sector-cell zone-healthy" data-sector-id="A4"><span>SEC A4</span><span>NDVI 0.74</span><span>HEALTHY</span></button>
+
+                  <button type="button" class="sector-cell zone-healthy" data-sector-id="B1"><span>SEC B1</span><span>NDVI 0.80</span><span>HEALTHY</span></button>
+                  <button type="button" class="sector-cell zone-watch" data-sector-id="B2"><span>SEC B2</span><span>NDVI 0.55</span><span>WATCH</span></button>
+                  <button type="button" class="sector-cell zone-critical selected" data-sector-id="B3"><span>SEC B3</span><span>NDVI 0.32</span><span>CRITICAL</span></button>
+                  <button type="button" class="sector-cell zone-watch" data-sector-id="B4"><span>SEC B4</span><span>NDVI 0.49</span><span>WATCH</span></button>
+
+                  <button type="button" class="sector-cell zone-healthy" data-sector-id="C1"><span>SEC C1</span><span>NDVI 0.77</span><span>HEALTHY</span></button>
+                  <button type="button" class="sector-cell zone-critical" data-sector-id="C2"><span>SEC C2</span><span>NDVI 0.35</span><span>CRITICAL</span></button>
+                  <button type="button" class="sector-cell zone-critical" data-sector-id="C3"><span>SEC C3</span><span>NDVI 0.29</span><span>CRITICAL</span></button>
+                  <button type="button" class="sector-cell zone-healthy" data-sector-id="C4"><span>SEC C4</span><span>NDVI 0.71</span><span>HEALTHY</span></button>
+
+                  <button type="button" class="sector-cell zone-healthy" data-sector-id="D1"><span>SEC D1</span><span>NDVI 0.79</span><span>HEALTHY</span></button>
+                  <button type="button" class="sector-cell zone-watch" data-sector-id="D2"><span>SEC D2</span><span>NDVI 0.54</span><span>WATCH</span></button>
+                  <button type="button" class="sector-cell zone-healthy" data-sector-id="D3"><span>SEC D3</span><span>NDVI 0.75</span><span>HEALTHY</span></button>
+                  <button type="button" class="sector-cell zone-healthy" data-sector-id="D4"><span>SEC D4</span><span>NDVI 0.76</span><span>HEALTHY</span></button>
+                </div>
+              </div>
+
+              <!-- Selected Sector Inspector Panel -->
+              <div style="border: 3px solid var(--green-tea); padding: 1.75rem; display: flex; flex-direction: column; gap: 1rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--green-tea); padding-bottom: 0.75rem;">
+                  <span class="mono-tag" id="ndvi-selected-id">Sector B3 (1.375 Acres)</span>
+                  <span class="status-pill status-alert" id="ndvi-selected-zone">CRITICAL STRESS ZONE</span>
+                </div>
+
+                <div class="stat-value-burgundy" id="ndvi-selected-val" style="font-size: 1.9rem;">
+                  NDVI 0.32 · Soil Moisture 31%
+                </div>
+
+                <p id="ndvi-selected-action" style="font-weight: 700; font-size: 1.05rem;">
+                  URGENT: Clogged drip emitter line + early mite hotspot. Targeted drone spray queued.
+                </p>
+
+                <div style="border-top: 2px solid var(--green-tea); padding-top: 1rem; font-size: 0.92rem;">
+                  <strong>Whole-Block Summary (22.0 Acres):</strong><br/>
+                  • 9 Sectors Healthy (12.4 Acres · 56%)<br/>
+                  • 4 Sectors Watch (5.5 Acres · 25%)<br/>
+                  • 3 Sectors Critical (4.1 Acres · 19%)
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         FEATURE 2: DRONE-BASED SPRAYING OPTIMIZATION
+         ==================================================================== -->
+    <section class="section-green section-pad" id="drone-spraying">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <span class="eyebrow eyebrow-cream">FEATURE 02 / 04 · VARIABLE-RATE PRESCRIPTION MAPS</span>
+          <h2 class="h2-section">Drone-Based Spraying Optimization</h2>
+          <p class="lead-copy">
+            Blanket-spraying an entire 22-acre farm because 3 sectors have mites wastes money and douses healthy plants in unnecessary chemicals. Maati converts the NDVI stress map into a simple two-zone drone prescription map: <strong>“Needs Treatment”</strong> vs. <strong>“No Treatment Needed.”</strong>
+          </p>
+        </div>
+
+        <div class="mockup-shell reveal-up">
+          <div class="mockup-topbar" style="border-bottom-color: var(--honey-cream);">
+            <span class="mono-tag">DRONE SPRAY-ZONE MAP · NEEDS TREATMENT VS. NO TREATMENT NEEDED</span>
+            <div class="mockup-tabs">
+              <button type="button" class="tab-btn active" data-drone-mode="targeted">Maati Zone-Targeted Spray (6.4 Ac)</button>
+              <button type="button" class="tab-btn" data-drone-mode="blanket">Compare: Old Blanket Spray (22.0 Ac)</button>
+            </div>
+          </div>
+
+          <div class="mockup-body">
+            <div class="grid-2" style="align-items: center;">
+              <!-- Flat SVG Drone Prescription Zone Map -->
+              <div style="border: 2px solid var(--green-tea); padding: 1.15rem;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.65rem; flex-wrap: wrap; gap: 0.5rem;">
+                  <span class="mono-tag" style="color: var(--burgundy);">■ NEEDS TREATMENT (6.4 AC)</span>
+                  <span class="mono-tag">■ NO TREATMENT NEEDED (15.6 AC)</span>
+                </div>
+                <svg viewBox="0 0 520 220" width="100%" height="auto" role="img" aria-label="Drone Spray Zone Map showing Needs Treatment vs No Treatment Needed">
+                  <!-- Base Healthy Field (No Treatment Needed) -->
+                  <rect x="10" y="10" width="500" height="200" fill="#4B7B4E" stroke="#4B7B4E" stroke-width="3"/>
+                  <!-- Grid Subdivisions -->
+                  <line x1="135" y1="10" x2="135" y2="210" stroke="#FACD8C" stroke-width="1.5"/>
+                  <line x1="260" y1="10" x2="260" y2="210" stroke="#FACD8C" stroke-width="1.5"/>
+                  <line x1="385" y1="10" x2="385" y2="210" stroke="#FACD8C" stroke-width="1.5"/>
+                  <line x1="10" y1="60" x2="510" y2="60" stroke="#FACD8C" stroke-width="1.5"/>
+                  <line x1="10" y1="110" x2="510" y2="110" stroke="#FACD8C" stroke-width="1.5"/>
+                  <line x1="10" y1="160" x2="510" y2="160" stroke="#FACD8C" stroke-width="1.5"/>
+
+                  <!-- Needs Treatment Zones (Burgundy Blocks) -->
+                  <rect x="260" y="60" width="125" height="50" fill="#660033" stroke="#FACD8C" stroke-width="2.5"/>
+                  <rect x="135" y="110" width="250" height="50" fill="#660033" stroke="#FACD8C" stroke-width="2.5"/>
+                  <rect x="385" y="60" width="125" height="50" fill="#660033" stroke="#FACD8C" stroke-width="2.5"/>
+
+                  <!-- Drone Flight Path Line Over Treatment Zones Only -->
+                  <polyline points="20,185 195,135 320,135 320,85 445,85" fill="none" stroke="#FACD8C" stroke-width="3.5" stroke-dasharray="6 4"/>
+                  <circle cx="20" cy="185" r="6" fill="#FACD8C"/>
+                  <circle cx="445" cy="85" r="7" fill="#FACD8C"/>
+
+                  <rect x="22" y="22" width="215" height="26" fill="#FACD8C"/>
+                  <text x="30" y="39" fill="#4B7B4E" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">NO TREATMENT NEEDED (71%)</text>
+
+                  <rect x="150" y="122" width="220" height="26" fill="#FACD8C"/>
+                  <text x="158" y="139" fill="#660033" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">NEEDS TREATMENT · SPRAY ON</text>
+                </svg>
+              </div>
+
+              <div>
+                <span class="status-pill status-alert" style="margin-bottom: 0.6rem;">68% CHEMICAL &amp; WATER REDUCTION</span>
+                <h3 class="h3-card" id="drone-mode-headline">
+                  Prescription Zone Spray: Only 6.4 of 22.0 Acres Treated
+                </h3>
+                <p style="margin-bottom: 1.25rem;">
+                  The drone’s nozzles automatically shut off while flying over the 15.6 acres of healthy green canopy, activating only inside the Burgundy treatment polygons.
+                </p>
+
+                <div style="display: flex; flex-direction: column; gap: 0.75rem; border-top: 2px solid var(--green-tea); padding-top: 1rem;">
+                  <div>
+                    <span class="mono-tag">WATER CONSUMPTION:</span>
+                    <strong id="drone-water-used" style="display: block; font-size: 1.05rem;">64 Liters Ultra-Low-Volume (ULV)</strong>
+                  </div>
+                  <div>
+                    <span class="mono-tag">CHEMICAL INPUT COST:</span>
+                    <strong id="drone-chem-cost" style="display: block; font-size: 1.05rem; color: var(--burgundy);">₹6,600 Total Chemical Cost (68% Saved)</strong>
+                  </div>
+                  <div>
+                    <span class="mono-tag">OPERATION TIME:</span>
+                    <strong id="drone-flight-time" style="display: block; font-size: 1.05rem;">28 Minutes Autonomous Flight · Zero Soil Compaction</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         FEATURE 3: HYPERLOCAL WEATHER PREDICTION & CROP-SPECIFIC RISK ALERTS
+         ==================================================================== -->
+    <section class="section-cream section-pad" id="weather-alerts">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <span class="eyebrow eyebrow-burgundy">FEATURE 03 / 04 · CROP-STAGE RISK ALERT CARDS</span>
+          <h2 class="h2-section">Hyperlocal Weather Prediction with Crop-Specific Risk Alerts</h2>
+          <p class="lead-copy">
+            A generic “18 mm rain tomorrow” forecast doesn’t tell a farmer what to do. Maati pairs 3×3 km village weather models with your crop’s exact growth stage to issue plain action cards for <strong>Frost</strong>, <strong>Drought / Dry Spell</strong>, and <strong>Unseasonal Flood / Squall</strong> risks.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <!-- Alert Card 1: Frost Risk -->
+          <article class="card-structured reveal-up">
+            <div class="card-structured-head" style="background-color: var(--burgundy);">
+              <span class="mono-tag">RISK ALERT 01 · RADIATION FROST</span>
+              <span class="mono-tag">NEXT 36 HRS</span>
+            </div>
+            <div class="card-structured-body">
+              <div class="mono-tag" style="color: var(--burgundy);">AFFECTED CROP: RABI POTATO &amp; MUSTARD (TUBER BULKING)</div>
+              <h3 class="h3-card">Night Canopy Temp Dropping to 2.4°C (Pala / Frost Alert)</h3>
+              <p>
+                Clear night skies and calm north winds will drop ground-level temperature near freezing between 2:00 AM and 5:30 AM Thursday.
+              </p>
+              <div style="border: 2px solid var(--green-tea); padding: 0.85rem; background-color: var(--green-tea); color: var(--honey-cream);">
+                <div class="mono-tag" style="margin-bottom: 0.25rem;">REQUIRED FIELD ACTION TODAY:</div>
+                <p style="font-size: 0.92rem; font-weight: 600;">
+                  Run light evening furrow irrigation before 6:00 PM today. Moist soil retains +2.5°C latent heat and prevents cell-wall freezing.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Alert Card 2: Drought / Dry-Spell Window -->
+          <article class="card-structured reveal-up">
+            <div class="card-structured-head">
+              <span class="mono-tag">RISK ALERT 02 · DRY SPELL WINDOW</span>
+              <span class="mono-tag">11-DAY GAP</span>
+            </div>
+            <div class="card-structured-body">
+              <div class="mono-tag" style="color: var(--burgundy);">AFFECTED CROP: KHARIF GROUNDNUT &amp; SOYBEAN (PEGGING STAGE)</div>
+              <h3 class="h3-card">11-Day Monsoon Break Forecast Across Block</h3>
+              <p>
+                Root-zone moisture will dip below 42% critical threshold by Day 6 of the dry spell, risking flower drop and hollow pods.
+              </p>
+              <div style="border: 2px solid var(--green-tea); padding: 0.85rem; background-color: var(--green-tea); color: var(--honey-cream);">
+                <div class="mono-tag" style="margin-bottom: 0.25rem;">REQUIRED FIELD ACTION TODAY:</div>
+                <p style="font-size: 0.92rem; font-weight: 600;">
+                  Halt top-dress Urea application immediately; apply 2% Potassium Nitrate (13:0:45) foliar spray to lock stomatal moisture.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Alert Card 3: Heavy Rain / Flood & Hail Risk -->
+          <article class="card-structured reveal-up">
+            <div class="card-structured-head" style="background-color: var(--burgundy);">
+              <span class="mono-tag">RISK ALERT 03 · HEAVY SQUALL &amp; LOGGING</span>
+              <span class="mono-tag">48-HR WARNING</span>
+            </div>
+            <div class="card-structured-body">
+              <div class="mono-tag" style="color: var(--burgundy);">AFFECTED CROP: MATURE PADDY &amp; ONION HARVEST LOTS</div>
+              <h3 class="h3-card">68 mm Unseasonal Downpour &amp; 45 km/h Gusts</h3>
+              <p>
+                High risk of paddy lodging and standing water in low-lying clay plots from Friday evening through Saturday afternoon.
+              </p>
+              <div style="border: 2px solid var(--green-tea); padding: 0.85rem; background-color: var(--green-tea); color: var(--honey-cream);">
+                <div class="mono-tag" style="margin-bottom: 0.25rem;">REQUIRED FIELD ACTION TODAY:</div>
+                <p style="font-size: 0.92rem; font-weight: 600;">
+                  Open corner bund drainage trenches before Friday noon; move cured onion heaps under raised tarpaulin plinths.
+                </p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         FEATURE 4: SATELLITE-VERIFIED INSURANCE CLAIM AUTOMATION
+         ==================================================================== -->
+    <section class="section-green section-pad" id="insurance-claims">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <span class="eyebrow eyebrow-cream">FEATURE 04 / 04 · TRUST-BUILDING, FASTER-PAYOUT VERIFICATION</span>
+          <h2 class="h2-section">Insurance Claim Automation via Satellite &amp; Drone Proof</h2>
+          <p class="lead-copy">
+            When hail, flood, or severe drought destroys a crop, waiting 90 to 180 days for a manual clipboard survey means the farmer misses the next sowing window. Maati packages time-stamped pre-event and post-event satellite NDVI and drone polygons into an auditable claim packet — cutting insurer verification time to <strong>11 days</strong>.
+          </p>
+        </div>
+
+        <!-- 4-Step Strip: How Satellite Claim Verification Works -->
+        <div class="step-strip reveal-up" aria-label="How Insurance Claim Automation Works">
+          <div class="step-item">
+            <span class="step-num">STEP 01 · PRE-EVENT</span>
+            <h3 class="step-title">Baseline Crop Proof</h3>
+            <p class="step-desc">Geo-fenced plot boundary and pre-storm NDVI vigor curve prove a healthy standing crop existed before the weather event.</p>
+          </div>
+          <div class="step-item">
+            <span class="step-num">STEP 02 · WEATHER LOG</span>
+            <h3 class="step-title">Automatic Trigger Match</h3>
+            <p class="step-desc">Matches block weather station rainfall, wind-gust, or frost logs to the exact hour of crop damage.</p>
+          </div>
+          <div class="step-item">
+            <span class="step-num">STEP 03 · POST-EVENT</span>
+            <h3 class="step-title">Damage Polygon</h3>
+            <p class="step-desc">Post-event satellite pass and FPO drone ortho-mosaic calculate exact % of lodged or inundated acreage.</p>
+          </div>
+          <div class="step-item">
+            <span class="step-num">STEP 04 · SETTLEMENT</span>
+            <h3 class="step-title">11-Day Direct Payout</h3>
+            <p class="step-desc">Submits tamper-proof digital dossier to partner PMFBY / weather insurers for direct bank transfer.</p>
+          </div>
+        </div>
+
+        <div class="card-cream reveal-up">
+          <div class="grid-2" style="align-items: center;">
+            <div>
+              <span class="mono-tag" style="color: var(--burgundy);">REAL CLAIM COMPARISON · KHARIF INUNDATION COHORT</span>
+              <h3 class="h3-card" style="margin-top: 0.35rem;">Why insurers and farmers both prefer satellite-verified claims</h3>
+              <p>
+                Eliminates subjective boundary disputes, missing paperwork, and travel delays for remote villages while protecting insurers against fraudulent claims.
+              </p>
+            </div>
+            <div class="grid-2" style="gap: 1rem;">
+              <div style="border: 2px solid var(--green-tea); padding: 1.15rem;">
+                <span class="mono-tag">OLD MANUAL SURVEY</span>
+                <div class="stat-value-burgundy" style="font-size: 2rem; margin: 0.3rem 0;">90–140 Days</div>
+                <p style="font-size: 0.9rem; font-weight: 600;">Visual eye-estimate on a small sample plot long after damage occurred.</p>
+              </div>
+              <div style="border: 2px solid var(--green-tea); padding: 1.15rem; background-color: var(--green-tea); color: var(--honey-cream);">
+                <span class="mono-tag">MAATI SATELLITE DOSSIER</span>
+                <div class="stat-value-cream" style="font-size: 2rem; margin: 0.3rem 0;">11 Days Avg</div>
+                <p style="font-size: 0.9rem; font-weight: 600;">100% plot-level before/after NDVI &amp; weather proof sent directly to insurer.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Shared 4-Column Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        <div>
+          <a href="index.html" class="brand-logo" style="color: var(--honey-cream); margin-bottom: 1rem;">
+            <span class="brand-mark" style="background-color: var(--honey-cream); color: var(--green-tea); border-color: var(--honey-cream);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                <path d="M12 22V10M12 10C12 6 15.5 3 20 3C20 7.5 17 11 12 10ZM12 13C12 9 8.5 6 4 6C4 10.5 7 14 12 13Z"/>
+                <path d="M4 22h16"/>
+              </svg>
+            </span>
+            <span>MAATI</span>
+          </a>
+          <p style="font-size: 0.95rem; margin-bottom: 1.25rem;">
+            Grounded, plainspoken agricultural and dairy intelligence built for working farmers, FPO cooperatives, rural lenders, and institutional buyers.
+          </p>
+          <p class="mono-tag">TOLL-FREE KISAN DESK: 1800-120-4455</p>
+        </div>
+
+        <div>
+          <h3 class="footer-col-title">Product (6 USPs)</h3>
+          <ul class="footer-links">
+            <li><a href="crop-tech.html#disease-detection">Crop Disease &amp; Pest Detection</a></li>
+            <li><a href="crop-tech.html#yield-prediction">Per-Field Yield Prediction</a></li>
+            <li><a href="crop-tech.html#soil-health">Soil Health Analysis (NPK/pH)</a></li>
+            <li><a href="livestock-tech.html#cattle-health">Cattle Health Monitoring</a></li>
+            <li><a href="livestock-tech.html#milk-prediction">Milk Yield &amp; Quality Prediction</a></li>
+            <li><a href="livestock-tech.html#feed-optimization">Automated Feed Optimization</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-col-title">Ecosystem</h3>
+          <ul class="footer-links">
+            <li><a href="market-finance.html">Market &amp; Finance Overview</a></li>
+            <li><a href="market-finance.html#price-forecast">Mandi Price Forecasting</a></li>
+            <li><a href="market-finance.html#credit-scoring">Plainspoken AI Credit Scoring</a></li>
+            <li><a href="advisory.html">Voice AI &amp; WhatsApp Advisory</a></li>
+            <li><a href="satellite-weather.html">NDVI &amp; Drone Spraying Maps</a></li>
+            <li><a href="satellite-weather.html#insurance-claims">Satellite Insurance Claims</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-col-title">Company</h3>
+          <ul class="footer-links">
+            <li><a href="about.html">About &amp; Mission</a></li>
+            <li><a href="about.html#data-pledge">Farmer Data Ownership Pledge</a></li>
+            <li><a href="about.html#timeline">Founding Story &amp; Timeline</a></li>
+            <li><a href="about.html#partners">FPO &amp; University Partners</a></li>
+            <li><a href="about.html#careers">Field Agronomy Careers</a></li>
+            <li><a href="about.html#press">Press &amp; Audit Reports</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-col-title">Support &amp; Language</h3>
+          <ul class="footer-links" style="margin-bottom: 1rem;">
+            <li><a href="advisory.html">24×7 Voice &amp; SMS Help Center</a></li>
+            <li><a href="advisory.html#whatsapp-bot">WhatsApp Bot Setup</a></li>
+            <li><a href="about.html#contact">Partner an FPO or Dairy Union</a></li>
+          </ul>
+          <label class="mono-tag" for="footer-lang-select" style="display: block; margin-bottom: 0.4rem;">SITE LANGUAGE</label>
+          <div class="lang-select-wrap" style="border-color: var(--honey-cream); width: 100%;">
+            <select id="footer-lang-select" class="lang-select" style="width: 100%;" aria-label="Footer Language Selector">
+              <option value="en">EN · English</option>
+              <option value="hi">हिन्दी · Hindi</option>
+              <option value="mr">मराठी · Marathi</option>
+              <option value="ta">தமிழ் · Tamil</option>
+              <option value="te">తెలుగు · Telugu</option>
+              <option value="pa">ਪੰਜਾਬੀ · Punjabi</option>
+              <option value="kn">ಕನ್ನಡ · Kannada</option>
+              <option value="gu">ગુજરાતી · Gujarati</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Maati AgriTech Platform. Built for the field, not just the boardroom.</span>
+        <span>Strict Flat 3-Color Accessibility Standard · Zero Farmer Data Sold to Third Parties</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Shared Modal -->
+  <div class="modal-backdrop" id="onboarding-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-card">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; padding-bottom: 0.85rem; border-bottom: 2px solid var(--green-tea);">
+        <div>
+          <span class="eyebrow eyebrow-burgundy" style="margin-bottom: 0.4rem;">MAATI FARM ACCOUNT</span>
+          <h2 class="h3-card" id="modal-title" style="margin-bottom: 0;">Start free with your first field or herd</h2>
+        </div>
+        <button type="button" id="modal-close-btn" class="btn btn-outline-green" style="padding: 0.35rem 0.65rem;" aria-label="Close modal">✕</button>
+      </div>
+      <p id="modal-subtitle" style="margin-bottom: 1.25rem; font-size: 0.95rem;">
+        No credit card needed. Add your mobile number and village pin code to begin.
+      </p>
+      <form id="modal-form">
+        <div class="form-field">
+          <label for="modal-phone">Mobile Number (SMS &amp; WhatsApp)</label>
+          <input type="tel" id="modal-phone" class="form-input" placeholder="+91 98230 XXXXX" required />
+        </div>
+        <div class="form-field">
+          <label for="modal-pincode">Village Pin Code / Mandi Block</label>
+          <input type="text" id="modal-pincode" class="form-input" placeholder="e.g. 422303 (Niphad, Nashik)" required />
+        </div>
+        <div class="form-field">
+          <label for="modal-role">Primary Farm Activity</label>
+          <select id="modal-role" class="form-input">
+            <option value="mixed">Mixed Crop + Dairy Livestock Farm</option>
+            <option value="crop">Crop &amp; Horticulture Farmer</option>
+            <option value="dairy">Dairy &amp; Cattle Herd Owner</option>
+            <option value="fpo">FPO / Cooperative / Institutional Buyer</option>
+          </select>
+        </div>
+        <button type="submit" id="modal-submit-btn" class="btn btn-burgundy btn-lg" style="width: 100%;">Create Free Farm Profile</button>
+        <div id="modal-feedback" style="display: none; margin-top: 1rem; padding: 0.85rem; background-color: var(--green-tea); color: var(--honey-cream); font-weight: 600; font-size: 0.92rem;"></div>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

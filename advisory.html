@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Advisory &amp; Accessibility — Voice AI in 12 Languages, WhatsApp &amp; 2G SMS | MAATI</title>
+  <meta name="description" content="Inclusive agricultural advisory built for every literacy level and signal strength: local-language voice AI chatbots, low-data WhatsApp bots, and 2G feature-phone SMS alerts." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ====================================================================
+       SOLID TOP NAVIGATION BAR
+       ==================================================================== -->
+  <header class="site-header">
+    <div class="nav-inner">
+      <a href="index.html" class="brand-logo" aria-label="Maati Home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+            <path d="M12 22V10M12 10C12 6 15.5 3 20 3C20 7.5 17 11 12 10ZM12 13C12 9 8.5 6 4 6C4 10.5 7 14 12 13Z"/>
+            <path d="M4 22h16"/>
+          </svg>
+        </span>
+        <span>
+          MAATI
+          <span class="brand-sub">Field &amp; Herd Platform</span>
+        </span>
+      </a>
+
+      <nav class="primary-nav" aria-label="Primary Navigation">
+        <a href="index.html" class="nav-link" data-i18n="navHome">Home</a>
+        <a href="crop-tech.html" class="nav-link" data-i18n="navCrop">Crop Tech</a>
+        <a href="livestock-tech.html" class="nav-link" data-i18n="navLivestock">Livestock Tech</a>
+        <a href="market-finance.html" class="nav-link" data-i18n="navMarket">Market &amp; Finance</a>
+        <a href="advisory.html" class="nav-link active" data-i18n="navAdvisory">Advisory</a>
+        <a href="satellite-weather.html" class="nav-link" data-i18n="navSatellite">Satellite &amp; Weather</a>
+        <a href="about.html" class="nav-link" data-i18n="navAbout">About</a>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="lang-select-wrap" title="Select Language">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+          <select class="lang-select" aria-label="Select Language">
+            <option value="en">EN · English</option>
+            <option value="hi">हिन्दी · Hindi</option>
+            <option value="mr">मराठी · Marathi</option>
+            <option value="ta">தமிழ் · Tamil</option>
+            <option value="te">తెలుగు · Telugu</option>
+            <option value="pa">ਪੰਜਾਬੀ · Punjabi</option>
+            <option value="kn">ಕನ್ನಡ · Kannada</option>
+            <option value="gu">ગુજરાતી · Gujarati</option>
+          </select>
+        </div>
+
+        <a href="#login" class="nav-login-link" data-open-modal="login" data-i18n="navLogin">Log in</a>
+        <a href="#get-started" class="btn btn-burgundy" data-open-modal="signup" data-i18n="navGetStarted">Get Started</a>
+
+        <button type="button" id="mobile-menu-btn" class="mobile-menu-toggle" aria-label="Toggle Menu" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M3 6h18M3 12h18M3 18h18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Full-Screen Mobile Menu Drawer -->
+    <div class="mobile-drawer" id="mobile-drawer" aria-label="Mobile Navigation">
+      <div class="mobile-nav-list">
+        <a href="index.html" class="mobile-nav-link"><span data-i18n="navHome">Home</span> <span>→</span></a>
+        <a href="crop-tech.html" class="mobile-nav-link"><span data-i18n="navCrop">Crop Tech</span> <span>→</span></a>
+        <a href="livestock-tech.html" class="mobile-nav-link"><span data-i18n="navLivestock">Livestock Tech</span> <span>→</span></a>
+        <a href="market-finance.html" class="mobile-nav-link"><span data-i18n="navMarket">Market &amp; Finance</span> <span>→</span></a>
+        <a href="advisory.html" class="mobile-nav-link active"><span data-i18n="navAdvisory">Advisory</span> <span>→</span></a>
+        <a href="satellite-weather.html" class="mobile-nav-link"><span data-i18n="navSatellite">Satellite &amp; Weather</span> <span>→</span></a>
+        <a href="about.html" class="mobile-nav-link"><span data-i18n="navAbout">About</span> <span>→</span></a>
+      </div>
+      <div class="mobile-drawer-footer">
+        <a href="#get-started" class="btn btn-burgundy btn-lg" data-open-modal="signup" data-i18n="navGetStarted">Get Started — Try the App</a>
+        <a href="#login" class="btn btn-outline-green btn-lg" data-open-modal="login" data-i18n="navLogin">Log in to Existing Farm Account</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ====================================================================
+         COMPACT PAGE-SPECIFIC HERO (ADVISORY & ACCESSIBILITY)
+         ==================================================================== -->
+    <section class="interior-hero">
+      <div class="container">
+        <div class="interior-hero-grid">
+          <div>
+            <span class="eyebrow eyebrow-cream">ECOSYSTEM PILLAR · REACH &amp; INCLUSIVITY</span>
+            <h1 class="h1-hero">No farmer left out by reading level, language, or weak mobile signal.</h1>
+            <p class="lead-copy" style="margin-bottom: 1.75rem;">
+              Good agronomy is useless if it requires fast 5G and English menus. Maati meets farmers in the channels they already trust — spoken local-language Voice AI for low-literacy users, compressed WhatsApp bots for patchy 3G, and plain SMS for 2G keypad phones.
+            </p>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+              <a href="#languages-strip" class="btn btn-cream">01 · 12 Local Languages</a>
+              <a href="#voice-ai" class="btn btn-cream">02 · "Speak Your Question" Voice AI</a>
+              <a href="#whatsapp-bot" class="btn btn-burgundy">03 · WhatsApp &amp; 2G SMS Bots</a>
+            </div>
+          </div>
+
+          <div class="diagram-frame" aria-label="Three-Channel Inclusive Advisory Diagram">
+            <div style="border-bottom: 2px solid var(--green-tea); padding-bottom: 0.65rem; margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center;">
+              <span class="mono-tag">UNIVERSAL FIELD REACH</span>
+              <span class="status-pill status-healthy">2G / 3G / VOICE READY</span>
+            </div>
+            <svg viewBox="0 0 460 220" width="100%" height="auto" role="img" aria-label="Diagram of Voice AI, WhatsApp Bot, and 2G SMS Channels">
+              <rect x="12" y="18" width="436" height="54" fill="#4B7B4E"/>
+              <text x="26" y="41" fill="#FACD8C" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">CHANNEL 01 · VOICE AI CHATBOT (ZERO TYPING REQUIRED)</text>
+              <text x="26" y="60" fill="#FACD8C" font-family="Plus Jakarta Sans, sans-serif" font-size="11">Hold mic button → Speak in local dialect → Hear spoken answer</text>
+
+              <rect x="12" y="84" width="436" height="54" fill="#4B7B4E"/>
+              <text x="26" y="107" fill="#FACD8C" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">CHANNEL 02 · LOW-DATA WHATSAPP BOT (&lt;50 KB PHOTO)</text>
+              <text x="26" y="126" fill="#FACD8C" font-family="Plus Jakarta Sans, sans-serif" font-size="11">Send leaf photo + voice note → Receive dosage card &amp; audio</text>
+
+              <rect x="12" y="150" width="436" height="54" fill="#660033"/>
+              <text x="26" y="173" fill="#FACD8C" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">CHANNEL 03 · 2G FEATURE-PHONE SMS &amp; IVR HELPLINE</text>
+              <text x="26" y="192" fill="#FACD8C" font-family="Plus Jakarta Sans, sans-serif" font-size="11">Works with zero internet on any basic keypad phone</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         "AVAILABLE IN YOUR LANGUAGE" INTERACTIVE STRIP
+         ==================================================================== -->
+    <section class="section-cream section-pad-compact" id="languages-strip">
+      <div class="container">
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.75rem;">
+          <div>
+            <span class="eyebrow eyebrow-burgundy" style="margin-bottom: 0.5rem;">AVAILABLE IN YOUR LANGUAGE</span>
+            <h2 class="h2-section" style="margin-bottom: 0.25rem;">Speak or text in 12 Indian languages and regional dialects</h2>
+            <p>Click a language below to preview how the Voice AI Chatbot and WhatsApp/SMS bots respond in native script:</p>
+          </div>
+          <span class="mono-tag">ACTIVE PREVIEW: <strong id="adv-active-lang-name" style="color: var(--burgundy);">हिन्दी (Hindi)</strong></span>
+        </div>
+
+        <div class="language-strip" role="group" aria-label="Supported Languages">
+          <button type="button" class="lang-pill-btn active" data-advisory-lang="hi">
+            <span class="lang-native">हिन्दी</span>
+            <span class="lang-english">Hindi · Voice + SMS</span>
+          </button>
+          <button type="button" class="lang-pill-btn" data-advisory-lang="mr">
+            <span class="lang-native">मराठी</span>
+            <span class="lang-english">Marathi · Voice + SMS</span>
+          </button>
+          <button type="button" class="lang-pill-btn" data-advisory-lang="ta">
+            <span class="lang-native">தமிழ்</span>
+            <span class="lang-english">Tamil · Voice + SMS</span>
+          </button>
+          <button type="button" class="lang-pill-btn" data-advisory-lang="te">
+            <span class="lang-native">తెలుగు</span>
+            <span class="lang-english">Telugu · Voice + SMS</span>
+          </button>
+          <button type="button" class="lang-pill-btn" data-advisory-lang="pa">
+            <span class="lang-native">ਪੰਜਾਬੀ</span>
+            <span class="lang-english">Punjabi · Voice + SMS</span>
+          </button>
+          <button type="button" class="lang-pill-btn" data-advisory-lang="en">
+            <span class="lang-native">English</span>
+            <span class="lang-english">English · Voice + SMS</span>
+          </button>
+          <div class="lang-pill-btn" style="cursor: default;">
+            <span class="lang-native">ಕನ್ನಡ</span>
+            <span class="lang-english">Kannada · Supported</span>
+          </div>
+          <div class="lang-pill-btn" style="cursor: default;">
+            <span class="lang-native">ગુજરાતી</span>
+            <span class="lang-english">Gujarati · Supported</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         FEATURE 1: VOICE-BASED AI CHATBOT FOR LOW-LITERACY USERS
+         ==================================================================== -->
+    <section class="section-green section-pad" id="voice-ai">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <span class="eyebrow eyebrow-cream">INCLUSIVE INTERFACE 01 · ZERO READING OR TYPING REQUIRED</span>
+          <h2 class="h2-section">Voice-Based AI Chatbot in Local Languages</h2>
+          <p class="lead-copy">
+            Many experienced farmers can diagnose a field by touch and smell, yet struggle with tiny typed keyboards and complex menus. With Maati Voice, a farmer simply presses one large Burgundy microphone button, asks about weather timing, pest control, or government scheme eligibility (PM-KISAN, PMFBY, KUSUM solar pumps), and hears a plainspoken voice reply.
+          </p>
+        </div>
+
+        <!-- Interactive "Speak Your Question" Mockup -->
+        <div class="mockup-shell reveal-up">
+          <div class="mockup-topbar" style="border-bottom-color: var(--honey-cream);">
+            <span class="mono-tag">INTERACTIVE "SPEAK YOUR QUESTION" VOICE MOCKUP</span>
+            <span class="mono-tag" id="voice-playback-status">VOICE STREAM READY · TAP LANGUAGE ABOVE OR PLAY AUDIO BELOW</span>
+          </div>
+
+          <div class="mockup-body">
+            <div class="grid-2" style="align-items: stretch;">
+              <!-- Left: Farmer Spoken Question Card -->
+              <div style="border: 3px solid var(--green-tea); padding: 1.65rem; display: flex; flex-direction: column; justify-content: space-between; gap: 1.25rem;">
+                <div>
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <span class="status-pill status-alert">FARMER SPOKEN INPUT (0:07s)</span>
+                    <span class="mono-tag">DIALECT AUTO-DETECTED</span>
+                  </div>
+
+                  <!-- Flat Solid Waveform Graphic -->
+                  <svg viewBox="0 0 420 54" width="100%" height="54" style="margin-bottom: 1rem; border: 2px solid var(--green-tea); background-color: var(--green-tea); padding: 6px;" aria-label="Voice Audio Waveform">
+                    <rect x="18" y="18" width="8" height="18" fill="#FACD8C"/>
+                    <rect x="34" y="10" width="8" height="34" fill="#FACD8C"/>
+                    <rect x="50" y="6" width="8" height="42" fill="#FACD8C"/>
+                    <rect x="66" y="14" width="8" height="26" fill="#FACD8C"/>
+                    <rect x="82" y="8" width="8" height="38" fill="#FACD8C"/>
+                    <rect x="98" y="16" width="8" height="22" fill="#FACD8C"/>
+                    <rect x="114" y="4" width="8" height="46" fill="#FACD8C"/>
+                    <rect x="130" y="12" width="8" height="30" fill="#FACD8C"/>
+                    <rect x="146" y="18" width="8" height="18" fill="#FACD8C"/>
+                    <rect x="162" y="8" width="8" height="38" fill="#FACD8C"/>
+                    <rect x="178" y="6" width="8" height="42" fill="#FACD8C"/>
+                    <rect x="194" y="14" width="8" height="26" fill="#FACD8C"/>
+                    <rect x="210" y="20" width="8" height="14" fill="#FACD8C"/>
+                    <rect x="226" y="10" width="8" height="34" fill="#FACD8C"/>
+                    <rect x="242" y="6" width="8" height="42" fill="#FACD8C"/>
+                    <rect x="258" y="14" width="8" height="26" fill="#FACD8C"/>
+                    <rect x="274" y="18" width="8" height="18" fill="#FACD8C"/>
+                    <rect x="290" y="8" width="8" height="38" fill="#FACD8C"/>
+                    <rect x="306" y="12" width="8" height="30" fill="#FACD8C"/>
+                    <rect x="322" y="16" width="8" height="22" fill="#FACD8C"/>
+                    <rect x="338" y="20" width="8" height="14" fill="#FACD8C"/>
+                    <rect x="354" y="12" width="8" height="30" fill="#FACD8C"/>
+                    <rect x="370" y="18" width="8" height="18" fill="#FACD8C"/>
+                    <rect x="386" y="22" width="8" height="10" fill="#FACD8C"/>
+                  </svg>
+
+                  <p class="h3-card" id="adv-voice-prompt" style="color: var(--burgundy); line-height: 1.4;">
+                    “मेरी टमाटर की निचली पत्तियों पर काले गोल धब्बे दिख रहे हैं। आज शाम क्या छिड़काव करूँ?”
+                  </p>
+                </div>
+
+                <div style="border-top: 2px solid var(--green-tea); padding-top: 1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+                  <span class="mono-tag">TOPICS COVERED: PESTS · WEATHER · GOVT SCHEMES</span>
+                  <span class="mono-tag" style="color: var(--burgundy);">MIC TAP TARGET: 64×64 PX</span>
+                </div>
+              </div>
+
+              <!-- Right: Spoken & Pictogram AI Response Card -->
+              <div style="border: 3px solid var(--green-tea); background-color: var(--green-tea); color: var(--honey-cream); padding: 1.65rem; display: flex; flex-direction: column; justify-content: space-between; gap: 1.25rem;">
+                <div>
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+                    <span class="eyebrow eyebrow-cream" style="margin-bottom: 0;">SPOKEN VOICE AI REPLY (0:14s)</span>
+                    <button type="button" id="btn-play-voice-answer" class="btn btn-burgundy" style="padding: 0.45rem 0.9rem; font-size: 0.85rem;">
+                      ▶ Play Spoken Audio Aloud
+                    </button>
+                  </div>
+
+                  <p id="adv-voice-answer" style="font-size: 1.15rem; font-weight: 600; line-height: 1.6; margin-bottom: 1.15rem;">
+                    “नमस्ते रामजी भाई। यह अगेती झुलसा (Early Blight) के शुरुआती लक्षण हैं। आज शाम 4 बजे के बाद 2.5 ग्राम मैंकोजेब प्रति लीटर पानी में मिलाकर छिड़कें। कल सुबह बारिश की संभावना नहीं है, इसलिए दवाई पूरी तरह असर करेगी।”
+                  </p>
+                </div>
+
+                <div style="border-top: 2px solid var(--honey-cream); padding-top: 1rem;">
+                  <div class="mono-tag" id="adv-scheme-tag">
+                    संबद्ध योजना: राष्ट्रीय बागवानी मिशन एवं फसल सुरक्षा सलाह
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         FEATURE 2: WHATSAPP & 2G SMS CROP ADVISORY BOTS
+         ==================================================================== -->
+    <section class="section-cream section-pad" id="whatsapp-bot">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <span class="eyebrow eyebrow-green">INCLUSIVE INTERFACE 02 · LOW-SMARTPHONE-DATA &amp; 2G AREAS</span>
+          <h2 class="h2-section">WhatsApp &amp; Basic-Phone SMS Crop Advisory Bots</h2>
+          <p class="lead-copy">
+            Out on the field boundary, mobile data often drops to a single bar of 2G. Maati’s advisory engine works without installing a heavy app — farmers can message our verified WhatsApp number or send a 1-line SMS from any ₹1,200 keypad phone.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <!-- Mockup A: Low-Data WhatsApp Chat Bubble Mockup -->
+          <div class="mockup-shell reveal-up">
+            <div class="mockup-topbar">
+              <span class="mono-tag">MOCKUP A · LOW-DATA WHATSAPP BOT (&lt;50 KB DATA)</span>
+              <span class="status-pill" style="background: var(--honey-cream); color: var(--green-tea);">+91 8000-MAATI</span>
+            </div>
+            <div class="mockup-body" style="display: flex; flex-direction: column; gap: 1rem;">
+              <!-- Outgoing Farmer Bubble -->
+              <div style="align-self: flex-end; width: 88%; border: 2px solid var(--green-tea); padding: 1rem; background-color: var(--honey-cream);">
+                <div class="mono-tag" style="color: var(--burgundy); margin-bottom: 0.3rem;">FARMER MESSAGE · 07:14 AM</div>
+                <p id="adv-wa-farmer" style="font-weight: 700;">
+                  पत्ती की फोटो भेजी + आवाज़ संदेश (0:09 सेकंड)
+                </p>
+              </div>
+
+              <!-- Incoming Maati Bot Bubble -->
+              <div style="align-self: flex-start; width: 92%; border: 3px solid var(--green-tea); padding: 1.15rem; background-color: var(--green-tea); color: var(--honey-cream);">
+                <div class="mono-tag" style="margin-bottom: 0.4rem; border-bottom: 2px solid var(--honey-cream); padding-bottom: 0.3rem;">
+                  MAATI VERIFIED BOT · 07:14 AM (AUTO-COMPRESSED)
+                </div>
+                <p id="adv-wa-bot" style="font-weight: 600; margin-bottom: 0.85rem;">
+                  निदान: अगेती झुलसा (94% मिलान)। मात्रा: 500 ग्राम मैंकोजेब / 200 लीटर पानी प्रति एकड़। नज़दीकी जन-औषधि/एग्रो केंद्र: निफाड एफपीओ स्टोर (₹310)।
+                </p>
+                <div class="mono-tag" style="background-color: var(--burgundy); color: var(--honey-cream); padding: 0.35rem 0.65rem; display: inline-block; border: 1px solid var(--honey-cream);">
+                  [▶ VOICE NOTE ATTACHED: 18 KB OPUS AUDIO]
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mockup B: Basic Keypad Phone 2G SMS Mockup -->
+          <div class="mockup-shell reveal-up">
+            <div class="mockup-topbar">
+              <span class="mono-tag">MOCKUP B · 2G FEATURE-PHONE SMS (ZERO INTERNET)</span>
+              <span class="status-pill status-alert">SHORTCODE: 56161</span>
+            </div>
+            <div class="mockup-body" style="display: flex; flex-direction: column; gap: 1rem; justify-content: space-between;">
+              <div style="border: 2px solid var(--green-tea); padding: 1rem;">
+                <div class="mono-tag" style="margin-bottom: 0.3rem;">FARMER SMS SENT TO 56161:</div>
+                <div style="font-family: var(--font-mono); font-size: 1.1rem; font-weight: 700; color: var(--burgundy);" id="adv-sms-in">
+                  MAATI WHEAT 141401
+                </div>
+              </div>
+
+              <div style="border: 3px solid var(--burgundy); padding: 1.15rem; background-color: var(--honey-cream);">
+                <div class="mono-tag" style="color: var(--burgundy); margin-bottom: 0.4rem;">
+                  INCOMING 2G SMS ALERT · NO DATA CHARGES:
+                </div>
+                <p id="adv-sms-out" style="font-family: var(--font-mono); font-size: 0.92rem; font-weight: 700; line-height: 1.55;">
+                  MAATI ALERT [Khanna 141401]: अगले 5 दिन मौसम साफ (24°C/9°C)। गेहूं में पीला रतुआ से बचाव हेतु खेत की उत्तरी मेड़ जांचें। टोल-फ्री: 1800-120-4455
+                </p>
+              </div>
+
+              <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; font-size: 0.9rem; font-weight: 700;">
+                <span>Works on any Nokia / JioPhone / Feature Handset</span>
+                <a href="#get-started" class="btn btn-burgundy" data-open-modal="signup">Register Mobile Number →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Shared 4-Column Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        <div>
+          <a href="index.html" class="brand-logo" style="color: var(--honey-cream); margin-bottom: 1rem;">
+            <span class="brand-mark" style="background-color: var(--honey-cream); color: var(--green-tea); border-color: var(--honey-cream);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                <path d="M12 22V10M12 10C12 6 15.5 3 20 3C20 7.5 17 11 12 10ZM12 13C12 9 8.5 6 4 6C4 10.5 7 14 12 13Z"/>
+                <path d="M4 22h16"/>
+              </svg>
+            </span>
+            <span>MAATI</span>
+          </a>
+          <p style="font-size: 0.95rem; margin-bottom: 1.25rem;">
+            Grounded, plainspoken agricultural and dairy intelligence built for working farmers, FPO cooperatives, rural lenders, and institutional buyers.
+          </p>
+          <p class="mono-tag">TOLL-FREE KISAN DESK: 1800-120-4455</p>
+        </div>
+
+        <div>
+          <h3 class="footer-col-title">Product (6 USPs)</h3>
+          <ul class="footer-links">
+            <li><a href="crop-tech.html#disease-detection">Crop Disease &amp; Pest Detection</a></li>
+            <li><a href="crop-tech.html#yield-prediction">Per-Field Yield Prediction</a></li>
+            <li><a href="crop-tech.html#soil-health">Soil Health Analysis (NPK/pH)</a></li>
+            <li><a href="livestock-tech.html#cattle-health">Cattle Health Monitoring</a></li>
+            <li><a href="livestock-tech.html#milk-prediction">Milk Yield &amp; Quality Prediction</a></li>
+            <li><a href="livestock-tech.html#feed-optimization">Automated Feed Optimization</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-col-title">Ecosystem</h3>
+          <ul class="footer-links">
+            <li><a href="market-finance.html">Market &amp; Finance Overview</a></li>
+            <li><a href="market-finance.html#price-forecast">Mandi Price Forecasting</a></li>
+            <li><a href="market-finance.html#credit-scoring">Plainspoken AI Credit Scoring</a></li>
+            <li><a href="advisory.html">Voice AI &amp; WhatsApp Advisory</a></li>
+            <li><a href="satellite-weather.html">NDVI &amp; Drone Spraying Maps</a></li>
+            <li><a href="satellite-weather.html#insurance-claims">Satellite Insurance Claims</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-col-title">Company</h3>
+          <ul class="footer-links">
+            <li><a href="about.html">About &amp; Mission</a></li>
+            <li><a href="about.html#data-pledge">Farmer Data Ownership Pledge</a></li>
+            <li><a href="about.html#timeline">Founding Story &amp; Timeline</a></li>
+            <li><a href="about.html#partners">FPO &amp; University Partners</a></li>
+            <li><a href="about.html#careers">Field Agronomy Careers</a></li>
+            <li><a href="about.html#press">Press &amp; Audit Reports</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-col-title">Support &amp; Language</h3>
+          <ul class="footer-links" style="margin-bottom: 1rem;">
+            <li><a href="advisory.html">24×7 Voice &amp; SMS Help Center</a></li>
+            <li><a href="advisory.html#whatsapp-bot">WhatsApp Bot Setup</a></li>
+            <li><a href="about.html#contact">Partner an FPO or Dairy Union</a></li>
+          </ul>
+          <label class="mono-tag" for="footer-lang-select" style="display: block; margin-bottom: 0.4rem;">SITE LANGUAGE</label>
+          <div class="lang-select-wrap" style="border-color: var(--honey-cream); width: 100%;">
+            <select id="footer-lang-select" class="lang-select" style="width: 100%;" aria-label="Footer Language Selector">
+              <option value="en">EN · English</option>
+              <option value="hi">हिन्दी · Hindi</option>
+              <option value="mr">मराठी · Marathi</option>
+              <option value="ta">தமிழ் · Tamil</option>
+              <option value="te">తెలుగు · Telugu</option>
+              <option value="pa">ਪੰਜਾਬੀ · Punjabi</option>
+              <option value="kn">ಕನ್ನಡ · Kannada</option>
+              <option value="gu">ગુજરાતી · Gujarati</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Maati AgriTech Platform. Built for the field, not just the boardroom.</span>
+        <span>Strict Flat 3-Color Accessibility Standard · Zero Farmer Data Sold to Third Parties</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Shared Modal -->
+  <div class="modal-backdrop" id="onboarding-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-card">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; padding-bottom: 0.85rem; border-bottom: 2px solid var(--green-tea);">
+        <div>
+          <span class="eyebrow eyebrow-burgundy" style="margin-bottom: 0.4rem;">MAATI FARM ACCOUNT</span>
+          <h2 class="h3-card" id="modal-title" style="margin-bottom: 0;">Start free with your first field or herd</h2>
+        </div>
+        <button type="button" id="modal-close-btn" class="btn btn-outline-green" style="padding: 0.35rem 0.65rem;" aria-label="Close modal">✕</button>
+      </div>
+      <p id="modal-subtitle" style="margin-bottom: 1.25rem; font-size: 0.95rem;">
+        No credit card needed. Add your mobile number and village pin code to begin.
+      </p>
+      <form id="modal-form">
+        <div class="form-field">
+          <label for="modal-phone">Mobile Number (SMS &amp; WhatsApp)</label>
+          <input type="tel" id="modal-phone" class="form-input" placeholder="+91 98230 XXXXX" required />
+        </div>
+        <div class="form-field">
+          <label for="modal-pincode">Village Pin Code / Mandi Block</label>
+          <input type="text" id="modal-pincode" class="form-input" placeholder="e.g. 422303 (Niphad, Nashik)" required />
+        </div>
+        <div class="form-field">
+          <label for="modal-role">Primary Farm Activity</label>
+          <select id="modal-role" class="form-input">
+            <option value="mixed">Mixed Crop + Dairy Livestock Farm</option>
+            <option value="crop">Crop &amp; Horticulture Farmer</option>
+            <option value="dairy">Dairy &amp; Cattle Herd Owner</option>
+            <option value="fpo">FPO / Cooperative / Institutional Buyer</option>
+          </select>
+        </div>
+        <button type="submit" id="modal-submit-btn" class="btn btn-burgundy btn-lg" style="width: 100%;">Create Free Farm Profile</button>
+        <div id="modal-feedback" style="display: none; margin-top: 1rem; padding: 0.85rem; background-color: var(--green-tea); color: var(--honey-cream); font-weight: 600; font-size: 0.92rem;"></div>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

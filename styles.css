@@ -1,0 +1,1428 @@
+/* ==========================================================================
+   MAATI — FIELD & HERD AGRITECH ECOSYSTEM PLATFORM
+   Strict 3-Color Flat Solid Design System:
+   - Green Tea:   #4B7B4E (Growth, crop tech, trust, nav/footer/blocking)
+   - Honey Cream: #FACD8C (Warm base surfaces, body copy sections, borders)
+   - Burgundy:    #660033 (Primary CTAs, key stats, active nav, 1 Market section)
+   
+   STRICT RULES:
+   - NO gradients (linear-gradient, radial-gradient, conic-gradient)
+   - NO glassmorphism (backdrop-filter, translucent blurs)
+   - NO neon glows or soft drop shadows
+   - NEVER set Burgundy text on Green Tea or Green Tea text on Burgundy
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap');
+
+:root {
+  --green-tea: #4B7B4E;
+  --honey-cream: #FACD8C;
+  --burgundy: #660033;
+
+  --font-display: 'Bricolage Grotesque', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --nav-height: 74px;
+  --progress-height: 5px;
+  --max-width: 1280px;
+  --border-thin: 2px solid var(--green-tea);
+  --border-thick: 3px solid var(--green-tea);
+  --border-cream: 2px solid var(--honey-cream);
+  --border-burgundy: 2px solid var(--burgundy);
+}
+
+/* Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  background-color: var(--honey-cream);
+  color: var(--green-tea);
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: 1.0625rem; /* 17px for working-farmer legibility */
+  line-height: 1.65;
+  background-color: var(--honey-cream);
+  color: var(--green-tea);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  padding-top: var(--nav-height);
+}
+
+img, svg, canvas {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button, select, input {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* Focus Accessibility */
+:focus-visible {
+  outline: 3px solid var(--burgundy);
+  outline-offset: 3px;
+}
+
+.section-green :focus-visible,
+.site-footer :focus-visible,
+.section-burgundy :focus-visible {
+  outline-color: var(--honey-cream);
+}
+
+/* Typography Scale */
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.14;
+  letter-spacing: -0.02em;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.3rem 0.75rem;
+  border: 2px solid currentColor;
+  margin-bottom: 1.25rem;
+}
+
+.eyebrow-burgundy {
+  background-color: var(--burgundy);
+  color: var(--honey-cream);
+  border-color: var(--burgundy);
+}
+
+.eyebrow-green {
+  background-color: var(--green-tea);
+  color: var(--honey-cream);
+  border-color: var(--green-tea);
+}
+
+.eyebrow-cream {
+  background-color: var(--honey-cream);
+  color: var(--green-tea);
+  border-color: var(--honey-cream);
+}
+
+.h1-hero {
+  font-size: clamp(2.25rem, 4.2vw, 3.75rem);
+  margin-bottom: 1.25rem;
+}
+
+.h2-section {
+  font-size: clamp(1.85rem, 3.2vw, 2.85rem);
+  margin-bottom: 1rem;
+}
+
+.h3-card {
+  font-size: clamp(1.3rem, 2vw, 1.65rem);
+  margin-bottom: 0.65rem;
+}
+
+.lead-copy {
+  font-size: clamp(1.08rem, 1.35vw, 1.25rem);
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+.mono-tag {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+/* Layout Containers & Section Color Blocking */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section-pad {
+  padding: 5.5rem 0;
+}
+
+.section-pad-compact {
+  padding: 3.75rem 0;
+}
+
+/* Strict Flat Solid Section Themes */
+.section-cream {
+  background-color: var(--honey-cream);
+  color: var(--green-tea);
+  border-bottom: var(--border-thick);
+}
+
+.section-green {
+  background-color: var(--green-tea);
+  color: var(--honey-cream);
+  border-bottom: 3px solid var(--honey-cream);
+}
+
+/* The ONE deliberate Burgundy high-contrast data section on Market & Finance */
+.section-burgundy {
+  background-color: var(--burgundy);
+  color: var(--honey-cream);
+  border-top: 4px solid var(--honey-cream);
+  border-bottom: 4px solid var(--honey-cream);
+}
+
+/* Section Headers */
+.section-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 780px;
+  margin-bottom: 3.25rem;
+}
+
+.section-header-split {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2rem;
+  margin-bottom: 3.25rem;
+  flex-wrap: wrap;
+}
+
+.section-header-split .header-left {
+  max-width: 700px;
+}
+
+/* ==========================================================================
+   SOLID TOP NAVIGATION BAR & PROGRESS LINE
+   ========================================================================== */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: var(--honey-cream);
+  border-bottom: 3px solid var(--green-tea);
+}
+
+.nav-inner {
+  height: var(--nav-height);
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.brand-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.35rem;
+  color: var(--green-tea);
+  letter-spacing: -0.03em;
+  flex-shrink: 0;
+}
+
+.brand-mark {
+  width: 36px;
+  height: 36px;
+  background-color: var(--green-tea);
+  color: var(--honey-cream);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--green-tea);
+}
+
+.brand-sub {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  display: block;
+  line-height: 1;
+  margin-top: 2px;
+  color: var(--burgundy);
+}
+
+.primary-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.nav-link {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--green-tea);
+  border: 2px solid transparent;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  white-space: nowrap;
+}
+
+.nav-link:hover {
+  border-color: var(--green-tea);
+}
+
+.nav-link.active {
+  background-color: var(--burgundy);
+  color: var(--honey-cream);
+  border-color: var(--burgundy);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-shrink: 0;
+}
+
+.lang-select-wrap {
+  display: inline-flex;
+  align-items: center;
+  border: 2px solid var(--green-tea);
+  background-color: var(--honey-cream);
+  padding: 0 0.45rem;
+  height: 40px;
+}
+
+.lang-select-wrap svg {
+  width: 16px;
+  height: 16px;
+  color: var(--green-tea);
+  flex-shrink: 0;
+}
+
+.lang-select {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--green-tea);
+  background-color: var(--honey-cream);
+  padding: 0.35rem 0.4rem;
+  cursor: pointer;
+}
+
+.lang-select option {
+  background-color: var(--honey-cream);
+  color: var(--green-tea);
+}
+
+.nav-login-link {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--green-tea);
+  padding: 0.4rem 0.6rem;
+  border-bottom: 2px solid transparent;
+}
+
+.nav-login-link:hover {
+  color: var(--burgundy);
+  border-bottom-color: var(--burgundy);
+}
+
+/* Buttons — Strict Solid Fills Only */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.65rem 1.25rem;
+  border: 2px solid transparent;
+  transition: transform 0.12s ease, background-color 0.12s ease, color 0.12s ease;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-burgundy {
+  background-color: var(--burgundy);
+  color: var(--honey-cream);
+  border-color: var(--burgundy);
+}
+
+.btn-burgundy:hover {
+  background-color: var(--honey-cream);
+  color: var(--burgundy);
+  border-color: var(--burgundy);
+}
+
+/* When a Burgundy CTA sits on a Green Tea surface, give it a crisp Honey Cream border */
+.section-green .btn-burgundy,
+.card-green .btn-burgundy {
+  border-color: var(--honey-cream);
+}
+
+.section-green .btn-burgundy:hover,
+.card-green .btn-burgundy:hover {
+  background-color: var(--honey-cream);
+  color: var(--burgundy);
+  border-color: var(--honey-cream);
+}
+
+.btn-green {
+  background-color: var(--green-tea);
+  color: var(--honey-cream);
+  border-color: var(--green-tea);
+}
+
+.btn-green:hover {
+  background-color: var(--honey-cream);
+  color: var(--green-tea);
+  border-color: var(--green-tea);
+}
+
+.btn-cream {
+  background-color: var(--honey-cream);
+  color: var(--green-tea);
+  border-color: var(--honey-cream);
+}
+
+.btn-cream:hover {
+  background-color: var(--green-tea);
+  color: var(--honey-cream);
+  border-color: var(--honey-cream);
+}
+
+.btn-outline-green {
+  background-color: var(--honey-cream);
+  color: var(--green-tea);
+  border: 2px solid var(--green-tea);
+}
+
+.btn-outline-green:hover {
+  background-color: var(--green-tea);
+  color: var(--honey-cream);
+}
+
+.btn-outline-cream {
+  background-color: transparent;
+  color: var(--honey-cream);
+  border: 2px solid var(--honey-cream);
+}
+
+.btn-outline-cream:hover {
+  background-color: var(--honey-cream);
+  color: var(--green-tea);
+}
+
+.section-burgundy .btn-outline-cream:hover {
+  background-color: var(--honey-cream);
+  color: var(--burgundy);
+}
+
+.btn-lg {
+  padding: 0.9rem 1.65rem;
+  font-size: 1.05rem;
+}
+
+/* Thin Solid Burgundy Progress Line under Navbar (Home Page Hero) */
+.hero-progress-track {
+  width: 100%;
+  height: var(--progress-height);
+  background-color: var(--honey-cream);
+  border-bottom: 2px solid var(--green-tea);
+  overflow: hidden;
+}
+
+.hero-progress-bar {
+  height: 100%;
+  width: 0%;
+  background-color: var(--burgundy);
+  transition: width 0.04s linear;
+}
+
+/* Mobile Menu Button & Full-Screen Drawer */
+.mobile-menu-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border: 2px solid var(--green-tea);
+  background-color: var(--honey-cream);
+  color: var(--green-tea);
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-drawer {
+  display: none;
+  position: fixed;
+  top: var(--nav-height);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--honey-cream);
+  z-index: 999;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem;
+  border-top: 2px solid var(--green-tea);
+  overflow-y: auto;
+}
+
+.mobile-drawer.open {
+  display: flex;
+}
+
+.mobile-nav-list {
+  display: flex;
+  flex-direction: column;
+  border-top: 2px solid var(--green-tea);
+}
+
+.mobile-nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 0.5rem;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--green-tea);
+  border-bottom: 2px solid var(--green-tea);
+}
+
+.mobile-nav-link.active {
+  background-color: var(--burgundy);
+  color: var(--honey-cream);
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.mobile-drawer-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding-top: 1.25rem;
+  border-top: 3px solid var(--green-tea);
+}
+
+/* ==========================================================================
+   HOME HERO: PINNED 400VH SCROLL-LINKED 240-FRAME SEQUENCE
+   ========================================================================== */
+.hero-sequence-section {
+  position: relative;
+  height: 400vh;
+  background-color: var(--honey-cream);
+  border-bottom: 4px solid var(--green-tea);
+}
+
+.hero-sticky-viewport {
+  position: sticky;
+  top: calc(var(--nav-height) + var(--progress-height));
+  width: 100%;
+  height: calc(100vh - var(--nav-height) - var(--progress-height));
+  overflow: hidden;
+  background-color: var(--honey-cream);
+}
+
+#hero-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Solid Flat Honey Cream Text Cards Over Unfiltered Canvas */
+.hero-cards-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  display: flex;
+  align-items: flex-end;
+}
+
+.hero-beat-card {
+  position: absolute;
+  bottom: 2.25rem;
+  width: min(540px, calc(100% - 3rem));
+  background-color: var(--honey-cream);
+  border: 3px solid var(--green-tea);
+  padding: 1.75rem 2rem;
+  pointer-events: auto;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(14px);
+  transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s ease;
+}
+
+.hero-beat-card.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Card 1 & 3 bottom-left, Card 2 & 4 bottom-right on desktop */
+.hero-beat-card.dock-left {
+  left: 1.5rem;
+}
+
+.hero-beat-card.dock-right {
+  right: 1.5rem;
+}
+
+.hero-beat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 2px solid var(--green-tea);
+}
+
+.hero-beat-step {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--green-tea);
+  letter-spacing: 0.05em;
+}
+
+.hero-beat-badge {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  background-color: var(--green-tea);
+  color: var(--honey-cream);
+  padding: 0.2rem 0.55rem;
+}
+
+/* Strictly Green Tea headlines and Burgundy body text on Honey Cream cards */
+.hero-beat-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.55rem, 2.5vw, 2.15rem);
+  font-weight: 700;
+  color: var(--green-tea);
+  line-height: 1.15;
+  margin-bottom: 0.75rem;
+}
+
+.hero-beat-body {
+  font-size: 1.05rem;
+  line-height: 1.55;
+  font-weight: 600;
+  color: var(--burgundy);
+  margin-bottom: 1.15rem;
+}
+
+.hero-beat-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Top-Right Sequence Status Pill (Solid Honey Cream + Green Tea) */
+.hero-hud-top {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  max-width: calc(var(--max-width) - 3rem);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  pointer-events: none;
+  gap: 1rem;
+}
+
+.hero-status-pill {
+  background-color: var(--honey-cream);
+  color: var(--green-tea);
+  border: 2px solid var(--green-tea);
+  padding: 0.45rem 0.85rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  pointer-events: auto;
+}
+
+.status-dot {
+  width: 9px;
+  height: 9px;
+  background-color: var(--burgundy);
+  display: inline-block;
+}
+
+.hero-quick-controls {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--honey-cream);
+  border: 2px solid var(--green-tea);
+  pointer-events: auto;
+}
+
+.hero-step-btn {
+  padding: 0.4rem 0.7rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--green-tea);
+  border-right: 2px solid var(--green-tea);
+}
+
+.hero-step-btn:last-child {
+  border-right: none;
+}
+
+.hero-step-btn.active,
+.hero-step-btn:hover {
+  background-color: var(--burgundy);
+  color: var(--honey-cream);
+}
+
+/* Reduced Motion Mode for Hero Sequence */
+.hero-sequence-section.reduced-motion {
+  height: auto;
+}
+
+.hero-sequence-section.reduced-motion .hero-sticky-viewport {
+  position: relative;
+  top: 0;
+  height: 62vh;
+  min-height: 380px;
+  border-bottom: 3px solid var(--green-tea);
+}
+
+.hero-sequence-section.reduced-motion .hero-cards-layer {
+  position: static;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  padding: 2.5rem 1.5rem;
+  background-color: var(--honey-cream);
+}
+
+.hero-sequence-section.reduced-motion .hero-beat-card {
+  position: static;
+  width: 100%;
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+/* ==========================================================================
+   SOLID CARDS, GRIDS & PILLARS (NO CREAM-ON-CREAM MONOTONY)
+   ========================================================================== */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+/* Solid Green Tea Card (used on Honey Cream sections to prevent cream-on-cream monotony) */
+.card-green {
+  background-color: var(--green-tea);
+  color: var(--honey-cream);
+  border: 3px solid var(--green-tea);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
+
+/* Solid Honey Cream Card with Strong Green Tea Header/Structure (used on Green Tea sections or structured panels) */
+.card-cream {
+  background-color: var(--honey-cream);
+  color: var(--green-tea);
+  border: 3px solid var(--green-tea);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
+
+.section-green .card-cream {
+  border-color: var(--honey-cream);
+}
+
+/* Structured Split Card (Green Tea Header Band + Honey Cream Body with Thick Green Tea Frame) */
+.card-structured {
+  background-color: var(--honey-cream);
+  color: var(--green-tea);
+  border: 3px solid var(--green-tea);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-structured-head {
+  background-color: var(--green-tea);
+  color: var(--honey-cream);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 3px solid var(--green-tea);
+}
+
+.card-structured-body {
+  padding: 1.65rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex-grow: 1;
+}
+
+.card-structured-foot {
+  padding: 1rem 1.5rem;
+  border-top: 2px solid var(--green-tea);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 700;
+}
+
+.card-icon-box {
+  width: 52px;
+  height: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid currentColor;
+  flex-shrink: 0;
+}
+
+.stat-value-burgundy {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 3.6vw, 3.25rem);
+  font-weight: 700;
+  color: var(--burgundy);
+  line-height: 1.05;
+}
+
+.stat-value-cream {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 3.6vw, 3.25rem);
+  font-weight: 700;
+  color: var(--honey-cream);
+  line-height: 1.05;
+}
+
+/* ==========================================================================
+   INTERIOR PAGE COMPACT HEROES
+   ========================================================================== */
+.interior-hero {
+  background-color: var(--green-tea);
+  color: var(--honey-cream);
+  padding: 4.25rem 0;
+  border-bottom: 4px solid var(--green-tea);
+}
+
+.interior-hero-quiet {
+  background-color: var(--honey-cream);
+  color: var(--green-tea);
+  padding: 4.5rem 0;
+  border-bottom: 3px solid var(--green-tea);
+}
+
+.interior-hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.diagram-frame {
+  background-color: var(--honey-cream);
+  color: var(--green-tea);
+  border: 3px solid var(--honey-cream);
+  padding: 1.5rem;
+}
+
+.interior-hero-quiet .diagram-frame {
+  border-color: var(--green-tea);
+}
+
+/* ==========================================================================
+   PROCESS STEP-STRIPS ("HOW IT WORKS")
+   ========================================================================== */
+.step-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  border: 3px solid var(--green-tea);
+  background-color: var(--honey-cream);
+  color: var(--green-tea);
+  margin: 2rem 0 2.5rem;
+}
+
+.section-green .step-strip {
+  border-color: var(--honey-cream);
+}
+
+.section-burgundy .step-strip {
+  background-color: var(--burgundy);
+  color: var(--honey-cream);
+  border: 3px solid var(--honey-cream);
+}
+
+.step-item {
+  padding: 1.35rem 1.5rem;
+  border-right: 2px solid var(--green-tea);
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.section-burgundy .step-item {
+  border-right-color: var(--honey-cream);
+}
+
+.step-item:last-child {
+  border-right: none;
+}
+
+.step-num {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--burgundy);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.section-burgundy .step-num {
+  color: var(--honey-cream);
+  text-decoration: underline;
+}
+
+.step-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.step-desc {
+  font-size: 0.925rem;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   HONEST DATA MOCKUPS & INTERACTIVE CONTROLS
+   ========================================================================== */
+.mockup-shell {
+  border: 3px solid var(--green-tea);
+  background-color: var(--honey-cream);
+  color: var(--green-tea);
+}
+
+.section-green .mockup-shell {
+  border-color: var(--honey-cream);
+}
+
+.section-burgundy .mockup-shell {
+  background-color: var(--burgundy);
+  color: var(--honey-cream);
+  border: 3px solid var(--honey-cream);
+}
+
+.mockup-topbar {
+  background-color: var(--green-tea);
+  color: var(--honey-cream);
+  padding: 0.9rem 1.35rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  border-bottom: 3px solid var(--green-tea);
+}
+
+.section-burgundy .mockup-topbar {
+  background-color: var(--honey-cream);
+  color: var(--burgundy);
+  border-bottom: 3px solid var(--honey-cream);
+}
+
+.mockup-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tab-btn {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  padding: 0.45rem 0.85rem;
+  border: 2px solid var(--green-tea);
+  background-color: var(--honey-cream);
+  color: var(--green-tea);
+  cursor: pointer;
+}
+
+.tab-btn.active,
+.tab-btn:hover {
+  background-color: var(--burgundy);
+  color: var(--honey-cream);
+  border-color: var(--burgundy);
+}
+
+.mockup-topbar .tab-btn {
+  border-color: var(--honey-cream);
+}
+
+.mockup-topbar .tab-btn.active {
+  background-color: var(--burgundy);
+  color: var(--honey-cream);
+  border-color: var(--honey-cream);
+}
+
+.section-burgundy .mockup-topbar .tab-btn {
+  background-color: var(--honey-cream);
+  color: var(--burgundy);
+  border-color: var(--burgundy);
+}
+
+.section-burgundy .mockup-topbar .tab-btn.active {
+  background-color: var(--burgundy);
+  color: var(--honey-cream);
+  border-color: var(--burgundy);
+}
+
+.mockup-body {
+  padding: 1.75rem;
+}
+
+/* Data Tables & Status Lists */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.data-table th,
+.data-table td {
+  padding: 0.9rem 1rem;
+  text-align: left;
+  border-bottom: 2px solid var(--green-tea);
+}
+
+.data-table th {
+  background-color: var(--green-tea);
+  color: var(--honey-cream);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.section-burgundy .data-table th {
+  background-color: var(--honey-cream);
+  color: var(--burgundy);
+}
+
+.section-burgundy .data-table td {
+  border-bottom-color: var(--honey-cream);
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.25rem 0.65rem;
+  border: 2px solid currentColor;
+}
+
+.status-healthy {
+  background-color: var(--green-tea);
+  color: var(--honey-cream);
+  border-color: var(--green-tea);
+}
+
+.status-watch {
+  background-color: var(--honey-cream);
+  color: var(--green-tea);
+  border-color: var(--green-tea);
+}
+
+.status-alert {
+  background-color: var(--burgundy);
+  color: var(--honey-cream);
+  border-color: var(--burgundy);
+}
+
+/* Interactive Range / Toggle Controls */
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.control-label {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Language Strip */
+.language-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
+  gap: 0.75rem;
+}
+
+.lang-pill-btn {
+  padding: 0.85rem 1rem;
+  border: 2px solid var(--green-tea);
+  background-color: var(--honey-cream);
+  color: var(--green-tea);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.section-green .lang-pill-btn {
+  border-color: var(--honey-cream);
+}
+
+.lang-pill-btn.active,
+.lang-pill-btn:hover {
+  background-color: var(--burgundy);
+  color: var(--honey-cream);
+  border-color: var(--burgundy);
+}
+
+.section-green .lang-pill-btn.active,
+.section-green .lang-pill-btn:hover {
+  border-color: var(--honey-cream);
+}
+
+.lang-native {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.lang-english {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+/* NDVI & Drone Field Grid Cells */
+.field-sector-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  background-color: var(--green-tea);
+  border: 3px solid var(--green-tea);
+  padding: 4px;
+}
+
+.sector-cell {
+  padding: 1.1rem 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  border: 2px solid transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  min-height: 92px;
+}
+
+.sector-cell.zone-healthy {
+  background-color: var(--green-tea);
+  color: var(--honey-cream);
+}
+
+.sector-cell.zone-watch {
+  background-color: var(--honey-cream);
+  color: var(--green-tea);
+}
+
+.sector-cell.zone-critical {
+  background-color: var(--burgundy);
+  color: var(--honey-cream);
+}
+
+.sector-cell.selected {
+  outline: 3px solid var(--honey-cream);
+  outline-offset: -5px;
+}
+
+.sector-cell.zone-watch.selected {
+  outline-color: var(--burgundy);
+}
+
+/* ==========================================================================
+   SHARED FOOTER (SOLID GREEN TEA BACKGROUND, 4 COLUMNS)
+   ========================================================================== */
+.site-footer {
+  background-color: var(--green-tea);
+  color: var(--honey-cream);
+  padding: 4.5rem 0 2.5rem;
+  border-top: 4px solid var(--green-tea);
+}
+
+.footer-top-grid {
+  display: grid;
+  grid-template-columns: 1.4fr repeat(4, 1fr);
+  gap: 2.25rem;
+  padding-bottom: 3rem;
+  border-bottom: 2px solid var(--honey-cream);
+}
+
+.footer-col-title {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 1.1rem;
+  color: var(--honey-cream);
+  padding-bottom: 0.45rem;
+  border-bottom: 2px solid var(--honey-cream);
+  display: inline-block;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.footer-links a {
+  font-size: 0.95rem;
+  color: var(--honey-cream);
+  font-weight: 500;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.footer-bottom {
+  padding-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   MODAL (LOG IN / GET STARTED FIELD ONBOARDING)
+   ========================================================================== */
+.modal-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: var(--green-tea);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.modal-backdrop.open {
+  display: flex;
+}
+
+.modal-card {
+  width: 100%;
+  max-width: 540px;
+  background-color: var(--honey-cream);
+  color: var(--green-tea);
+  border: 4px solid var(--honey-cream);
+  padding: 2.25rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1.15rem;
+}
+
+.form-field label {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.form-input {
+  padding: 0.75rem 0.9rem;
+  border: 2px solid var(--green-tea);
+  background-color: var(--honey-cream);
+  color: var(--green-tea);
+  font-weight: 600;
+}
+
+/* On-Scroll Light Reveal Utility */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.reveal-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal-up {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVE BREAKPOINTS (MOBILE-FIRST FIELD USABILITY)
+   ========================================================================== */
+@media (max-width: 1120px) {
+  .primary-nav {
+    display: none;
+  }
+  .mobile-menu-toggle {
+    display: inline-flex;
+  }
+  .footer-top-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .interior-hero-grid {
+    grid-template-columns: 1fr;
+  }
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --nav-height: 66px;
+  }
+  .section-pad {
+    padding: 3.75rem 0;
+  }
+  .grid-2,
+  .grid-3,
+  .grid-4,
+  .footer-top-grid {
+    grid-template-columns: 1fr;
+  }
+  .nav-actions .nav-login-link,
+  .nav-actions .btn-burgundy {
+    display: none;
+  }
+  .hero-beat-card,
+  .hero-beat-card.dock-left,
+  .hero-beat-card.dock-right {
+    left: 0.75rem;
+    right: 0.75rem;
+    bottom: 0.75rem;
+    width: calc(100% - 1.5rem);
+    padding: 1.25rem 1.35rem;
+  }
+  .hero-sequence-section.reduced-motion .hero-cards-layer {
+    grid-template-columns: 1fr;
+  }
+  .step-strip {
+    grid-template-columns: 1fr;
+  }
+  .step-item {
+    border-right: none;
+    border-bottom: 2px solid var(--green-tea);
+  }
+  .section-burgundy .step-item {
+    border-bottom-color: var(--honey-cream);
+  }
+  .step-item:last-child {
+    border-bottom: none;
+  }
+  .field-sector-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .data-table {
+    display: block;
+    overflow-x: auto;
+  }
+}

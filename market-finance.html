@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Market &amp; Finance — Mandi Price Forecasting, Rural Credit &amp; Buyer Matching | MAATI</title>
+  <meta name="description" content="Short-term mandi crop price forecasting, plainspoken AI credit scoring from land records and repayment patterns, and direct farmer-to-buyer supply-demand matching." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ====================================================================
+       SOLID TOP NAVIGATION BAR
+       ==================================================================== -->
+  <header class="site-header">
+    <div class="nav-inner">
+      <a href="index.html" class="brand-logo" aria-label="Maati Home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+            <path d="M12 22V10M12 10C12 6 15.5 3 20 3C20 7.5 17 11 12 10ZM12 13C12 9 8.5 6 4 6C4 10.5 7 14 12 13Z"/>
+            <path d="M4 22h16"/>
+          </svg>
+        </span>
+        <span>
+          MAATI
+          <span class="brand-sub">Field &amp; Herd Platform</span>
+        </span>
+      </a>
+
+      <nav class="primary-nav" aria-label="Primary Navigation">
+        <a href="index.html" class="nav-link" data-i18n="navHome">Home</a>
+        <a href="crop-tech.html" class="nav-link" data-i18n="navCrop">Crop Tech</a>
+        <a href="livestock-tech.html" class="nav-link" data-i18n="navLivestock">Livestock Tech</a>
+        <a href="market-finance.html" class="nav-link active" data-i18n="navMarket">Market &amp; Finance</a>
+        <a href="advisory.html" class="nav-link" data-i18n="navAdvisory">Advisory</a>
+        <a href="satellite-weather.html" class="nav-link" data-i18n="navSatellite">Satellite &amp; Weather</a>
+        <a href="about.html" class="nav-link" data-i18n="navAbout">About</a>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="lang-select-wrap" title="Select Language">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+          <select class="lang-select" aria-label="Select Language">
+            <option value="en">EN · English</option>
+            <option value="hi">हिन्दी · Hindi</option>
+            <option value="mr">मराठी · Marathi</option>
+            <option value="ta">தமிழ் · Tamil</option>
+            <option value="te">తెలుగు · Telugu</option>
+            <option value="pa">ਪੰਜਾਬੀ · Punjabi</option>
+            <option value="kn">ಕನ್ನಡ · Kannada</option>
+            <option value="gu">ગુજરાતી · Gujarati</option>
+          </select>
+        </div>
+
+        <a href="#login" class="nav-login-link" data-open-modal="login" data-i18n="navLogin">Log in</a>
+        <a href="#get-started" class="btn btn-burgundy" data-open-modal="signup" data-i18n="navGetStarted">Get Started</a>
+
+        <button type="button" id="mobile-menu-btn" class="mobile-menu-toggle" aria-label="Toggle Menu" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M3 6h18M3 12h18M3 18h18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Full-Screen Mobile Menu Drawer -->
+    <div class="mobile-drawer" id="mobile-drawer" aria-label="Mobile Navigation">
+      <div class="mobile-nav-list">
+        <a href="index.html" class="mobile-nav-link"><span data-i18n="navHome">Home</span> <span>→</span></a>
+        <a href="crop-tech.html" class="mobile-nav-link"><span data-i18n="navCrop">Crop Tech</span> <span>→</span></a>
+        <a href="livestock-tech.html" class="mobile-nav-link"><span data-i18n="navLivestock">Livestock Tech</span> <span>→</span></a>
+        <a href="market-finance.html" class="mobile-nav-link active"><span data-i18n="navMarket">Market &amp; Finance</span> <span>→</span></a>
+        <a href="advisory.html" class="mobile-nav-link"><span data-i18n="navAdvisory">Advisory</span> <span>→</span></a>
+        <a href="satellite-weather.html" class="mobile-nav-link"><span data-i18n="navSatellite">Satellite &amp; Weather</span> <span>→</span></a>
+        <a href="about.html" class="mobile-nav-link"><span data-i18n="navAbout">About</span> <span>→</span></a>
+      </div>
+      <div class="mobile-drawer-footer">
+        <a href="#get-started" class="btn btn-burgundy btn-lg" data-open-modal="signup" data-i18n="navGetStarted">Get Started — Try the App</a>
+        <a href="#login" class="btn btn-outline-green btn-lg" data-open-modal="login" data-i18n="navLogin">Log in to Existing Farm Account</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ====================================================================
+         COMPACT PAGE-SPECIFIC HERO (MARKET & FINANCE)
+         ==================================================================== -->
+    <section class="interior-hero">
+      <div class="container">
+        <div class="interior-hero-grid">
+          <div>
+            <span class="eyebrow eyebrow-cream">ECOSYSTEM PILLAR · MARKET &amp; FINANCIAL INTELLIGENCE</span>
+            <h1 class="h1-hero">Know when to hold, unlock fair working capital, and sell directly to verified buyers.</h1>
+            <p class="lead-copy" style="margin-bottom: 1.75rem;">
+              A good harvest shouldn’t end in a distress sale to pay off an informal moneylender. Maati gives farmers and FPOs short-term mandi price visibility, transparent credit profiles built from real farm activity, and direct buyer matching.
+            </p>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+              <a href="#price-forecast" class="btn btn-cream">01 · Mandi Price Forecasting</a>
+              <a href="#credit-scoring" class="btn btn-cream">02 · Plainspoken Credit Scoring</a>
+              <a href="#buyer-matching" class="btn btn-burgundy">03 · Farmer ↔ Buyer Matching</a>
+            </div>
+          </div>
+
+          <div class="diagram-frame" aria-label="Farm-Gate to Market Financial Loop Diagram">
+            <div style="border-bottom: 2px solid var(--green-tea); padding-bottom: 0.65rem; margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center;">
+              <span class="mono-tag">FARM-GATE COMMERCE DESK</span>
+              <span class="status-pill status-alert">ZERO MIDDLEMAN CUT</span>
+            </div>
+            <svg viewBox="0 0 460 220" width="100%" height="auto" role="img" aria-label="Diagram of Price Forecast, Credit Score, and Direct Buyer Matching">
+              <rect x="10" y="20" width="135" height="180" fill="#4B7B4E"/>
+              <text x="22" y="50" fill="#FACD8C" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">FARMER / FPO</text>
+              <text x="22" y="82" fill="#FACD8C" font-family="Plus Jakarta Sans, sans-serif" font-size="11">• Land &amp; crop log</text>
+              <text x="22" y="108" fill="#FACD8C" font-family="Plus Jakarta Sans, sans-serif" font-size="11">• Dairy ledger</text>
+              <text x="22" y="134" fill="#FACD8C" font-family="Plus Jakarta Sans, sans-serif" font-size="11">• Graded harvest</text>
+              <text x="22" y="160" fill="#FACD8C" font-family="Plus Jakarta Sans, sans-serif" font-size="11">• Storage capacity</text>
+
+              <path d="M145 70 L185 70 M145 110 L185 110 M145 150 L185 150" stroke="#4B7B4E" stroke-width="3"/>
+
+              <rect x="185" y="20" width="265" height="52" fill="#660033"/>
+              <text x="198" y="42" fill="#FACD8C" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">01. 21-DAY MANDI PRICE FORECAST</text>
+              <text x="198" y="60" fill="#FACD8C" font-family="Plus Jakarta Sans, sans-serif" font-size="11">Hold vs. sell signal across 420 APMCs</text>
+
+              <rect x="185" y="84" width="265" height="52" fill="#660033"/>
+              <text x="198" y="106" fill="#FACD8C" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">02. TRANSPARENT CREDIT SCORE</text>
+              <text x="198" y="124" fill="#FACD8C" font-family="Plus Jakarta Sans, sans-serif" font-size="11">7% p.a. working capital for thin-file farms</text>
+
+              <rect x="185" y="148" width="265" height="52" fill="#660033"/>
+              <text x="198" y="170" fill="#FACD8C" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">03. DIRECT BUYER LOT MATCHING</text>
+              <text x="198" y="188" fill="#FACD8C" font-family="Plus Jakarta Sans, sans-serif" font-size="11">Instant RTGS escrow on weighbridge slip</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         THE ONE DELIBERATE HIGH-CONTRAST BURGUNDY (#660033) DATA SECTION
+         Strictly Burgundy (#660033) & Honey Cream (#FACD8C) Only!
+         ==================================================================== -->
+    <section class="section-burgundy section-pad" id="trading-floor">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <span class="eyebrow eyebrow-cream">THE RURAL TRADING &amp; CREDIT DESK · HIGH-CONTRAST DATA VIEW</span>
+          <h2 class="h2-section">Live Mandi Forecasts, Open-Book Credit Scoring &amp; Direct Buyer Matching</h2>
+          <p class="lead-copy">
+            This unified data desk puts institutional-grade market intelligence and transparent credit underwriting directly into the hands of farmers, FPO managers, and rural cooperative banks.
+          </p>
+        </div>
+
+        <!-- ================================================================
+             PART 1: MANDI PRICE FORECASTING CHART
+             ================================================================ -->
+        <div id="price-forecast" style="margin-bottom: 4.5rem;" class="reveal-up">
+          <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
+            <div>
+              <span class="mono-tag" style="text-decoration: underline;">MODULE 01 / 03 · SHORT-TERM CROP PRICE FORECASTING</span>
+              <h3 class="h2-section" style="margin-top: 0.35rem; margin-bottom: 0;">60-Day Mandi History + 21-Day Price Forecast</h3>
+            </div>
+            <span class="mono-tag">SOURCES: AGMARKNET + FPO ARRIVAL LOGS + WEATHER SUPPLY MODEL</span>
+          </div>
+
+          <div class="mockup-shell">
+            <div class="mockup-topbar">
+              <span class="mono-tag">SELECT COMMODITY &amp; MANDI BENCHMARK:</span>
+              <div class="mockup-tabs" role="tablist" aria-label="Select Commodity">
+                <button type="button" class="tab-btn active" data-mandi-crop="onion">Onion · Lasalgaon APMC</button>
+                <button type="button" class="tab-btn" data-mandi-crop="soybean">Soybean · Indore APMC</button>
+                <button type="button" class="tab-btn" data-mandi-crop="wheat">Wheat · Khanna / Sehore</button>
+              </div>
+            </div>
+
+            <div class="mockup-body">
+              <div class="grid-2" style="align-items: center;">
+                <div>
+                  <div class="mono-tag" id="mandi-crop-name" style="margin-bottom: 0.5rem;">
+                    Red Onion (Summer Storage Grade-A) · Lasalgaon APMC, Maharashtra
+                  </div>
+                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem; border: 2px solid var(--honey-cream); padding: 1rem;">
+                    <div>
+                      <span class="mono-tag">TODAY’S SPOT CLEARING</span>
+                      <div class="stat-value-cream" id="mandi-spot-price" style="font-size: 1.85rem; margin-top: 0.25rem;">₹2,180 / Quintal</div>
+                    </div>
+                    <div style="border-left: 2px solid var(--honey-cream); padding-left: 1rem;">
+                      <span class="mono-tag">21-DAY FORECAST BAND</span>
+                      <div class="stat-value-cream" id="mandi-forecast-price" style="font-size: 1.55rem; margin-top: 0.25rem;">₹2,460 – ₹2,590 / Quintal (+14.2% in 21 Days)</div>
+                    </div>
+                  </div>
+
+                  <div style="background-color: var(--honey-cream); color: var(--burgundy); padding: 0.75rem 1rem; font-family: var(--font-mono); font-weight: 700; font-size: 0.88rem; margin-bottom: 1rem;" id="mandi-action-pill">
+                    RECOMMENDED ACTION: HOLD IN VENTILATED CHAWL FOR 14–18 DAYS
+                  </div>
+
+                  <p id="mandi-rationale" style="margin-bottom: 0.85rem;">
+                    Late-rabi arrivals in Nashik belt are tapering 19% below 5-year average while southern buyer indent is rising.
+                  </p>
+                  <p class="mono-tag" id="mandi-alt-note" style="border-top: 2px solid var(--honey-cream); padding-top: 0.75rem;">
+                    Pune Gultekdi APMC net after ₹95/qtl transport: ₹2,340/qtl (+₹160/qtl net advantage today).
+                  </p>
+                </div>
+
+                <!-- High-Contrast Honey Cream on Burgundy SVG Price Forecast Chart -->
+                <div style="border: 2px solid var(--honey-cream); padding: 1.25rem;">
+                  <div style="display: flex; justify-content: space-between; margin-bottom: 0.65rem; flex-wrap: wrap; gap: 0.5rem;">
+                    <span class="mono-tag">MANDI CLEARING CURVE (₹ / QUINTAL)</span>
+                    <span class="mono-tag">— 60D ACTUAL · -- 21D FORECAST BAND</span>
+                  </div>
+                  <svg viewBox="0 0 620 215" width="100%" height="auto" role="img" aria-label="Mandi Price Forecast Line Chart">
+                    <line x1="40" y1="40" x2="590" y2="40" stroke="#FACD8C" stroke-width="1" stroke-dasharray="3 3"/>
+                    <line x1="40" y1="90" x2="590" y2="90" stroke="#FACD8C" stroke-width="1" stroke-dasharray="3 3"/>
+                    <line x1="40" y1="140" x2="590" y2="140" stroke="#FACD8C" stroke-width="1" stroke-dasharray="3 3"/>
+                    <line x1="40" y1="180" x2="590" y2="180" stroke="#FACD8C" stroke-width="2.5"/>
+                    <line x1="40" y1="25" x2="40" y2="180" stroke="#FACD8C" stroke-width="2.5"/>
+
+                    <!-- Today Marker -->
+                    <line x1="380" y1="25" x2="380" y2="180" stroke="#FACD8C" stroke-width="2" stroke-dasharray="5 3"/>
+                    <rect x="335" y="20" width="90" height="20" fill="#FACD8C"/>
+                    <text x="345" y="34" fill="#660033" font-family="JetBrains Mono, monospace" font-size="10" font-weight="700">TODAY · SPOT</text>
+
+                    <!-- Confidence Band Outline -->
+                    <polygon id="svg-mandi-band" points="380,130 480,104 580,84 580,44 480,68 380,102" fill="none" stroke="#FACD8C" stroke-width="2" stroke-dasharray="4 3"/>
+
+                    <!-- Historical 60-Day Line -->
+                    <polyline id="svg-mandi-hist" points="40,165 130,152 220,140 310,126 380,116" fill="none" stroke="#FACD8C" stroke-width="4"/>
+
+                    <!-- 21-Day Forecast Line -->
+                    <polyline id="svg-mandi-fore" points="380,116 480,86 580,64" fill="none" stroke="#FACD8C" stroke-width="4" stroke-dasharray="8 4"/>
+
+                    <circle cx="40" cy="165" r="5" fill="#FACD8C"/>
+                    <circle cx="130" cy="152" r="5" fill="#FACD8C"/>
+                    <circle cx="220" cy="140" r="5" fill="#FACD8C"/>
+                    <circle cx="310" cy="126" r="5" fill="#FACD8C"/>
+                    <circle cx="380" cy="116" r="6" fill="#FACD8C"/>
+                    <circle cx="480" cy="86" r="5" fill="#FACD8C"/>
+                    <circle cx="580" cy="64" r="6" fill="#FACD8C"/>
+
+                    <text x="35" y="202" fill="#FACD8C" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">-60 DAYS</text>
+                    <text x="195" y="202" fill="#FACD8C" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">-30 DAYS</text>
+                    <text x="355" y="202" fill="#FACD8C" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">TODAY</text>
+                    <text x="455" y="202" fill="#FACD8C" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">+10 DAYS</text>
+                    <text x="540" y="202" fill="#FACD8C" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">+21 DAYS</text>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================================================================
+             PART 2: PLAINSPOKEN AI-DRIVEN CREDIT SCORING MODEL
+             ================================================================ -->
+        <div id="credit-scoring" style="margin-bottom: 4.5rem;" class="reveal-up">
+          <div style="margin-bottom: 1.5rem;">
+            <span class="mono-tag" style="text-decoration: underline;">MODULE 02 / 03 · REASSURING, OPEN-BOOK RURAL CREDIT</span>
+            <h3 class="h2-section" style="margin-top: 0.35rem; margin-bottom: 0.5rem;">Plainspoken AI Credit Scoring for Thin-File Farmers</h3>
+            <p class="lead-copy" style="max-width: 860px;">
+              Traditional banks reject millions of hardworking smallholder and tenant farmers simply because they don’t have urban salary slips or CIBIL credit-card histories. Maati builds a transparent, auditable credit picture from how a farm actually works — land records, seasonal crop continuity, and cooperative repayment habits.
+            </p>
+          </div>
+
+          <!-- 4-Step Strip: How Credit Scoring Works -->
+          <div class="step-strip" aria-label="How Plainspoken Credit Scoring Works">
+            <div class="step-item">
+              <span class="step-num">PILLAR 01 · 30% WEIGHT</span>
+              <h4 class="step-title">Land &amp; Lease Records</h4>
+              <p class="step-desc">Verified 7/12, Bhulekh, or FPO-attested cultivation agreement showing parcel area and irrigation access.</p>
+            </div>
+            <div class="step-item">
+              <span class="step-num">PILLAR 02 · 30% WEIGHT</span>
+              <h4 class="step-title">3-Year Crop Cycles</h4>
+              <p class="step-desc">Multi-season satellite NDVI harvest history proving the plot is actively cultivated every Kharif &amp; Rabi season.</p>
+            </div>
+            <div class="step-item">
+              <span class="step-num">PILLAR 03 · 25% WEIGHT</span>
+              <h4 class="step-title">Repayment Patterns</h4>
+              <p class="step-desc">Regular seed/fertilizer settlement at the FPO store and consistent bi-weekly milk pouring at the dairy society.</p>
+            </div>
+            <div class="step-item">
+              <span class="step-num">PILLAR 04 · 15% WEIGHT</span>
+              <h4 class="step-title">Crop &amp; Herd Resilience</h4>
+              <p class="step-desc">Mixed crop + dairy income stability and active PMFBY crop insurance enrollment protecting against weather shocks.</p>
+            </div>
+          </div>
+
+          <!-- Interactive Open-Book Credit Profile Simulator -->
+          <div class="mockup-shell">
+            <div class="mockup-topbar">
+              <span class="mono-tag">INTERACTIVE OPEN-BOOK FARM CREDIT SIMULATOR (NO BLACK-BOX SCORING)</span>
+              <span class="mono-tag">PARTNER RATES: 7.0% – 7.5% P.A. KISAN CREDIT LINE</span>
+            </div>
+            <div class="mockup-body">
+              <div class="grid-2" style="align-items: center;">
+                <div style="display: flex; flex-direction: column; gap: 0.85rem;">
+                  <div class="mono-tag">TOGGLE VERIFIED FARM RECORDS TO SEE EXACT SCORE IMPACT:</div>
+
+                  <label style="display: flex; align-items: center; gap: 0.85rem; padding: 0.85rem 1rem; border: 2px solid var(--honey-cream); cursor: pointer;">
+                    <input type="checkbox" checked data-credit-points="65" style="width: 20px; height: 20px; accent-color: var(--honey-cream);" />
+                    <span><strong>Verified Land Parcel or FPO Lease Record</strong> (+65 pts · 3.5 Acres Irrigated)</span>
+                  </label>
+
+                  <label style="display: flex; align-items: center; gap: 0.85rem; padding: 0.85rem 1rem; border: 2px solid var(--honey-cream); cursor: pointer;">
+                    <input type="checkbox" checked data-credit-points="60" style="width: 20px; height: 20px; accent-color: var(--honey-cream);" />
+                    <span><strong>3 Consecutive Seasons of Satellite-Verified Harvests</strong> (+60 pts)</span>
+                  </label>
+
+                  <label style="display: flex; align-items: center; gap: 0.85rem; padding: 0.85rem 1rem; border: 2px solid var(--honey-cream); cursor: pointer;">
+                    <input type="checkbox" checked data-credit-points="55" style="width: 20px; height: 20px; accent-color: var(--honey-cream);" />
+                    <span><strong>On-Time FPO Input &amp; Dairy Cooperative Ledger</strong> (+55 pts · 18 Months Clean)</span>
+                  </label>
+
+                  <label style="display: flex; align-items: center; gap: 0.85rem; padding: 0.85rem 1rem; border: 2px solid var(--honey-cream); cursor: pointer;">
+                    <input type="checkbox" checked data-credit-points="35" style="width: 20px; height: 20px; accent-color: var(--honey-cream);" />
+                    <span><strong>Mixed Crop + 3-Cattle Dairy Shed + PMFBY Cover</strong> (+35 pts)</span>
+                  </label>
+                </div>
+
+                <div style="border: 3px solid var(--honey-cream); padding: 2rem; background-color: var(--honey-cream); color: var(--burgundy);">
+                  <span class="mono-tag">TRANSPARENT MAATI FARM TRUST SCORE</span>
+                  <div class="stat-value-burgundy" id="credit-score-number" style="font-size: 3.1rem; margin: 0.4rem 0;">
+                    755 / 900
+                  </div>
+                  <div style="background-color: var(--burgundy); color: var(--honey-cream); padding: 0.45rem 0.75rem; font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; display: inline-block; margin-bottom: 1rem;" id="credit-tier-label">
+                    TIER A — PRIORITY KISAN WORKING CAPITAL ELIGIBLE
+                  </div>
+                  <p style="font-weight: 700; font-size: 1.08rem; margin-bottom: 0.85rem;" id="credit-loan-limit">
+                    Pre-Approved up to ₹1,95,000 @ 7.0% p.a. (48-Hour Cooperative Disbursal)
+                  </p>
+                  <p style="font-size: 0.92rem; border-top: 2px solid var(--burgundy); padding-top: 0.75rem;">
+                    <strong>Farmer Protection Guarantee:</strong> Farmers can see every single point in their credit file, correct any land-record error through their FPO desk, and share the report only with RBI-regulated cooperative and rural banks of their choice.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================================================================
+             PART 3: TWO-SIDED SUPPLY-DEMAND MATCHING VISUAL (FARMER ↔ BUYER)
+             ================================================================ -->
+        <div id="buyer-matching" class="reveal-up">
+          <div style="margin-bottom: 1.5rem;">
+            <span class="mono-tag" style="text-decoration: underline;">MODULE 03 / 03 · DIRECT FARM-GATE PROCUREMENT</span>
+            <h3 class="h2-section" style="margin-top: 0.35rem; margin-bottom: 0.5rem;">Two-Sided Supply-Demand Matching (Farmer ↔ Buyer)</h3>
+            <p class="lead-copy" style="max-width: 860px;">
+              Connects graded farm and FPO lots directly to verified flour mills, oilseed crushers, and regional retail chains — with AI-assisted fair-price recommendations so both sides settle quickly without multi-layer commission cuts.
+            </p>
+          </div>
+
+          <div class="mockup-shell">
+            <div class="mockup-topbar">
+              <span class="mono-tag">LIVE TWO-SIDED MATCHING BOARD · DIRECT ESCROW SETTLEMENT</span>
+              <span class="mono-tag">0% FARMER COMMISSION · DIGITAL WEIGHBRIDGE RECEIPT</span>
+            </div>
+
+            <div class="mockup-body">
+              <div class="grid-3" style="align-items: stretch;">
+                <!-- Side A: Farmer / FPO Supply Lot -->
+                <div style="border: 3px solid var(--honey-cream); padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; gap: 1rem;">
+                  <div>
+                    <span class="eyebrow eyebrow-cream" style="margin-bottom: 0.75rem;">SIDE A · FARMER / FPO SUPPLY</span>
+                    <h4 class="h3-card">Shramik Kisan FPO Lot #MH-408</h4>
+                    <p class="mono-tag" style="margin-bottom: 1rem;">18 Member Farmers · Niphad, Nashik</p>
+                    <ul style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.95rem; border-top: 2px solid var(--honey-cream); padding-top: 0.85rem;">
+                      <li><strong>Commodity:</strong> Lokwan Milling Wheat (Grade-A)</li>
+                      <li><strong>Verified Volume:</strong> 120 Quintals (12 Metric Tons)</li>
+                      <li><strong>Moisture &amp; Foreign Matter:</strong> 11.1% Moisture · &lt;0.8% FM</li>
+                      <li><strong>Harvest Date:</strong> Satellite &amp; Gate Verified · 18 Mar</li>
+                    </ul>
+                  </div>
+                  <div style="border-top: 2px solid var(--honey-cream); padding-top: 0.75rem;" class="mono-tag">
+                    FARMER RESERVE ASK: ₹2,560 / QUINTAL
+                  </div>
+                </div>
+
+                <!-- Center: AI Fair-Price Recommendation & Matching Engine -->
+                <div style="border: 3px solid var(--honey-cream); background-color: var(--honey-cream); color: var(--burgundy); padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; gap: 1rem; text-align: center;">
+                  <div>
+                    <span class="mono-tag" style="background-color: var(--burgundy); color: var(--honey-cream); padding: 0.3rem 0.65rem; display: inline-block; margin-bottom: 0.85rem;">
+                      AI FAIR-PRICE ENGINE
+                    </span>
+                    <h4 class="h3-card">Recommended Clearing Band</h4>
+                    <div class="stat-value-burgundy" style="font-size: 2.15rem; margin: 0.5rem 0;">
+                      ₹2,610 – ₹2,645 / Qtl
+                    </div>
+                    <p style="font-size: 0.92rem; font-weight: 600; margin-bottom: 1rem;">
+                      Includes +₹75/qtl low-moisture protein premium over local APMC modal price (₹2,540/qtl).
+                    </p>
+                  </div>
+
+                  <div style="border: 2px solid var(--burgundy); padding: 0.85rem; text-align: left; font-size: 0.88rem; font-weight: 700;">
+                    <div>✓ Farmer Net Uplift: +₹90 / Quintal (+₹10,800 on lot)</div>
+                    <div>✓ Buyer Saves: 4.5% middleman &amp; re-cleaning cost</div>
+                    <div>✓ Payment: Instant RTGS Escrow at FPO Weighbridge</div>
+                  </div>
+
+                  <a href="#get-started" class="btn btn-burgundy" data-open-modal="signup" style="width: 100%;">
+                    Post a Harvest Lot or Buyer Indent →
+                  </a>
+                </div>
+
+                <!-- Side B: Verified Institutional Buyer Demand -->
+                <div style="border: 3px solid var(--honey-cream); padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; gap: 1rem;">
+                  <div>
+                    <span class="eyebrow eyebrow-cream" style="margin-bottom: 0.75rem;">SIDE B · VERIFIED BUYER DEMAND</span>
+                    <h4 class="h3-card">Sahyadri Roller Flour Mills</h4>
+                    <p class="mono-tag" style="margin-bottom: 1rem;">Verified Buyer #BY-902 · Sinnar MIDC (38 km)</p>
+                    <ul style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.95rem; border-top: 2px solid var(--honey-cream); padding-top: 0.85rem;">
+                      <li><strong>Active Indent:</strong> 100 – 250 Quintals Lokwan Wheat</li>
+                      <li><strong>Quality Spec:</strong> Moisture &lt;12% · Test Weight &gt;78 kg/hl</li>
+                      <li><strong>Pickup Logistics:</strong> Buyer-arranged 14-ton truck at FPO gate</li>
+                      <li><strong>Escrow Status:</strong> ₹3.20 Lakh Funded in Bank Escrow</li>
+                    </ul>
+                  </div>
+                  <div style="border-top: 2px solid var(--honey-cream); padding-top: 0.75rem;" class="mono-tag">
+                    LIVE MATCHED BID: ₹2,630 / QUINTAL (FARM GATE)
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         FPO & COOPERATIVE BANK SETTLEMENT GUARANTEE (HONEY CREAM SECTION)
+         ==================================================================== -->
+    <section class="section-cream section-pad">
+      <div class="container">
+        <div class="grid-2" style="align-items: center;">
+          <div>
+            <span class="eyebrow eyebrow-green">BUILT FOR FPOS, BUYERS &amp; RURAL LENDERS</span>
+            <h2 class="h2-section">Why institutional buyers and rural banks trust Maati records</h2>
+            <p class="lead-copy" style="margin-bottom: 1.25rem;">
+              Every harvest lot and credit file on Maati is backed by continuous seasonal telemetry — not a one-time self-reported form filled out on the day of a loan application.
+            </p>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+              <a href="advisory.html" class="btn btn-green">Explore Voice &amp; SMS Advisory →</a>
+              <a href="satellite-weather.html" class="btn btn-burgundy">See Satellite Insurance Verification →</a>
+            </div>
+          </div>
+
+          <div class="grid-2" style="gap: 1.25rem;">
+            <div class="card-structured">
+              <div class="card-structured-head">
+                <span class="mono-tag">FOR FARMERS</span>
+              </div>
+              <div class="card-structured-body">
+                <div class="stat-value-burgundy" style="font-size: 2rem;">0% Cut</div>
+                <p style="font-size: 0.95rem; font-weight: 600;">Zero commission charged to smallholder farmers listing harvest lots through their village FPO.</p>
+              </div>
+            </div>
+
+            <div class="card-structured">
+              <div class="card-structured-head">
+                <span class="mono-tag">FOR LENDERS</span>
+              </div>
+              <div class="card-structured-body">
+                <div class="stat-value-burgundy" style="font-size: 2rem;">98.6%</div>
+                <p style="font-size: 0.95rem; font-weight: 600;">On-time seasonal repayment across FPO-linked working capital loans underwritten with Maati scores.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Shared 4-Column Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        <div>
+          <a href="index.html" class="brand-logo" style="color: var(--honey-cream); margin-bottom: 1rem;">
+            <span class="brand-mark" style="background-color: var(--honey-cream); color: var(--green-tea); border-color: var(--honey-cream);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                <path d="M12 22V10M12 10C12 6 15.5 3 20 3C20 7.5 17 11 12 10ZM12 13C12 9 8.5 6 4 6C4 10.5 7 14 12 13Z"/>
+                <path d="M4 22h16"/>
+              </svg>
+            </span>
+            <span>MAATI</span>
+          </a>
+          <p style="font-size: 0.95rem; margin-bottom: 1.25rem;">
+            Grounded, plainspoken agricultural and dairy intelligence built for working farmers, FPO cooperatives, rural lenders, and institutional buyers.
+          </p>
+          <p class="mono-tag">TOLL-FREE KISAN DESK: 1800-120-4455</p>
+        </div>
+
+        <div>
+          <h3 class="footer-col-title">Product (6 USPs)</h3>
+          <ul class="footer-links">
+            <li><a href="crop-tech.html#disease-detection">Crop Disease &amp; Pest Detection</a></li>
+            <li><a href="crop-tech.html#yield-prediction">Per-Field Yield Prediction</a></li>
+            <li><a href="crop-tech.html#soil-health">Soil Health Analysis (NPK/pH)</a></li>
+            <li><a href="livestock-tech.html#cattle-health">Cattle Health Monitoring</a></li>
+            <li><a href="livestock-tech.html#milk-prediction">Milk Yield &amp; Quality Prediction</a></li>
+            <li><a href="livestock-tech.html#feed-optimization">Automated Feed Optimization</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-col-title">Ecosystem</h3>
+          <ul class="footer-links">
+            <li><a href="market-finance.html">Market &amp; Finance Overview</a></li>
+            <li><a href="market-finance.html#price-forecast">Mandi Price Forecasting</a></li>
+            <li><a href="market-finance.html#credit-scoring">Plainspoken AI Credit Scoring</a></li>
+            <li><a href="advisory.html">Voice AI &amp; WhatsApp Advisory</a></li>
+            <li><a href="satellite-weather.html">NDVI &amp; Drone Spraying Maps</a></li>
+            <li><a href="satellite-weather.html#insurance-claims">Satellite Insurance Claims</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-col-title">Company</h3>
+          <ul class="footer-links">
+            <li><a href="about.html">About &amp; Mission</a></li>
+            <li><a href="about.html#data-pledge">Farmer Data Ownership Pledge</a></li>
+            <li><a href="about.html#timeline">Founding Story &amp; Timeline</a></li>
+            <li><a href="about.html#partners">FPO &amp; University Partners</a></li>
+            <li><a href="about.html#careers">Field Agronomy Careers</a></li>
+            <li><a href="about.html#press">Press &amp; Audit Reports</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-col-title">Support &amp; Language</h3>
+          <ul class="footer-links" style="margin-bottom: 1rem;">
+            <li><a href="advisory.html">24×7 Voice &amp; SMS Help Center</a></li>
+            <li><a href="advisory.html#whatsapp-bot">WhatsApp Bot Setup</a></li>
+            <li><a href="about.html#contact">Partner an FPO or Dairy Union</a></li>
+          </ul>
+          <label class="mono-tag" for="footer-lang-select" style="display: block; margin-bottom: 0.4rem;">SITE LANGUAGE</label>
+          <div class="lang-select-wrap" style="border-color: var(--honey-cream); width: 100%;">
+            <select id="footer-lang-select" class="lang-select" style="width: 100%;" aria-label="Footer Language Selector">
+              <option value="en">EN · English</option>
+              <option value="hi">हिन्दी · Hindi</option>
+              <option value="mr">मराठी · Marathi</option>
+              <option value="ta">தமிழ் · Tamil</option>
+              <option value="te">తెలుగు · Telugu</option>
+              <option value="pa">ਪੰਜਾਬੀ · Punjabi</option>
+              <option value="kn">ಕನ್ನಡ · Kannada</option>
+              <option value="gu">ગુજરાતી · Gujarati</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Maati AgriTech Platform. Built for the field, not just the boardroom.</span>
+        <span>Strict Flat 3-Color Accessibility Standard · Zero Farmer Data Sold to Third Parties</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Shared Modal -->
+  <div class="modal-backdrop" id="onboarding-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-card">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; padding-bottom: 0.85rem; border-bottom: 2px solid var(--green-tea);">
+        <div>
+          <span class="eyebrow eyebrow-burgundy" style="margin-bottom: 0.4rem;">MAATI FARM ACCOUNT</span>
+          <h2 class="h3-card" id="modal-title" style="margin-bottom: 0;">Start free with your first field or herd</h2>
+        </div>
+        <button type="button" id="modal-close-btn" class="btn btn-outline-green" style="padding: 0.35rem 0.65rem;" aria-label="Close modal">✕</button>
+      </div>
+      <p id="modal-subtitle" style="margin-bottom: 1.25rem; font-size: 0.95rem;">
+        No credit card needed. Add your mobile number and village pin code to begin.
+      </p>
+      <form id="modal-form">
+        <div class="form-field">
+          <label for="modal-phone">Mobile Number (SMS &amp; WhatsApp)</label>
+          <input type="tel" id="modal-phone" class="form-input" placeholder="+91 98230 XXXXX" required />
+        </div>
+        <div class="form-field">
+          <label for="modal-pincode">Village Pin Code / Mandi Block</label>
+          <input type="text" id="modal-pincode" class="form-input" placeholder="e.g. 422303 (Lasalgaon / Niphad)" required />
+        </div>
+        <div class="form-field">
+          <label for="modal-role">Primary Farm Activity</label>
+          <select id="modal-role" class="form-input">
+            <option value="mixed">Mixed Crop + Dairy Livestock Farm</option>
+            <option value="fpo">FPO / Cooperative / Institutional Buyer</option>
+            <option value="crop">Crop &amp; Horticulture Farmer</option>
+            <option value="dairy">Dairy &amp; Cattle Herd Owner</option>
+          </select>
+        </div>
+        <button type="submit" id="modal-submit-btn" class="btn btn-burgundy btn-lg" style="width: 100%;">Create Free Farm Profile</button>
+        <div id="modal-feedback" style="display: none; margin-top: 1rem; padding: 0.85rem; background-color: var(--green-tea); color: var(--honey-cream); font-weight: 600; font-size: 0.92rem;"></div>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crop Tech — Leaf Diagnosis, Yield Prediction &amp; Soil Health | MAATI</title>
+  <meta name="description" content="Field-tested crop intelligence: smartphone leaf-photo disease detection, confidence-range yield prediction, and season-long NPK, moisture, and pH soil health tracking." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ====================================================================
+       SOLID TOP NAVIGATION BAR
+       ==================================================================== -->
+  <header class="site-header">
+    <div class="nav-inner">
+      <a href="index.html" class="brand-logo" aria-label="Maati Home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+            <path d="M12 22V10M12 10C12 6 15.5 3 20 3C20 7.5 17 11 12 10ZM12 13C12 9 8.5 6 4 6C4 10.5 7 14 12 13Z"/>
+            <path d="M4 22h16"/>
+          </svg>
+        </span>
+        <span>
+          MAATI
+          <span class="brand-sub">Field &amp; Herd Platform</span>
+        </span>
+      </a>
+
+      <nav class="primary-nav" aria-label="Primary Navigation">
+        <a href="index.html" class="nav-link" data-i18n="navHome">Home</a>
+        <a href="crop-tech.html" class="nav-link active" data-i18n="navCrop">Crop Tech</a>
+        <a href="livestock-tech.html" class="nav-link" data-i18n="navLivestock">Livestock Tech</a>
+        <a href="market-finance.html" class="nav-link" data-i18n="navMarket">Market &amp; Finance</a>
+        <a href="advisory.html" class="nav-link" data-i18n="navAdvisory">Advisory</a>
+        <a href="satellite-weather.html" class="nav-link" data-i18n="navSatellite">Satellite &amp; Weather</a>
+        <a href="about.html" class="nav-link" data-i18n="navAbout">About</a>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="lang-select-wrap" title="Select Language">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+          <select class="lang-select" aria-label="Select Language">
+            <option value="en">EN · English</option>
+            <option value="hi">हिन्दी · Hindi</option>
+            <option value="mr">मराठी · Marathi</option>
+            <option value="ta">தமிழ் · Tamil</option>
+            <option value="te">తెలుగు · Telugu</option>
+            <option value="pa">ਪੰਜਾਬੀ · Punjabi</option>
+            <option value="kn">ಕನ್ನಡ · Kannada</option>
+            <option value="gu">ગુજરાતી · Gujarati</option>
+          </select>
+        </div>
+
+        <a href="#login" class="nav-login-link" data-open-modal="login" data-i18n="navLogin">Log in</a>
+        <a href="#get-started" class="btn btn-burgundy" data-open-modal="signup" data-i18n="navGetStarted">Get Started</a>
+
+        <button type="button" id="mobile-menu-btn" class="mobile-menu-toggle" aria-label="Toggle Menu" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M3 6h18M3 12h18M3 18h18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Full-Screen Mobile Menu Drawer -->
+    <div class="mobile-drawer" id="mobile-drawer" aria-label="Mobile Navigation">
+      <div class="mobile-nav-list">
+        <a href="index.html" class="mobile-nav-link"><span data-i18n="navHome">Home</span> <span>→</span></a>
+        <a href="crop-tech.html" class="mobile-nav-link active"><span data-i18n="navCrop">Crop Tech</span> <span>→</span></a>
+        <a href="livestock-tech.html" class="mobile-nav-link"><span data-i18n="navLivestock">Livestock Tech</span> <span>→</span></a>
+        <a href="market-finance.html" class="mobile-nav-link"><span data-i18n="navMarket">Market &amp; Finance</span> <span>→</span></a>
+        <a href="advisory.html" class="mobile-nav-link"><span data-i18n="navAdvisory">Advisory</span> <span>→</span></a>
+        <a href="satellite-weather.html" class="mobile-nav-link"><span data-i18n="navSatellite">Satellite &amp; Weather</span> <span>→</span></a>
+        <a href="about.html" class="mobile-nav-link"><span data-i18n="navAbout">About</span> <span>→</span></a>
+      </div>
+      <div class="mobile-drawer-footer">
+        <a href="#get-started" class="btn btn-burgundy btn-lg" data-open-modal="signup" data-i18n="navGetStarted">Get Started — Try the App</a>
+        <a href="#login" class="btn btn-outline-green btn-lg" data-open-modal="login" data-i18n="navLogin">Log in to Existing Farm Account</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ====================================================================
+         COMPACT PAGE-SPECIFIC HERO (CROP TECH)
+         ==================================================================== -->
+    <section class="interior-hero">
+      <div class="container">
+        <div class="interior-hero-grid">
+          <div>
+            <span class="eyebrow eyebrow-cream">PILLAR GROUP 01 · CROP INTELLIGENCE</span>
+            <h1 class="h1-hero">Catch leaf disease early, know your soil’s real appetite, and forecast harvest before the mandi rush.</h1>
+            <p class="lead-copy" style="margin-bottom: 1.75rem;">
+              Three field-calibrated tools built for smallholders and FPO agronomists. No expensive hardware required to start — begin with your phone camera and village weather feed, and add soil probes as you grow.
+            </p>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+              <a href="#disease-detection" class="btn btn-cream">01 · Leaf Disease Detection</a>
+              <a href="#yield-prediction" class="btn btn-cream">02 · Yield Prediction</a>
+              <a href="#soil-health" class="btn btn-burgundy">03 · Soil Health Analysis</a>
+            </div>
+          </div>
+
+          <!-- Supporting Flat Diagram: Crop Intelligence Architecture -->
+          <div class="diagram-frame" aria-label="Crop Intelligence Input-Output Diagram">
+            <div style="border-bottom: 2px solid var(--green-tea); padding-bottom: 0.65rem; margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center;">
+              <span class="mono-tag">FIELD DATA ARCHITECTURE</span>
+              <span class="status-pill status-healthy">OFFLINE-FIRST SYNC</span>
+            </div>
+            <svg viewBox="0 0 460 230" width="100%" height="auto" role="img" aria-label="Diagram showing Leaf Photo, Weather Feed, and Soil Probe feeding into Per-Plot Crop Intelligence">
+              <!-- Left Input Boxes -->
+              <rect x="10" y="15" width="145" height="55" fill="#4B7B4E" stroke="#4B7B4E" stroke-width="2"/>
+              <text x="22" y="38" fill="#FACD8C" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">01. LEAF CAMERA</text>
+              <text x="22" y="56" fill="#FACD8C" font-family="Plus Jakarta Sans, sans-serif" font-size="11">Lesion &amp; pest scan</text>
+
+              <rect x="10" y="87" width="145" height="55" fill="#4B7B4E" stroke="#4B7B4E" stroke-width="2"/>
+              <text x="22" y="110" fill="#FACD8C" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">02. WEATHER + HIST</text>
+              <text x="22" y="128" fill="#FACD8C" font-family="Plus Jakarta Sans, sans-serif" font-size="11">5-yr plot &amp; rain log</text>
+
+              <rect x="10" y="159" width="145" height="55" fill="#4B7B4E" stroke="#4B7B4E" stroke-width="2"/>
+              <text x="22" y="182" fill="#FACD8C" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">03. SOIL INPUT</text>
+              <text x="22" y="200" fill="#FACD8C" font-family="Plus Jakarta Sans, sans-serif" font-size="11">Photo or root probe</text>
+
+              <!-- Connecting Lines -->
+              <path d="M155 42 L225 115 M155 115 L225 115 M155 186 L225 115" stroke="#4B7B4E" stroke-width="3" fill="none"/>
+
+              <!-- Right Output Box -->
+              <rect x="225" y="25" width="225" height="180" fill="#FACD8C" stroke="#4B7B4E" stroke-width="3"/>
+              <rect x="225" y="25" width="225" height="36" fill="#660033"/>
+              <text x="238" y="48" fill="#FACD8C" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">PLOT ACTION CARD</text>
+
+              <text x="240" y="86" fill="#4B7B4E" font-family="Plus Jakarta Sans, sans-serif" font-size="12" font-weight="700">• Verified Diagnosis (94.2%)</text>
+              <text x="240" y="114" fill="#4B7B4E" font-family="Plus Jakarta Sans, sans-serif" font-size="12" font-weight="700">• Exact Dosage per Acre</text>
+              <text x="240" y="142" fill="#4B7B4E" font-family="Plus Jakarta Sans, sans-serif" font-size="12" font-weight="700">• 18.6–20.2 Qtl/Ac Forecast</text>
+              <text x="240" y="170" fill="#660033" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">• NPK Split Fertilizer Plan</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         USP 1: CROP DISEASE & PEST DETECTION
+         ==================================================================== -->
+    <section class="section-cream section-pad" id="disease-detection">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <span class="eyebrow eyebrow-burgundy">CROP USP 01 / 03 · COMPUTER VISION IN THE FIELD</span>
+          <h2 class="h2-section">Crop Disease &amp; Pest Detection from Leaf Photos</h2>
+          <p class="lead-copy">
+            When a fungal blight or borer hits a plot, waiting a week for an input dealer visit often costs 25% of the harvest. Farmers snap a close-up photo of the affected leaf, stem, or boll — even offline — and receive an immediate diagnosis with locally approved organic and chemical dosages.
+          </p>
+        </div>
+
+        <!-- Numbered Process Step-Strip: How Diagnosis Works -->
+        <div class="step-strip reveal-up" aria-label="How Diagnosis Works Step Strip">
+          <div class="step-item">
+            <span class="step-num">STEP 01</span>
+            <h3 class="step-title">Snap Leaf Photo in Field</h3>
+            <p class="step-desc">Take 1–2 close-up photos of the top and underside of the affected leaf using any smartphone camera.</p>
+          </div>
+          <div class="step-item">
+            <span class="step-num">STEP 02</span>
+            <h3 class="step-title">Lesion &amp; Pattern Check</h3>
+            <p class="step-desc">Our model compares lesion rings, vein yellowing, and pest frass against 420,000+ agronomist-labeled Indian field photos.</p>
+          </div>
+          <div class="step-item">
+            <span class="step-num">STEP 03</span>
+            <h3 class="step-title">Honest Confidence Score</h3>
+            <p class="step-desc">Displays the exact match percentage and flags if a second photo or FPO agronomist call is recommended.</p>
+          </div>
+          <div class="step-item">
+            <span class="step-num">STEP 04</span>
+            <h3 class="step-title">Local Dosage &amp; Follow-Up</h3>
+            <p class="step-desc">Provides biological/organic controls first, exact gram-per-liter chemical dosage second, and a 7-day recovery check.</p>
+          </div>
+        </div>
+
+        <!-- Interactive Before/After Diagnosis Card Mockup -->
+        <div class="mockup-shell reveal-up">
+          <div class="mockup-topbar">
+            <div>
+              <span class="mono-tag">INTERACTIVE FIELD DIAGNOSIS MOCKUP · BEFORE &amp; AFTER TREATMENT</span>
+            </div>
+            <div class="mockup-tabs" role="tablist" aria-label="Select Crop Sample">
+              <button type="button" class="tab-btn active" data-diag-sample="tomato">Sample 1: Tomato Blight</button>
+              <button type="button" class="tab-btn" data-diag-sample="wheat">Sample 2: Wheat Yellow Rust</button>
+              <button type="button" class="tab-btn" data-diag-sample="cotton">Sample 3: Cotton Pink Bollworm</button>
+            </div>
+          </div>
+
+          <div class="mockup-body">
+            <div class="grid-2">
+              <!-- Left Column: Leaf Inspection & Diagnosis Details -->
+              <div style="display: flex; flex-direction: column; gap: 1.15rem;">
+                <div style="border: 2px solid var(--green-tea); padding: 1.15rem; background-color: var(--honey-cream);">
+                  <div style="display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.75rem;">
+                    <span class="mono-tag" id="diag-crop-meta">Tomato (Hybrid Abhinav) · 52 Days After Transplanting</span>
+                    <span class="status-pill status-alert" id="diag-confidence">94.2% Match (High Confidence · 18,400 Field Samples)</span>
+                  </div>
+
+                  <!-- Flat Leaf Lesion Visual Inspection Diagram -->
+                  <svg viewBox="0 0 480 175" width="100%" height="auto" style="border: 2px solid var(--green-tea); margin-bottom: 0.85rem;" aria-label="Leaf Lesion Detection Bounding Box Diagram">
+                    <rect width="480" height="175" fill="#4B7B4E"/>
+                    <!-- Stylized Leaf Silhouette -->
+                    <path d="M75 140 C95 45, 225 25, 360 55 C295 135, 175 160, 75 140 Z" fill="#FACD8C" stroke="#FACD8C" stroke-width="3"/>
+                    <!-- Leaf Veins -->
+                    <path d="M80 138 Q210 95 350 57 M165 110 L145 70 M225 92 L205 55 M275 78 L260 48" stroke="#4B7B4E" stroke-width="2.5" fill="none"/>
+                    <!-- Target Lesion Spots in Burgundy -->
+                    <circle cx="185" cy="96" r="14" fill="#660033"/>
+                    <circle cx="185" cy="96" r="7" fill="none" stroke="#FACD8C" stroke-width="1.8"/>
+                    <circle cx="248" cy="82" r="11" fill="#660033"/>
+                    <circle cx="222" cy="114" r="9" fill="#660033"/>
+                    <!-- Bounding Boxes -->
+                    <rect x="163" y="74" width="44" height="44" fill="none" stroke="#660033" stroke-width="2.5" stroke-dasharray="4 2"/>
+                    <rect x="232" y="66" width="32" height="32" fill="none" stroke="#660033" stroke-width="2.5" stroke-dasharray="4 2"/>
+                    <rect x="12" y="12" width="195" height="26" fill="#660033"/>
+                    <text x="20" y="29" fill="#FACD8C" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">VISION SCAN: 3 LESION CLUSTERS</text>
+                  </svg>
+
+                  <div style="display: flex; justify-content: space-between; font-size: 0.9rem; font-weight: 700; border-top: 2px solid var(--green-tea); padding-top: 0.6rem;">
+                    <span>Location: <span id="diag-location">Niphad Block, Nashik District</span></span>
+                    <span>Camera: 8MP Android · Offline Queued</span>
+                  </div>
+                </div>
+
+                <div style="border: 2px solid var(--green-tea); padding: 1.25rem;">
+                  <div class="mono-tag" style="color: var(--burgundy); margin-bottom: 0.25rem;">IDENTIFIED CONDITION</div>
+                  <h3 class="h3-card" id="diag-name" style="margin-bottom: 0.35rem;">Early Blight (Alternaria solani)</h3>
+                  <p style="font-weight: 700; margin-bottom: 0.5rem;" id="diag-severity">Moderate — Lower Canopy (14% Leaf Area Affected)</p>
+                  <p id="diag-lesion-desc" style="font-size: 0.95rem;">
+                    Concentric target-ring dark brown lesions on older lower leaves with yellow halo border.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Right Column: Recommended Action & Before/After Recovery Card -->
+              <div style="display: flex; flex-direction: column; gap: 1.15rem; justify-content: space-between;">
+                <div style="border: 2px solid var(--green-tea); padding: 1.25rem; background-color: var(--green-tea); color: var(--honey-cream);">
+                  <div class="mono-tag" style="margin-bottom: 0.65rem; border-bottom: 2px solid var(--honey-cream); padding-bottom: 0.4rem;">
+                    RECOMMENDED FIELD TREATMENT (2 TIERS)
+                  </div>
+                  <div style="margin-bottom: 1rem;">
+                    <div class="mono-tag" style="margin-bottom: 0.25rem;">TIER A · BIOLOGICAL &amp; CULTURAL CONTROL</div>
+                    <p id="diag-organic" style="font-size: 0.95rem;">
+                      Remove infected bottom leaves; spray Neem Kernel Extract (NSKE 5%) + Trichoderma viride @ 5g/liter.
+                    </p>
+                  </div>
+                  <div>
+                    <div class="mono-tag" style="margin-bottom: 0.25rem;">TIER B · TARGETED CHEMICAL DOSAGE (IF SPREAD &gt; 10%)</div>
+                    <p id="diag-chemical" style="font-size: 0.95rem;">
+                      Mancozeb 75% WP @ 2.5g/liter of water (500g per acre in 200L water). Avoid spraying during peak noon sun.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Sample Before / After Recovery Card -->
+                <div style="border: 3px solid var(--green-tea); padding: 1.25rem;">
+                  <div class="mono-tag" style="margin-bottom: 0.75rem;">7-DAY FOLLOW-UP PHOTO VERIFICATION (BEFORE VS. AFTER)</div>
+                  <div class="grid-2" style="gap: 1rem; margin-bottom: 0.85rem;">
+                    <div style="border: 2px solid var(--burgundy); padding: 0.85rem;">
+                      <span class="status-pill status-alert" style="margin-bottom: 0.4rem;">DAY 0 · BEFORE</span>
+                      <p id="diag-before-stat" style="font-weight: 700; font-size: 0.92rem; color: var(--burgundy);">
+                        14.2% Canopy Lesion Spread · High Spore Risk
+                      </p>
+                    </div>
+                    <div style="border: 2px solid var(--green-tea); padding: 0.85rem; background-color: var(--green-tea); color: var(--honey-cream);">
+                      <span class="status-pill" style="background: var(--honey-cream); color: var(--green-tea); margin-bottom: 0.4rem;">DAY 7 · AFTER</span>
+                      <p id="diag-after-stat" style="font-weight: 700; font-size: 0.92rem;">
+                        1.8% Residual Scarring · New Foliage Clean (Day 7 Check)
+                      </p>
+                    </div>
+                  </div>
+                  <div class="mono-tag" id="diag-cost-saved" style="color: var(--burgundy);">
+                    ₹1,450/acre saved by avoiding broad-spectrum fungicide mix
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         USP 2: PER-FIELD YIELD PREDICTION
+         ==================================================================== -->
+    <section class="section-green section-pad" id="yield-prediction">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <span class="eyebrow eyebrow-cream">CROP USP 02 / 03 · HONEST CONFIDENCE RANGES</span>
+          <h2 class="h2-section">Per-Field Yield Prediction</h2>
+          <p class="lead-copy">
+            No crop model can promise a single exact decimal months before harvest — and any platform that does is guessing. Maati combines your plot’s 5-year harvest history, live local rainfall and degree-days, and root-zone soil moisture to project an honest per-field confidence range.
+          </p>
+        </div>
+
+        <!-- Numbered Process Step-Strip: How Yield Forecasting Works -->
+        <div class="step-strip reveal-up" aria-label="How Yield Prediction Works">
+          <div class="step-item">
+            <span class="step-num">INPUT 01</span>
+            <h3 class="step-title">Historical Yield Records</h3>
+            <p class="step-desc">Uses 5-year plot harvest receipts, variety maturity days, and district FPO benchmark curves.</p>
+          </div>
+          <div class="step-item">
+            <span class="step-num">INPUT 02</span>
+            <h3 class="step-title">Live Weather Feeds</h3>
+            <p class="step-desc">Tracks cumulative rainfall, growing degree-days (GDD), and flowering-stage heat or dry-spell stress.</p>
+          </div>
+          <div class="step-item">
+            <span class="step-num">INPUT 03</span>
+            <h3 class="step-title">Soil Moisture &amp; NPK</h3>
+            <p class="step-desc">Adjusts expected grain or tuber filling based on real root-zone moisture and fertilizer split timing.</p>
+          </div>
+          <div class="step-item">
+            <span class="step-num">OUTPUT</span>
+            <h3 class="step-title">Per-Field Confidence Band</h3>
+            <p class="step-desc">Produces a low-to-high Quintals/Acre harvest range updated every 7 days through harvest.</p>
+          </div>
+        </div>
+
+        <!-- Interactive Yield Forecast Chart Mockup -->
+        <div class="mockup-shell reveal-up">
+          <div class="mockup-topbar" style="border-bottom-color: var(--honey-cream);">
+            <span class="mono-tag">INTERACTIVE PER-FIELD YIELD FORECAST MOCKUP</span>
+            <div class="mockup-tabs" role="tablist" aria-label="Select Plot Forecast">
+              <button type="button" class="tab-btn active" data-yield-plot="wheat">Plot A: Rabi Wheat (4.2 Ac)</button>
+              <button type="button" class="tab-btn" data-yield-plot="soybean">Plot B: Kharif Soybean (6.0 Ac)</button>
+              <button type="button" class="tab-btn" data-yield-plot="turmeric">River Plot: Turmeric (2.5 Ac)</button>
+            </div>
+          </div>
+
+          <div class="mockup-body">
+            <div class="grid-2" style="align-items: center;">
+              <div>
+                <div class="mono-tag" id="yield-plot-name" style="margin-bottom: 0.4rem;">
+                  Plot A — Rabi Milling Wheat (4.2 Acres · Alluvial Loam)
+                </div>
+                <div class="stat-value-burgundy" id="yield-range-val" style="margin-bottom: 0.35rem;">
+                  18.6 – 20.2 Quintals / Acre
+                </div>
+                <p style="font-weight: 700; font-size: 1.1rem; margin-bottom: 1.15rem;" id="yield-total-est">
+                  78.1 – 84.8 Quintals Total Harvest (85% Confidence Interval)
+                </p>
+
+                <div style="display: flex; flex-direction: column; gap: 0.75rem; border-top: 2px solid var(--green-tea); padding-top: 1rem; font-size: 0.95rem;">
+                  <div>
+                    <span class="mono-tag">HISTORICAL BASELINE:</span>
+                    <span id="yield-hist-avg" style="font-weight: 700;"> 16.9 Quintals / Acre (5-Year Plot Average)</span>
+                  </div>
+                  <div>
+                    <span class="mono-tag">LIVE WEATHER FACTOR:</span>
+                    <span id="yield-weather-note"> +14% favorable winter chill hours; zero terminal heat spike forecast through March 22.</span>
+                  </div>
+                  <div>
+                    <span class="mono-tag">SOIL CONDITION FACTOR:</span>
+                    <span id="yield-soil-note"> Soil moisture at 64% field capacity; basal + first top-dress Nitrogen absorbed cleanly.</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Honest SVG Yield Trajectory & Confidence Range Chart -->
+              <div style="border: 2px solid var(--green-tea); padding: 1.15rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.65rem; flex-wrap: wrap; gap: 0.5rem;">
+                  <span class="mono-tag">GROWTH TRAJECTORY &amp; CONFIDENCE CONE</span>
+                  <span class="mono-tag" style="color: var(--burgundy);">■ CONFIDENCE RANGE · — ACTUAL · -- 5-YR AVG</span>
+                </div>
+                <svg viewBox="0 0 640 230" width="100%" height="auto" role="img" aria-label="Yield Forecast Line Chart with Confidence Range Cone">
+                  <!-- Grid Lines -->
+                  <line x1="40" y1="35" x2="600" y2="35" stroke="#4B7B4E" stroke-width="1" stroke-dasharray="3 3"/>
+                  <line x1="40" y1="85" x2="600" y2="85" stroke="#4B7B4E" stroke-width="1" stroke-dasharray="3 3"/>
+                  <line x1="40" y1="135" x2="600" y2="135" stroke="#4B7B4E" stroke-width="1" stroke-dasharray="3 3"/>
+                  <line x1="40" y1="195" x2="600" y2="195" stroke="#4B7B4E" stroke-width="2.5"/>
+                  <line x1="40" y1="25" x2="40" y2="195" stroke="#4B7B4E" stroke-width="2.5"/>
+
+                  <!-- "Today" Divider Line -->
+                  <line x1="370" y1="25" x2="370" y2="195" stroke="#660033" stroke-width="2" stroke-dasharray="5 3"/>
+                  <rect x="318" y="22" width="104" height="20" fill="#660033"/>
+                  <text x="326" y="36" fill="#FACD8C" font-family="JetBrains Mono, monospace" font-size="10" font-weight="700">TODAY · WK 11</text>
+
+                  <!-- Confidence Range Polygon (Solid Green Tea Fill with Honey Cream Stroke) -->
+                  <polygon id="svg-yield-band" points="370,110 480,92 590,78 590,38 480,55 370,82" fill="#4B7B4E"/>
+
+                  <!-- 5-Year Historical Baseline (Dashed Green Tea) -->
+                  <polyline id="svg-yield-baseline" points="40,192 150,175 260,152 370,132 480,114 590,102" fill="none" stroke="#4B7B4E" stroke-width="2.5" stroke-dasharray="6 4"/>
+
+                  <!-- Observed Biomass To Date (Solid Green Tea) -->
+                  <polyline id="svg-yield-actual" points="40,185 150,162 260,130 370,96" fill="none" stroke="#4B7B4E" stroke-width="4"/>
+
+                  <!-- Projected Median Forecast (Solid Burgundy) -->
+                  <polyline id="svg-yield-forecast" points="370,96 480,74 590,58" fill="none" stroke="#660033" stroke-width="4"/>
+
+                  <!-- Data Nodes -->
+                  <circle cx="40" cy="185" r="5" fill="#4B7B4E"/>
+                  <circle cx="150" cy="162" r="5" fill="#4B7B4E"/>
+                  <circle cx="260" cy="130" r="5" fill="#4B7B4E"/>
+                  <circle cx="370" cy="96" r="6" fill="#660033"/>
+                  <circle cx="590" cy="58" r="6" fill="#660033"/>
+
+                  <!-- X-Axis Labels -->
+                  <text x="35" y="216" fill="#4B7B4E" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">SOWING</text>
+                  <text x="135" y="216" fill="#4B7B4E" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">WK 04</text>
+                  <text x="245" y="216" fill="#4B7B4E" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">WK 08</text>
+                  <text x="355" y="216" fill="#660033" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">WK 11</text>
+                  <text x="465" y="216" fill="#4B7B4E" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">WK 14</text>
+                  <text x="555" y="216" fill="#660033" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">HARVEST</text>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         USP 3: SOIL HEALTH ANALYSIS (IMAGE OR SENSOR INPUT PATHS)
+         ==================================================================== -->
+    <section class="section-cream section-pad" id="soil-health">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <span class="eyebrow eyebrow-green">CROP USP 03 / 03 · TWO INPUT PATHS FOR EVERY BUDGET</span>
+          <h2 class="h2-section">Soil Health Analysis: NPK, Moisture % &amp; pH Trends</h2>
+          <p class="lead-copy">
+            Most farmers apply urea by habit rather than soil need. Maati supports two practical input paths — start immediately with smartphone topsoil photos paired with your government Soil Health Card, or connect a solar LoRaWAN root probe for continuous 15-minute readings.
+          </p>
+        </div>
+
+        <!-- Numbered Step-Strip: Two Input Paths to Season Trend -->
+        <div class="step-strip reveal-up" aria-label="How Soil Health Analysis Works">
+          <div class="step-item">
+            <span class="step-num">INPUT PATH A (NO HARDWARE)</span>
+            <h3 class="step-title">Soil Photo + Card</h3>
+            <p class="step-desc">Snap a wet/dry topsoil photo beside a coin and upload your block Soil Health Card for texture, organic carbon, and moisture estimation.</p>
+          </div>
+          <div class="step-item">
+            <span class="step-num">INPUT PATH B (CONNECTED)</span>
+            <h3 class="step-title">3-Depth Sensor Probe</h3>
+            <p class="step-desc">Push-in solar LoRaWAN probe reads Nitrogen, Phosphorus, Potassium (NPK), volumetric moisture %, and pH at 15cm &amp; 30cm root depths.</p>
+          </div>
+          <div class="step-item">
+            <span class="step-num">SEASON TRACKING</span>
+            <h3 class="step-title">16-Week Trend Line</h3>
+            <p class="step-desc">Watches nutrient drawdown after each irrigation or rain event so leaching and alkalinity lockup are caught early.</p>
+          </div>
+          <div class="step-item">
+            <span class="step-num">FIELD OUTPUT</span>
+            <h3 class="step-title">Split Fertilizer Plan</h3>
+            <p class="step-desc">Recommends exact kg/acre of Urea, DAP, MOP, or farmyard compost for the next crop stage — cutting excess fertilizer waste.</p>
+          </div>
+        </div>
+
+        <!-- Interactive Soil Health Trend-Line Mockup -->
+        <div class="mockup-shell reveal-up">
+          <div class="mockup-topbar">
+            <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+              <span class="mono-tag">INPUT PATH:</span>
+              <button type="button" class="tab-btn" data-soil-path="photo">Path A: Soil Photo + Card</button>
+              <button type="button" class="tab-btn active" data-soil-path="sensor">Path B: Connected Sensor Probe</button>
+            </div>
+            <div class="mockup-tabs" role="tablist" aria-label="Select Soil Metric">
+              <button type="button" class="tab-btn active" data-soil-metric="npk">NPK Levels (kg/ha)</button>
+              <button type="button" class="tab-btn" data-soil-metric="moisture">Moisture % Trend</button>
+              <button type="button" class="tab-btn" data-soil-metric="ph">Soil pH &amp; EC Trend</button>
+            </div>
+          </div>
+
+          <div class="mockup-body">
+            <div style="border-bottom: 2px solid var(--green-tea); padding-bottom: 0.85rem; margin-bottom: 1.25rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+              <span class="mono-tag" id="soil-input-mode-note">
+                INPUT SOURCE: Connected LoRaWAN 3-Depth Root Probe · Live 15-Minute Telemetry (±1.5% Lab Precision)
+              </span>
+              <span class="status-pill status-healthy" id="soil-status-badge">
+                OPTIMAL ROOT UPTAKE — Delay 3rd Urea Split by 5 Days
+              </span>
+            </div>
+
+            <div class="grid-2" style="align-items: center;">
+              <div>
+                <h3 class="h3-card" id="soil-chart-title">
+                  Available Nitrogen (N), Phosphorus (P) &amp; Potassium (K) — 16-Week Season Curve
+                </h3>
+                <div class="stat-value-burgundy" id="soil-current-val" style="font-size: 1.9rem; margin: 0.65rem 0;">
+                  N: 248 kg/ha · P: 31 kg/ha · K: 290 kg/ha
+                </div>
+                <p id="soil-advice-copy" style="margin-bottom: 1.25rem; font-weight: 600;">
+                  Topsoil Nitrogen is holding steady after Legume intercrop residue incorporation. Reduce final Urea top-dressing by 15 kg/acre.
+                </p>
+                <div style="border: 2px solid var(--green-tea); padding: 1rem; background-color: var(--green-tea); color: var(--honey-cream);">
+                  <div class="mono-tag" style="margin-bottom: 0.35rem;">SEASONAL INPUT SAVING</div>
+                  <p style="font-size: 0.95rem;">
+                    1.5 bags less Urea &amp; 18,000 liters less irrigation water per acre without sacrificing grain weight.
+                  </p>
+                </div>
+              </div>
+
+              <!-- SVG Soil Trend-Line Chart -->
+              <div style="border: 2px solid var(--green-tea); padding: 1.15rem;">
+                <svg viewBox="0 0 620 215" width="100%" height="auto" role="img" aria-label="16-Week Soil NPK, Moisture and pH Trend Line">
+                  <line x1="40" y1="40" x2="585" y2="40" stroke="#4B7B4E" stroke-width="1" stroke-dasharray="3 3"/>
+                  <line x1="40" y1="95" x2="585" y2="95" stroke="#4B7B4E" stroke-width="1" stroke-dasharray="3 3"/>
+                  <line x1="40" y1="150" x2="585" y2="150" stroke="#4B7B4E" stroke-width="1" stroke-dasharray="3 3"/>
+                  <line x1="40" y1="185" x2="585" y2="185" stroke="#4B7B4E" stroke-width="2.5"/>
+                  <line x1="40" y1="25" x2="40" y2="185" stroke="#4B7B4E" stroke-width="2.5"/>
+
+                  <!-- Target Threshold Band -->
+                  <polyline id="svg-soil-secondary" points="40,170 130,155 220,148 310,138 400,132 490,128 580,124" fill="none" stroke="#4B7B4E" stroke-width="2.5" stroke-dasharray="6 4"/>
+
+                  <!-- Active Measured Soil Curve -->
+                  <polyline id="svg-soil-primary" points="40,150 130,92 220,118 310,78 400,102 490,88 580,84" fill="none" stroke="#660033" stroke-width="4"/>
+
+                  <circle cx="40" cy="150" r="5" fill="#660033"/>
+                  <circle cx="130" cy="92" r="5" fill="#660033"/>
+                  <circle cx="220" cy="118" r="5" fill="#660033"/>
+                  <circle cx="310" cy="78" r="5" fill="#660033"/>
+                  <circle cx="400" cy="102" r="5" fill="#660033"/>
+                  <circle cx="490" cy="88" r="5" fill="#660033"/>
+                  <circle cx="580" cy="84" r="6" fill="#4B7B4E"/>
+
+                  <text x="35" y="206" fill="#4B7B4E" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">WK 01</text>
+                  <text x="120" y="206" fill="#4B7B4E" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">WK 03</text>
+                  <text x="210" y="206" fill="#4B7B4E" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">WK 06</text>
+                  <text x="300" y="206" fill="#4B7B4E" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">WK 09</text>
+                  <text x="390" y="206" fill="#4B7B4E" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">WK 12</text>
+                  <text x="480" y="206" fill="#4B7B4E" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">WK 14</text>
+                  <text x="555" y="206" fill="#660033" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">WK 16</text>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SATELLITE & DRONE ADD-ON STRIP (CROSS-LINK TO SATELLITE & WEATHER)
+         ==================================================================== -->
+    <section class="section-green section-pad-compact">
+      <div class="container">
+        <div class="card-cream" style="border-width: 3px;">
+          <div class="grid-2" style="align-items: center;">
+            <div>
+              <span class="eyebrow eyebrow-burgundy">LARGE-FARM &amp; FPO ADD-ON STRIP</span>
+              <h2 class="h2-section" style="margin-bottom: 0.65rem;">Need visibility across 20 to 2,000 acres? Pair Crop Tech with Satellite &amp; Drone Maps.</h2>
+              <p>
+                Our orbital NDVI stress maps flag moisture or pest trouble across large blocks every 5 days, and export zone prescription maps directly to spray drones — treating only the stressed zones instead of blanket-spraying healthy crops.
+              </p>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 0.85rem;">
+              <div style="border: 2px solid var(--green-tea); padding: 1rem;">
+                <div class="mono-tag" style="color: var(--burgundy);">01 · NDVI SATELLITE STRESS MAPPING</div>
+                <p style="font-size: 0.92rem; font-weight: 600;">Healthy / Stressed / Critical field-zone legend updated every 5 days.</p>
+              </div>
+              <div style="border: 2px solid var(--green-tea); padding: 1rem;">
+                <div class="mono-tag" style="color: var(--burgundy);">02 · DRONE SPRAYING OPTIMIZATION</div>
+                <p style="font-size: 0.92rem; font-weight: 600;">Maps "Needs Treatment" vs. "No Treatment Needed" zones to cut chemical use by up to 68%.</p>
+              </div>
+              <a href="satellite-weather.html" class="btn btn-burgundy btn-lg" style="width: 100%; justify-content: space-between;">
+                <span>Explore Satellite, Drone &amp; Weather Page</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ====================================================================
+       SHARED 4-COLUMN FOOTER (SOLID GREEN TEA BACKGROUND)
+       ==================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        <div>
+          <a href="index.html" class="brand-logo" style="color: var(--honey-cream); margin-bottom: 1rem;">
+            <span class="brand-mark" style="background-color: var(--honey-cream); color: var(--green-tea); border-color: var(--honey-cream);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                <path d="M12 22V10M12 10C12 6 15.5 3 20 3C20 7.5 17 11 12 10ZM12 13C12 9 8.5 6 4 6C4 10.5 7 14 12 13Z"/>
+                <path d="M4 22h16"/>
+              </svg>
+            </span>
+            <span>MAATI</span>
+          </a>
+          <p style="font-size: 0.95rem; margin-bottom: 1.25rem;">
+            Grounded, plainspoken agricultural and dairy intelligence built for working farmers, FPO cooperatives, rural lenders, and institutional buyers.
+          </p>
+          <p class="mono-tag">TOLL-FREE KISAN DESK: 1800-120-4455</p>
+        </div>
+
+        <div>
+          <h3 class="footer-col-title">Product (6 USPs)</h3>
+          <ul class="footer-links">
+            <li><a href="crop-tech.html#disease-detection">Crop Disease &amp; Pest Detection</a></li>
+            <li><a href="crop-tech.html#yield-prediction">Per-Field Yield Prediction</a></li>
+            <li><a href="crop-tech.html#soil-health">Soil Health Analysis (NPK/pH)</a></li>
+            <li><a href="livestock-tech.html#cattle-health">Cattle Health Monitoring</a></li>
+            <li><a href="livestock-tech.html#milk-prediction">Milk Yield &amp; Quality Prediction</a></li>
+            <li><a href="livestock-tech.html#feed-optimization">Automated Feed Optimization</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-col-title">Ecosystem</h3>
+          <ul class="footer-links">
+            <li><a href="market-finance.html">Market &amp; Finance Overview</a></li>
+            <li><a href="market-finance.html#price-forecast">Mandi Price Forecasting</a></li>
+            <li><a href="market-finance.html#credit-scoring">Plainspoken AI Credit Scoring</a></li>
+            <li><a href="advisory.html">Voice AI &amp; WhatsApp Advisory</a></li>
+            <li><a href="satellite-weather.html">NDVI &amp; Drone Spraying Maps</a></li>
+            <li><a href="satellite-weather.html#insurance-claims">Satellite Insurance Claims</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-col-title">Company</h3>
+          <ul class="footer-links">
+            <li><a href="about.html">About &amp; Mission</a></li>
+            <li><a href="about.html#data-pledge">Farmer Data Ownership Pledge</a></li>
+            <li><a href="about.html#timeline">Founding Story &amp; Timeline</a></li>
+            <li><a href="about.html#partners">FPO &amp; University Partners</a></li>
+            <li><a href="about.html#careers">Field Agronomy Careers</a></li>
+            <li><a href="about.html#press">Press &amp; Audit Reports</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-col-title">Support &amp; Language</h3>
+          <ul class="footer-links" style="margin-bottom: 1rem;">
+            <li><a href="advisory.html">24×7 Voice &amp; SMS Help Center</a></li>
+            <li><a href="advisory.html#whatsapp-bot">WhatsApp Bot Setup</a></li>
+            <li><a href="about.html#contact">Partner an FPO or Dairy Union</a></li>
+          </ul>
+          <label class="mono-tag" for="footer-lang-select" style="display: block; margin-bottom: 0.4rem;">SITE LANGUAGE</label>
+          <div class="lang-select-wrap" style="border-color: var(--honey-cream); width: 100%;">
+            <select id="footer-lang-select" class="lang-select" style="width: 100%;" aria-label="Footer Language Selector">
+              <option value="en">EN · English</option>
+              <option value="hi">हिन्दी · Hindi</option>
+              <option value="mr">मराठी · Marathi</option>
+              <option value="ta">தமிழ் · Tamil</option>
+              <option value="te">తెలుగు · Telugu</option>
+              <option value="pa">ਪੰਜਾਬੀ · Punjabi</option>
+              <option value="kn">ಕನ್ನಡ · Kannada</option>
+              <option value="gu">ગુજરાતી · Gujarati</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Maati AgriTech Platform. Built for the field, not just the boardroom.</span>
+        <span>Strict Flat 3-Color Accessibility Standard · Zero Farmer Data Sold to Third Parties</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Shared Modal -->
+  <div class="modal-backdrop" id="onboarding-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-card">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; padding-bottom: 0.85rem; border-bottom: 2px solid var(--green-tea);">
+        <div>
+          <span class="eyebrow eyebrow-burgundy" style="margin-bottom: 0.4rem;">MAATI FARM ACCOUNT</span>
+          <h2 class="h3-card" id="modal-title" style="margin-bottom: 0;">Start free with your first field or herd</h2>
+        </div>
+        <button type="button" id="modal-close-btn" class="btn btn-outline-green" style="padding: 0.35rem 0.65rem;" aria-label="Close modal">✕</button>
+      </div>
+      <p id="modal-subtitle" style="margin-bottom: 1.25rem; font-size: 0.95rem;">
+        No credit card needed. Add your mobile number and village pin code to begin.
+      </p>
+      <form id="modal-form">
+        <div class="form-field">
+          <label for="modal-phone">Mobile Number (SMS &amp; WhatsApp)</label>
+          <input type="tel" id="modal-phone" class="form-input" placeholder="+91 98230 XXXXX" required />
+        </div>
+        <div class="form-field">
+          <label for="modal-pincode">Village Pin Code / Mandi Block</label>
+          <input type="text" id="modal-pincode" class="form-input" placeholder="e.g. 422303 (Niphad, Nashik)" required />
+        </div>
+        <div class="form-field">
+          <label for="modal-role">Primary Farm Activity</label>
+          <select id="modal-role" class="form-input">
+            <option value="mixed">Mixed Crop + Dairy Livestock Farm</option>
+            <option value="crop">Crop &amp; Horticulture Farmer</option>
+            <option value="dairy">Dairy &amp; Cattle Herd Owner</option>
+            <option value="fpo">FPO / Cooperative / Institutional Buyer</option>
+          </select>
+        </div>
+        <button type="submit" id="modal-submit-btn" class="btn btn-burgundy btn-lg" style="width: 100%;">Create Free Farm Profile</button>
+        <div id="modal-feedback" style="display: none; margin-top: 1rem; padding: 0.85rem; background-color: var(--green-tea); color: var(--honey-cream); font-weight: 600; font-size: 0.92rem;"></div>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
