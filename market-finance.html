@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Market &amp; Finance — Mandi Price Forecasting, Rural Credit &amp; Buyer Matching | MAATI</title>
+  <title>Market &amp; Finance — Mandi Price Forecasting, Rural Credit &amp; Buyer Matching | SPOROS</title>
   <meta name="description" content="Short-term mandi crop price forecasting, plainspoken AI credit scoring from land records and repayment patterns, and direct farmer-to-buyer supply-demand matching." />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/png" href="images/sporos-mark.png" />
 </head>
 <body>
 
@@ -14,17 +15,9 @@
        ==================================================================== -->
   <header class="site-header">
     <div class="nav-inner">
-      <a href="index.html" class="brand-logo" aria-label="Maati Home">
-        <span class="brand-mark" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
-            <path d="M12 22V10M12 10C12 6 15.5 3 20 3C20 7.5 17 11 12 10ZM12 13C12 9 8.5 6 4 6C4 10.5 7 14 12 13Z"/>
-            <path d="M4 22h16"/>
-          </svg>
-        </span>
-        <span>
-          MAATI
-          <span class="brand-sub">Field &amp; Herd Platform</span>
-        </span>
+      <a href="index.html" class="brand-logo" aria-label="Sporos Home">
+        <img src="images/sporos-logo.png" alt="SPOROS" class="brand-logo-img" />
+        <span class="brand-sub">Field &amp; Herd Platform</span>
       </a>
 
       <nav class="primary-nav" aria-label="Primary Navigation">
@@ -55,9 +48,6 @@
           </select>
         </div>
 
-        <a href="#login" class="nav-login-link" data-open-modal="login" data-i18n="navLogin">Log in</a>
-        <a href="#get-started" class="btn btn-burgundy" data-open-modal="signup" data-i18n="navGetStarted">Get Started</a>
-
         <button type="button" id="mobile-menu-btn" class="mobile-menu-toggle" aria-label="Toggle Menu" aria-expanded="false">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <path d="M3 6h18M3 12h18M3 18h18"/>
@@ -77,10 +67,6 @@
         <a href="satellite-weather.html" class="mobile-nav-link"><span data-i18n="navSatellite">Satellite &amp; Weather</span> <span>→</span></a>
         <a href="about.html" class="mobile-nav-link"><span data-i18n="navAbout">About</span> <span>→</span></a>
       </div>
-      <div class="mobile-drawer-footer">
-        <a href="#get-started" class="btn btn-burgundy btn-lg" data-open-modal="signup" data-i18n="navGetStarted">Get Started — Try the App</a>
-        <a href="#login" class="btn btn-outline-green btn-lg" data-open-modal="login" data-i18n="navLogin">Log in to Existing Farm Account</a>
-      </div>
     </div>
   </header>
 
@@ -95,7 +81,7 @@
             <span class="eyebrow eyebrow-cream">ECOSYSTEM PILLAR · MARKET &amp; FINANCIAL INTELLIGENCE</span>
             <h1 class="h1-hero">Know when to hold, unlock fair working capital, and sell directly to verified buyers.</h1>
             <p class="lead-copy" style="margin-bottom: 1.75rem;">
-              A good harvest shouldn’t end in a distress sale to pay off an informal moneylender. Maati gives farmers and FPOs short-term mandi price visibility, transparent credit profiles built from real farm activity, and direct buyer matching.
+              A good harvest shouldn’t end in a distress sale to pay off an informal moneylender. Sporos gives farmers and FPOs short-term mandi price visibility, transparent credit profiles built from real farm activity, and direct buyer matching.
             </p>
             <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
               <a href="#price-forecast" class="btn btn-cream">01 · Mandi Price Forecasting</a>
@@ -256,7 +242,7 @@
             <span class="mono-tag" style="text-decoration: underline;">MODULE 02 / 03 · REASSURING, OPEN-BOOK RURAL CREDIT</span>
             <h3 class="h2-section" style="margin-top: 0.35rem; margin-bottom: 0.5rem;">Plainspoken AI Credit Scoring for Thin-File Farmers</h3>
             <p class="lead-copy" style="max-width: 860px;">
-              Traditional banks reject millions of hardworking smallholder and tenant farmers simply because they don’t have urban salary slips or CIBIL credit-card histories. Maati builds a transparent, auditable credit picture from how a farm actually works — land records, seasonal crop continuity, and cooperative repayment habits.
+              Traditional banks reject millions of hardworking smallholder and tenant farmers simply because they don’t have urban salary slips or CIBIL credit-card histories. Sporos builds a transparent, auditable credit picture from how a farm actually works — land records, seasonal crop continuity, and cooperative repayment habits.
             </p>
           </div>
 
@@ -317,7 +303,7 @@
                 </div>
 
                 <div style="border: 3px solid var(--honey-cream); padding: 2rem; background-color: var(--honey-cream); color: var(--burgundy);">
-                  <span class="mono-tag">TRANSPARENT MAATI FARM TRUST SCORE</span>
+                  <span class="mono-tag">TRANSPARENT SPOROS FARM TRUST SCORE</span>
                   <div class="stat-value-burgundy" id="credit-score-number" style="font-size: 3.1rem; margin: 0.4rem 0;">
                     755 / 900
                   </div>
@@ -395,9 +381,9 @@
                     <div>✓ Payment: Instant RTGS Escrow at FPO Weighbridge</div>
                   </div>
 
-                  <a href="#get-started" class="btn btn-burgundy" data-open-modal="signup" style="width: 100%;">
-                    Post a Harvest Lot or Buyer Indent →
-                  </a>
+                  <button type="button" class="btn btn-burgundy btn-launching" data-launching-soon="true" style="width: 100%; justify-content: center;">
+                    Launching Soon
+                  </button>
                 </div>
 
                 <!-- Side B: Verified Institutional Buyer Demand -->
@@ -410,7 +396,7 @@
                       <li><strong>Active Indent:</strong> 100 – 250 Quintals Lokwan Wheat</li>
                       <li><strong>Quality Spec:</strong> Moisture &lt;12% · Test Weight &gt;78 kg/hl</li>
                       <li><strong>Pickup Logistics:</strong> Buyer-arranged 14-ton truck at FPO gate</li>
-                      <li><strong>Escrow Status:</strong> ₹3.20 Lakh Funded in Bank Escrow</li>
+                      <li><strong>Escrow Status:</strong> Verified Cooperative Bank Escrow</li>
                     </ul>
                   </div>
                   <div style="border-top: 2px solid var(--honey-cream); padding-top: 0.75rem;" class="mono-tag">
@@ -433,9 +419,9 @@
         <div class="grid-2" style="align-items: center;">
           <div>
             <span class="eyebrow eyebrow-green">BUILT FOR FPOS, BUYERS &amp; RURAL LENDERS</span>
-            <h2 class="h2-section">Why institutional buyers and rural banks trust Maati records</h2>
+            <h2 class="h2-section">Why institutional buyers and rural banks trust Sporos records</h2>
             <p class="lead-copy" style="margin-bottom: 1.25rem;">
-              Every harvest lot and credit file on Maati is backed by continuous seasonal telemetry — not a one-time self-reported form filled out on the day of a loan application.
+              Every harvest lot and credit file on Sporos is backed by continuous seasonal telemetry — not a one-time self-reported form filled out on the day of a loan application.
             </p>
             <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
               <a href="advisory.html" class="btn btn-green">Explore Voice &amp; SMS Advisory →</a>
@@ -459,8 +445,8 @@
                 <span class="mono-tag">FOR LENDERS</span>
               </div>
               <div class="card-structured-body">
-                <div class="stat-value-burgundy" style="font-size: 2rem;">98.6%</div>
-                <p style="font-size: 0.95rem; font-weight: 600;">On-time seasonal repayment across FPO-linked working capital loans underwritten with Maati scores.</p>
+                <div class="stat-value-burgundy" style="font-size: 2rem;">100%</div>
+                <p style="font-size: 0.95rem; font-weight: 600;">Transparent open-book credit metrics — zero hidden algorithm scoring or commercial markups.</p>
               </div>
             </div>
           </div>
@@ -474,19 +460,12 @@
     <div class="container">
       <div class="footer-top-grid">
         <div>
-          <a href="index.html" class="brand-logo" style="color: var(--honey-cream); margin-bottom: 1rem;">
-            <span class="brand-mark" style="background-color: var(--honey-cream); color: var(--green-tea); border-color: var(--honey-cream);">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
-                <path d="M12 22V10M12 10C12 6 15.5 3 20 3C20 7.5 17 11 12 10ZM12 13C12 9 8.5 6 4 6C4 10.5 7 14 12 13Z"/>
-                <path d="M4 22h16"/>
-              </svg>
-            </span>
-            <span>MAATI</span>
+          <a href="index.html" class="brand-logo footer-brand-logo" aria-label="Sporos Home" style="color: var(--honey-cream); margin-bottom: 1rem;">
+            <img src="images/sporos-logo-light.png" alt="SPOROS" class="brand-logo-img footer-logo-img" />
           </a>
           <p style="font-size: 0.95rem; margin-bottom: 1.25rem;">
             Grounded, plainspoken agricultural and dairy intelligence built for working farmers, FPO cooperatives, rural lenders, and institutional buyers.
           </p>
-          <p class="mono-tag">TOLL-FREE KISAN DESK: 1800-120-4455</p>
         </div>
 
         <div>
@@ -530,7 +509,7 @@
           <ul class="footer-links" style="margin-bottom: 1rem;">
             <li><a href="advisory.html">24×7 Voice &amp; SMS Help Center</a></li>
             <li><a href="advisory.html#whatsapp-bot">WhatsApp Bot Setup</a></li>
-            <li><a href="about.html#contact">Partner an FPO or Dairy Union</a></li>
+            <li><a href="about.html">About Our 26-Person Team</a></li>
           </ul>
           <label class="mono-tag" for="footer-lang-select" style="display: block; margin-bottom: 0.4rem;">SITE LANGUAGE</label>
           <div class="lang-select-wrap" style="border-color: var(--honey-cream); width: 100%;">
@@ -549,8 +528,8 @@
       </div>
 
       <div class="footer-bottom">
-        <span>© 2026 Maati AgriTech Platform. Built for the field, not just the boardroom.</span>
-        <span>Strict Flat 3-Color Accessibility Standard · Zero Farmer Data Sold to Third Parties</span>
+        <span>© 2026 Sporos AgriTech Platform. Built for the field, not just the boardroom.</span>
+        <span>Zero Farmer Data Sold to Third Parties</span>
       </div>
     </div>
   </footer>
@@ -560,38 +539,22 @@
     <div class="modal-card">
       <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; padding-bottom: 0.85rem; border-bottom: 2px solid var(--green-tea);">
         <div>
-          <span class="eyebrow eyebrow-burgundy" style="margin-bottom: 0.4rem;">MAATI FARM ACCOUNT</span>
-          <h2 class="h3-card" id="modal-title" style="margin-bottom: 0;">Start free with your first field or herd</h2>
+          <span class="eyebrow eyebrow-burgundy" style="margin-bottom: 0.4rem;">SPOROS PLATFORM</span>
+          <h2 class="h3-card" id="modal-title" style="margin-bottom: 0;">Sporos is Launching Soon</h2>
         </div>
         <button type="button" id="modal-close-btn" class="btn btn-outline-green" style="padding: 0.35rem 0.65rem;" aria-label="Close modal">✕</button>
       </div>
       <p id="modal-subtitle" style="margin-bottom: 1.25rem; font-size: 0.95rem;">
-        No credit card needed. Add your mobile number and village pin code to begin.
+        We are preparing for public launch across Maharashtra, Punjab, Haryana, Tamil Nadu, and Andhra Pradesh. Direct field registration and farmer onboarding will be available shortly.
       </p>
-      <form id="modal-form">
-        <div class="form-field">
-          <label for="modal-phone">Mobile Number (SMS &amp; WhatsApp)</label>
-          <input type="tel" id="modal-phone" class="form-input" placeholder="+91 98230 XXXXX" required />
-        </div>
-        <div class="form-field">
-          <label for="modal-pincode">Village Pin Code / Mandi Block</label>
-          <input type="text" id="modal-pincode" class="form-input" placeholder="e.g. 422303 (Lasalgaon / Niphad)" required />
-        </div>
-        <div class="form-field">
-          <label for="modal-role">Primary Farm Activity</label>
-          <select id="modal-role" class="form-input">
-            <option value="mixed">Mixed Crop + Dairy Livestock Farm</option>
-            <option value="fpo">FPO / Cooperative / Institutional Buyer</option>
-            <option value="crop">Crop &amp; Horticulture Farmer</option>
-            <option value="dairy">Dairy &amp; Cattle Herd Owner</option>
-          </select>
-        </div>
-        <button type="submit" id="modal-submit-btn" class="btn btn-burgundy btn-lg" style="width: 100%;">Create Free Farm Profile</button>
-        <div id="modal-feedback" style="display: none; margin-top: 1rem; padding: 0.85rem; background-color: var(--green-tea); color: var(--honey-cream); font-weight: 600; font-size: 0.92rem;"></div>
-      </form>
+      <div style="text-align: center; padding: 0.5rem 0 0.5rem;">
+        <button type="button" id="modal-submit-btn" class="btn btn-burgundy btn-lg btn-launching" style="width: 100%; justify-content: center;">Launching Soon</button>
+      </div>
+      <div id="modal-feedback" style="display: none; margin-top: 1rem; padding: 0.85rem; background-color: var(--green-tea); color: var(--honey-cream); font-weight: 600; font-size: 0.92rem;"></div>
     </div>
   </div>
 
+  <script src="translations.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

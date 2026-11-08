@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Crop Tech — Leaf Diagnosis, Yield Prediction &amp; Soil Health | MAATI</title>
+  <title>Crop Tech — Leaf Diagnosis, Yield Prediction &amp; Soil Health | SPOROS</title>
   <meta name="description" content="Field-tested crop intelligence: smartphone leaf-photo disease detection, confidence-range yield prediction, and season-long NPK, moisture, and pH soil health tracking." />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/png" href="images/sporos-mark.png" />
 </head>
 <body>
 
@@ -14,17 +15,9 @@
        ==================================================================== -->
   <header class="site-header">
     <div class="nav-inner">
-      <a href="index.html" class="brand-logo" aria-label="Maati Home">
-        <span class="brand-mark" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
-            <path d="M12 22V10M12 10C12 6 15.5 3 20 3C20 7.5 17 11 12 10ZM12 13C12 9 8.5 6 4 6C4 10.5 7 14 12 13Z"/>
-            <path d="M4 22h16"/>
-          </svg>
-        </span>
-        <span>
-          MAATI
-          <span class="brand-sub">Field &amp; Herd Platform</span>
-        </span>
+      <a href="index.html" class="brand-logo" aria-label="Sporos Home">
+        <img src="images/sporos-logo.png" alt="SPOROS" class="brand-logo-img" />
+        <span class="brand-sub">Field &amp; Herd Platform</span>
       </a>
 
       <nav class="primary-nav" aria-label="Primary Navigation">
@@ -55,9 +48,6 @@
           </select>
         </div>
 
-        <a href="#login" class="nav-login-link" data-open-modal="login" data-i18n="navLogin">Log in</a>
-        <a href="#get-started" class="btn btn-burgundy" data-open-modal="signup" data-i18n="navGetStarted">Get Started</a>
-
         <button type="button" id="mobile-menu-btn" class="mobile-menu-toggle" aria-label="Toggle Menu" aria-expanded="false">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <path d="M3 6h18M3 12h18M3 18h18"/>
@@ -76,10 +66,6 @@
         <a href="advisory.html" class="mobile-nav-link"><span data-i18n="navAdvisory">Advisory</span> <span>→</span></a>
         <a href="satellite-weather.html" class="mobile-nav-link"><span data-i18n="navSatellite">Satellite &amp; Weather</span> <span>→</span></a>
         <a href="about.html" class="mobile-nav-link"><span data-i18n="navAbout">About</span> <span>→</span></a>
-      </div>
-      <div class="mobile-drawer-footer">
-        <a href="#get-started" class="btn btn-burgundy btn-lg" data-open-modal="signup" data-i18n="navGetStarted">Get Started — Try the App</a>
-        <a href="#login" class="btn btn-outline-green btn-lg" data-open-modal="login" data-i18n="navLogin">Log in to Existing Farm Account</a>
       </div>
     </div>
   </header>
@@ -195,15 +181,15 @@
           <div class="mockup-body">
             <div class="grid-2">
               <!-- Left Column: Leaf Inspection & Diagnosis Details -->
-              <div style="display: flex; flex-direction: column; gap: 1.15rem;">
-                <div style="border: 2px solid var(--green-tea); padding: 1.15rem; background-color: var(--honey-cream);">
+              <div style="display: flex; flex-direction: column; gap: 1.15rem; justify-content: flex-start;">
+                <div style="border: 2px solid var(--green-tea); padding: 1.15rem; background-color: var(--honey-cream); flex-shrink: 0;">
                   <div style="display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.75rem;">
                     <span class="mono-tag" id="diag-crop-meta">Tomato (Hybrid Abhinav) · 52 Days After Transplanting</span>
                     <span class="status-pill status-alert" id="diag-confidence">94.2% Match (High Confidence · 18,400 Field Samples)</span>
                   </div>
 
                   <!-- Flat Leaf Lesion Visual Inspection Diagram -->
-                  <svg viewBox="0 0 480 175" width="100%" height="auto" style="border: 2px solid var(--green-tea); margin-bottom: 0.85rem;" aria-label="Leaf Lesion Detection Bounding Box Diagram">
+                  <svg viewBox="0 0 480 175" width="100%" height="175" style="aspect-ratio: 480 / 175; width: 100%; height: auto; border: 2px solid var(--green-tea); margin-bottom: 0.85rem;" aria-label="Leaf Lesion Detection Bounding Box Diagram">
                     <rect width="480" height="175" fill="#4B7B4E"/>
                     <!-- Stylized Leaf Silhouette -->
                     <path d="M75 140 C95 45, 225 25, 360 55 C295 135, 175 160, 75 140 Z" fill="#FACD8C" stroke="#FACD8C" stroke-width="3"/>
@@ -221,13 +207,13 @@
                     <text x="20" y="29" fill="#FACD8C" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">VISION SCAN: 3 LESION CLUSTERS</text>
                   </svg>
 
-                  <div style="display: flex; justify-content: space-between; font-size: 0.9rem; font-weight: 700; border-top: 2px solid var(--green-tea); padding-top: 0.6rem;">
+                  <div style="display: flex; justify-content: space-between; font-size: 0.9rem; font-weight: 700; border-top: 2px solid var(--green-tea); padding-top: 0.6rem; flex-wrap: wrap; gap: 0.5rem;">
                     <span>Location: <span id="diag-location">Niphad Block, Nashik District</span></span>
                     <span>Camera: 8MP Android · Offline Queued</span>
                   </div>
                 </div>
 
-                <div style="border: 2px solid var(--green-tea); padding: 1.25rem;">
+                <div style="border: 2px solid var(--green-tea); padding: 1.25rem; flex-shrink: 0;">
                   <div class="mono-tag" style="color: var(--burgundy); margin-bottom: 0.25rem;">IDENTIFIED CONDITION</div>
                   <h3 class="h3-card" id="diag-name" style="margin-bottom: 0.35rem;">Early Blight (Alternaria solani)</h3>
                   <p style="font-weight: 700; margin-bottom: 0.5rem;" id="diag-severity">Moderate — Lower Canopy (14% Leaf Area Affected)</p>
@@ -294,7 +280,7 @@
           <span class="eyebrow eyebrow-cream">CROP USP 02 / 03 · HONEST CONFIDENCE RANGES</span>
           <h2 class="h2-section">Per-Field Yield Prediction</h2>
           <p class="lead-copy">
-            No crop model can promise a single exact decimal months before harvest — and any platform that does is guessing. Maati combines your plot’s 5-year harvest history, live local rainfall and degree-days, and root-zone soil moisture to project an honest per-field confidence range.
+            No crop model can promise a single exact decimal months before harvest — and any platform that does is guessing. Sporos combines your plot’s 5-year harvest history, live local rainfall and degree-days, and root-zone soil moisture to project an honest per-field confidence range.
           </p>
         </div>
 
@@ -424,7 +410,7 @@
           <span class="eyebrow eyebrow-green">CROP USP 03 / 03 · TWO INPUT PATHS FOR EVERY BUDGET</span>
           <h2 class="h2-section">Soil Health Analysis: NPK, Moisture % &amp; pH Trends</h2>
           <p class="lead-copy">
-            Most farmers apply urea by habit rather than soil need. Maati supports two practical input paths — start immediately with smartphone topsoil photos paired with your government Soil Health Card, or connect a solar LoRaWAN root probe for continuous 15-minute readings.
+            Most farmers apply urea by habit rather than soil need. Sporos supports two practical input paths — start immediately with smartphone topsoil photos paired with your government Soil Health Card, or connect a solar LoRaWAN root probe for continuous 15-minute readings.
           </p>
         </div>
 
@@ -575,19 +561,12 @@
     <div class="container">
       <div class="footer-top-grid">
         <div>
-          <a href="index.html" class="brand-logo" style="color: var(--honey-cream); margin-bottom: 1rem;">
-            <span class="brand-mark" style="background-color: var(--honey-cream); color: var(--green-tea); border-color: var(--honey-cream);">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
-                <path d="M12 22V10M12 10C12 6 15.5 3 20 3C20 7.5 17 11 12 10ZM12 13C12 9 8.5 6 4 6C4 10.5 7 14 12 13Z"/>
-                <path d="M4 22h16"/>
-              </svg>
-            </span>
-            <span>MAATI</span>
+          <a href="index.html" class="brand-logo footer-brand-logo" aria-label="Sporos Home" style="color: var(--honey-cream); margin-bottom: 1rem;">
+            <img src="images/sporos-logo-light.png" alt="SPOROS" class="brand-logo-img footer-logo-img" />
           </a>
           <p style="font-size: 0.95rem; margin-bottom: 1.25rem;">
             Grounded, plainspoken agricultural and dairy intelligence built for working farmers, FPO cooperatives, rural lenders, and institutional buyers.
           </p>
-          <p class="mono-tag">TOLL-FREE KISAN DESK: 1800-120-4455</p>
         </div>
 
         <div>
@@ -631,7 +610,7 @@
           <ul class="footer-links" style="margin-bottom: 1rem;">
             <li><a href="advisory.html">24×7 Voice &amp; SMS Help Center</a></li>
             <li><a href="advisory.html#whatsapp-bot">WhatsApp Bot Setup</a></li>
-            <li><a href="about.html#contact">Partner an FPO or Dairy Union</a></li>
+            <li><a href="about.html">About Our 26-Person Team</a></li>
           </ul>
           <label class="mono-tag" for="footer-lang-select" style="display: block; margin-bottom: 0.4rem;">SITE LANGUAGE</label>
           <div class="lang-select-wrap" style="border-color: var(--honey-cream); width: 100%;">
@@ -650,8 +629,8 @@
       </div>
 
       <div class="footer-bottom">
-        <span>© 2026 Maati AgriTech Platform. Built for the field, not just the boardroom.</span>
-        <span>Strict Flat 3-Color Accessibility Standard · Zero Farmer Data Sold to Third Parties</span>
+        <span>© 2026 Sporos AgriTech Platform. Built for the field, not just the boardroom.</span>
+        <span>Zero Farmer Data Sold to Third Parties</span>
       </div>
     </div>
   </footer>
@@ -661,38 +640,22 @@
     <div class="modal-card">
       <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; padding-bottom: 0.85rem; border-bottom: 2px solid var(--green-tea);">
         <div>
-          <span class="eyebrow eyebrow-burgundy" style="margin-bottom: 0.4rem;">MAATI FARM ACCOUNT</span>
-          <h2 class="h3-card" id="modal-title" style="margin-bottom: 0;">Start free with your first field or herd</h2>
+          <span class="eyebrow eyebrow-burgundy" style="margin-bottom: 0.4rem;">SPOROS PLATFORM</span>
+          <h2 class="h3-card" id="modal-title" style="margin-bottom: 0;">Sporos is Launching Soon</h2>
         </div>
         <button type="button" id="modal-close-btn" class="btn btn-outline-green" style="padding: 0.35rem 0.65rem;" aria-label="Close modal">✕</button>
       </div>
       <p id="modal-subtitle" style="margin-bottom: 1.25rem; font-size: 0.95rem;">
-        No credit card needed. Add your mobile number and village pin code to begin.
+        We are preparing for public launch across Maharashtra, Punjab, Haryana, Tamil Nadu, and Andhra Pradesh. Direct field registration and farmer onboarding will be available shortly.
       </p>
-      <form id="modal-form">
-        <div class="form-field">
-          <label for="modal-phone">Mobile Number (SMS &amp; WhatsApp)</label>
-          <input type="tel" id="modal-phone" class="form-input" placeholder="+91 98230 XXXXX" required />
-        </div>
-        <div class="form-field">
-          <label for="modal-pincode">Village Pin Code / Mandi Block</label>
-          <input type="text" id="modal-pincode" class="form-input" placeholder="e.g. 422303 (Niphad, Nashik)" required />
-        </div>
-        <div class="form-field">
-          <label for="modal-role">Primary Farm Activity</label>
-          <select id="modal-role" class="form-input">
-            <option value="mixed">Mixed Crop + Dairy Livestock Farm</option>
-            <option value="crop">Crop &amp; Horticulture Farmer</option>
-            <option value="dairy">Dairy &amp; Cattle Herd Owner</option>
-            <option value="fpo">FPO / Cooperative / Institutional Buyer</option>
-          </select>
-        </div>
-        <button type="submit" id="modal-submit-btn" class="btn btn-burgundy btn-lg" style="width: 100%;">Create Free Farm Profile</button>
-        <div id="modal-feedback" style="display: none; margin-top: 1rem; padding: 0.85rem; background-color: var(--green-tea); color: var(--honey-cream); font-weight: 600; font-size: 0.92rem;"></div>
-      </form>
+      <div style="text-align: center; padding: 0.5rem 0 0.5rem;">
+        <button type="button" id="modal-submit-btn" class="btn btn-burgundy btn-lg btn-launching" style="width: 100%; justify-content: center;">Launching Soon</button>
+      </div>
+      <div id="modal-feedback" style="display: none; margin-top: 1rem; padding: 0.85rem; background-color: var(--green-tea); color: var(--honey-cream); font-weight: 600; font-size: 0.92rem;"></div>
     </div>
   </div>
 
+  <script src="translations.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

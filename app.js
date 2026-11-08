@@ -1,5 +1,5 @@
 /* ==========================================================================
-   MAATI — AGRITECH ECOSYSTEM PLATFORM
+   SPOROS — AGRITECH ECOSYSTEM PLATFORM
    Shared Multi-Page Application Controller (app.js)
    ========================================================================== */
 
@@ -20,7 +20,7 @@
       navSatellite: 'Satellite & Weather',
       navAbout: 'About',
       navLogin: 'Log in',
-      navGetStarted: 'Get Started',
+      navGetStarted: 'Launching Soon',
       beat0Title: 'One platform for everything your farm needs',
       beat0Body: 'Crop intelligence and livestock intelligence, backed by market, advisory, and satellite tools — in one place.',
       beat1Title: 'Every field, watched closely',
@@ -172,16 +172,115 @@
     }
   };
 
+  // Full-page recursive text node walker for total site translation
+  function translatePageText(langCode) {
+    if (!window.SITE_TRANSLATIONS) return;
+    const dict = window.SITE_TRANSLATIONS[langCode];
+
+    // TreeWalker to traverse all visible text nodes
+    const walker = document.createTreeWalker(
+      document.body,
+      NodeFilter.SHOW_TEXT,
+      {
+        acceptNode: function (node) {
+          const parent = node.parentElement;
+          if (!parent) return NodeFilter.FILTER_REJECT;
+          const tag = parent.tagName.toLowerCase();
+          if (tag === 'script' || tag === 'style' || tag === 'textarea' || tag === 'code' || tag === 'noscript') {
+            return NodeFilter.FILTER_REJECT;
+          }
+          if (parent.closest('.lang-select') || parent.closest('.lang-select-wrap')) {
+            return NodeFilter.FILTER_REJECT;
+          }
+          const text = node.nodeValue.trim();
+          if (!text || text.length < 2) {
+            return NodeFilter.FILTER_SKIP;
+          }
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      }
+    );
+
+    const textNodes = [];
+    while (walker.nextNode()) {
+      textNodes.push(walker.currentNode);
+    }
+
+    textNodes.forEach((node) => {
+      if (typeof node._origText === 'undefined') {
+        node._origText = node.nodeValue;
+      }
+
+      if (langCode === 'en' || !dict) {
+        node.nodeValue = node._origText;
+        return;
+      }
+
+      const trimmed = node._origText.trim();
+      if (dict[trimmed]) {
+        const leading = node._origText.match(/^\s*/)[0];
+        const trailing = node._origText.match(/\s*$/)[0];
+        node.nodeValue = leading + dict[trimmed] + trailing;
+      }
+    });
+
+    // Also translate attributes (placeholder, title, aria-label)
+    document.querySelectorAll('[placeholder], [title], [aria-label]').forEach((el) => {
+      if (el.closest('.lang-select-wrap')) return;
+
+      ['placeholder', 'title', 'aria-label'].forEach((attr) => {
+        const val = el.getAttribute(attr);
+        if (!val) return;
+        const origKey = '_orig_' + attr;
+        if (typeof el[origKey] === 'undefined') {
+          el[origKey] = val;
+        }
+        if (langCode === 'en' || !dict) {
+          el.setAttribute(attr, el[origKey]);
+        } else {
+          const trimmed = el[origKey].trim();
+          if (dict[trimmed]) {
+            el.setAttribute(attr, dict[trimmed]);
+          }
+        }
+      });
+    });
+  }
+
+  // Google Translate cookie & engine sync
+  function syncGoogleTranslate(langCode) {
+    try {
+      if (langCode === 'en') {
+        document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+        document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=' + window.location.hostname + ';';
+        const combo = document.querySelector('.goog-te-combo');
+        if (combo && combo.value !== 'en') {
+          combo.value = 'en';
+          combo.dispatchEvent(new Event('change'));
+        }
+      } else {
+        document.cookie = 'googtrans=/en/' + langCode + '; path=/;';
+        document.cookie = 'googtrans=/en/' + langCode + '; path=/; domain=' + window.location.hostname + ';';
+        const combo = document.querySelector('.goog-te-combo');
+        if (combo) {
+          combo.value = langCode;
+          combo.dispatchEvent(new Event('change'));
+        }
+      }
+    } catch (e) { /* ignore */ }
+  }
+
   function applyLanguage(langCode) {
     const dict = I18N[langCode] || I18N.en;
     try {
-      localStorage.setItem('maati_lang', langCode);
+      localStorage.setItem('sporos_lang', langCode);
     } catch (e) { /* ignore storage errors */ }
 
     document.querySelectorAll('.lang-select').forEach((sel) => {
       sel.value = langCode;
     });
 
+    // 1. Update [data-i18n] targets
     document.querySelectorAll('[data-i18n]').forEach((el) => {
       const key = el.getAttribute('data-i18n');
       if (dict[key]) {
@@ -189,11 +288,17 @@
       }
     });
 
-    // Also sync Advisory page language buttons if present
+    // 2. Comprehensive DOM full-site text translation
+    translatePageText(langCode);
+
+    // 3. Also sync Advisory page language buttons if present
     const advLangBtns = document.querySelectorAll('[data-advisory-lang]');
-    if (advLangBtns.length > 0 && ADVISORY_DATA[langCode]) {
+    if (advLangBtns.length > 0 && typeof ADVISORY_DATA !== 'undefined' && ADVISORY_DATA[langCode]) {
       renderAdvisoryLanguage(langCode);
     }
+
+    // 4. Sync Google Translate cookie
+    syncGoogleTranslate(langCode);
   }
 
   /* ------------------------------------------------------------------------
@@ -216,7 +321,7 @@
     // Language Selectors
     const savedLang = (function () {
       try {
-        return localStorage.getItem('maati_lang') || 'en';
+        return localStorage.getItem('sporos_lang') || 'en';
       } catch (e) {
         return 'en';
       }
@@ -226,10 +331,22 @@
     document.querySelectorAll('.lang-select').forEach((sel) => {
       sel.addEventListener('change', (e) => {
         applyLanguage(e.target.value);
+        sel.blur(); // Remove browser focus immediately to eliminate hitbox / focus ring
       });
     });
 
-    // Onboarding / Login Modal
+    // Helper to get translated modal strings
+    function getI18nStr(englishStr) {
+      const curLang = (function () {
+        try { return localStorage.getItem('sporos_lang') || 'en'; } catch (e) { return 'en'; }
+      })();
+      if (curLang === 'en' || !window.SITE_TRANSLATIONS || !window.SITE_TRANSLATIONS[curLang]) {
+        return englishStr;
+      }
+      return window.SITE_TRANSLATIONS[curLang][englishStr] || englishStr;
+    }
+
+    // Onboarding / Login / Launching Soon Modal
     const modal = document.getElementById('onboarding-modal');
     const modalTitle = document.getElementById('modal-title');
     const modalSubtitle = document.getElementById('modal-subtitle');
@@ -237,6 +354,21 @@
     const modalCloseBtn = document.getElementById('modal-close-btn');
     const modalForm = document.getElementById('modal-form');
     const modalFeedback = document.getElementById('modal-feedback');
+
+    document.querySelectorAll('[data-launching-soon]').forEach((trigger) => {
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (!modal) return;
+        if (drawer && drawer.classList.contains('open')) {
+          drawer.classList.remove('open');
+        }
+        if (modalFeedback) modalFeedback.style.display = 'none';
+        if (modalTitle) modalTitle.textContent = getI18nStr('Sporos is Launching Soon');
+        if (modalSubtitle) modalSubtitle.textContent = getI18nStr('We are preparing for public launch across Maharashtra, Punjab, Haryana, Tamil Nadu, and Andhra Pradesh. Direct field registration and farmer onboarding will be available shortly.');
+        if (modalSubmitBtn) modalSubmitBtn.textContent = getI18nStr('Launching Soon');
+        modal.classList.add('open');
+      });
+    });
 
     document.querySelectorAll('[data-open-modal]').forEach((trigger) => {
       trigger.addEventListener('click', (e) => {
@@ -252,9 +384,9 @@
           if (modalSubtitle) modalSubtitle.textContent = 'Enter your registered mobile number to receive a 4-digit SMS passkey. Works on any connection.';
           if (modalSubmitBtn) modalSubmitBtn.textContent = 'Send 4-Digit SMS Passkey';
         } else {
-          if (modalTitle) modalTitle.textContent = 'Start free with your first field or herd';
-          if (modalSubtitle) modalSubtitle.textContent = 'No credit card needed. Add your village pin code and primary crop or dairy herd size to begin.';
-          if (modalSubmitBtn) modalSubmitBtn.textContent = 'Create Free Farm Profile';
+          if (modalTitle) modalTitle.textContent = 'Sporos is Launching Soon';
+          if (modalSubtitle) modalSubtitle.textContent = 'We are currently preparing for public launch across Maharashtra, Punjab, Haryana, Tamil Nadu, and Andhra Pradesh. Field registration and farmer onboarding will open shortly.';
+          if (modalSubmitBtn) modalSubmitBtn.textContent = 'Launching Soon';
         }
         modal.classList.add('open');
       });
@@ -1075,8 +1207,8 @@
       schemeTag: 'संबद्ध योजना: राष्ट्रीय बागवानी मिशन एवं फसल सुरक्षा सलाह',
       waFarmer: 'पत्ती की फोटो भेजी + आवाज़ संदेश (0:09 सेकंड)',
       waBot: 'निदान: अगेती झुलसा (94% मिलान)। मात्रा: 500 ग्राम मैंकोजेब / 200 लीटर पानी प्रति एकड़। नज़दीकी जन-औषधि/एग्रो केंद्र: निफाड एफपीओ स्टोर (₹310)।',
-      smsIn: 'MAATI WHEAT 141401',
-      smsOut: 'MAATI ALERT [Khanna 141401]: अगले 5 दिन मौसम साफ (24°C/9°C)। गेहूं में पीला रतुआ से बचाव हेतु खेत की उत्तरी मेड़ जांचें। टोल-फ्री: 1800-120-4455'
+      smsIn: 'SPOROS WHEAT 141401',
+      smsOut: 'SPOROS ALERT [Khanna 141401]: अगले 5 दिन मौसम साफ (24°C/9°C)। गेहूं में पीला रतुआ से बचाव हेतु खेत की उत्तरी मेड़ जांचें।'
     },
     mr: {
       langName: 'मराठी (Marathi)',
@@ -1085,8 +1217,8 @@
       schemeTag: 'जोडलेली योजना: महात्मा फुले कृषी सल्ला व लासलगाव मंडी भाव',
       waFarmer: 'कांदा पातीचा फोटो + व्हॉइस नोट (0:11 सेकंद)',
       waBot: 'निदान: जांभळा करपा (93% खात्री). उपाय: मॅन्कोझेब २.५ ग्रॅम/लिटर. आजचा लासलगाव कांदा भाव: ₹२,१८०/क्विंटल (वाढण्याचा अंदाज).',
-      smsIn: 'MAATI ONION 422303',
-      smsOut: 'MAATI [Niphad 422303]: पुढील ४८ तास धुके पडण्याची शक्यता. कांदा पिकावर सकाळी पाणी देणे टाळा. लासलगाव भाव: रु २१८०/क्विंटल.'
+      smsIn: 'SPOROS ONION 422303',
+      smsOut: 'SPOROS [Niphad 422303]: पुढील ४८ तास धुके पडण्याची शक्यता. कांदा पिकावर सकाळी पाणी देणे टाळा. लासलगाव भाव: रु २१८०/क्विंटल.'
     },
     ta: {
       langName: 'தமிழ் (Tamil)',
@@ -1095,8 +1227,8 @@
       schemeTag: 'திட்டம்: தமிழ்நாடு நுண்ணீர்ப் பாசன மானியம் & பயிர் காப்பீடு',
       waFarmer: 'நெல் இலை புகைப்படம் + குரல் பதிவு (0:08 வினாடி)',
       waBot: 'கண்டறிதல்: நெல் குலைநோய் (95% துல்லியம்). பரிந்துரை: டிரைசைக்ளசோல் 2 கிராம்/லிட்டர். தஞ்சாவூர் கொள்முதல் நிலைய விலை: ₹2,320/குவிண்டால்.',
-      smsIn: 'MAATI PADDY 613001',
-      smsOut: 'MAATI [Thanjavur 613001]: அடுத்த 4 நாட்களுக்கு வறண்ட வானிலை. தழைச்சத்து உரத்தை இரண்டாம் தவணையாக இட ஏற்ற நேரம். உதவி: 1800-120-4455'
+      smsIn: 'SPOROS PADDY 613001',
+      smsOut: 'SPOROS [Thanjavur 613001]: அடுத்த 4 நாட்களுக்கு வறண்ட வானிலை. தழைச்சத்து உரத்தை இரண்டாம் தவணையாக இட ஏற்ற நேரம்.'
     },
     te: {
       langName: 'తెలుగు (Telugu)',
@@ -1105,8 +1237,8 @@
       schemeTag: 'పథకం: రైతు భరోసా & గుంటూరు మిర్చి యార్డ్ ధరల సమాచారం',
       waFarmer: 'మిరప ఆకు ఫోటో + వాయిస్ మెసేజ్ (0:10 సెకన్లు)',
       waBot: 'నిర్ధారణ: తామర పురుగు (92% ఖచ్చితత్వం). వేప నూనె 1500 ppm @ 5ml/L. గుంటూరు యార్డ్ తేజ మిర్చి ధర: ₹19,400/క్వింటాల్.',
-      smsIn: 'MAATI CHILLI 522001',
-      smsOut: 'MAATI [Guntur 522001]: రాగల 3 రోజులు పొడి వాతావరణం. మిరపలో తామర పురుగు నివారణకు సాయంత్రం వేప నూనె పిచికారీ చేయండి.'
+      smsIn: 'SPOROS CHILLI 522001',
+      smsOut: 'SPOROS [Guntur 522001]: రాగల 3 రోజులు పొడి వాతావరణం. మిరపలో తామర పురుగు నివారణకు సాయంత్రం వేప నూనె పిచికారీ చేయండి.'
     },
     pa: {
       langName: 'ਪੰਜਾਬੀ (Punjabi)',
@@ -1115,8 +1247,8 @@
       schemeTag: 'ਯੋਜਨਾ: ਪੀ.ਐਮ-ਕਿਸਾਨ ਤੇ ਖੰਨਾ ਮੰਡੀ ਕਣਕ ਭਾਅ',
       waFarmer: 'ਕਣਕ ਦੇ ਪੱਤੇ ਦੀ ਫੋਟੋ + ਆਵਾਜ਼ ਸੁਨੇਹਾ (0:09 ਸਕਿੰਟ)',
       waBot: 'ਪਛਾਣ: ਪੀਲੀ ਕੁੰਗੀ (96% ਸਹੀ)। ਪ੍ਰੋਪੀਕੋਨਾਜ਼ੋਲ 1 ਮਿ.ਲੀ./ਲੀਟਰ ਪਾਣੀ। ਅਗਲੇ 5 ਦਿਨ ਧੁੱਪ ਰਹੇਗੀ, ਸਪਰੇਅ ਲਈ ਸਹੀ ਸਮਾਂ।',
-      smsIn: 'MAATI WHEAT 141401',
-      smsOut: 'MAATI [Ludhiana 141401]: ਰਾਤ ਦਾ ਤਾਪਮਾਨ 7°C। ਕਣਕ ਦੀ ਫ਼ਸਲ ਨੂੰ ਹਲਕਾ ਪਾਣੀ ਲਗਾਓ। ਖੰਨਾ ਮੰਡੀ ਭਾਅ: ਰੁ 2540/ਕੁਇੰਟਲ।'
+      smsIn: 'SPOROS WHEAT 141401',
+      smsOut: 'SPOROS [Ludhiana 141401]: ਰਾਤ ਦਾ ਤਾਪਮਾਨ 7°C। ਕਣਕ ਦੀ ਫ਼ਸਲ ਨੂੰ ਹਲਕਾ ਪਾਣੀ ਲਗਾਓ। ਖੰਨਾ ਮੰਡੀ ਭਾਅ: ਰੁ 2540/ਕੁਇੰਟਲ।'
     },
     en: {
       langName: 'English',
@@ -1125,8 +1257,8 @@
       schemeTag: 'Linked Program: PMFBY Crop Protection & Local FPO Input Desk',
       waFarmer: 'Sent 1 Leaf Photo (48 KB compressed) + Voice Note (0:09s)',
       waBot: 'Diagnosis: Early Blight (94.2% Match). Dosage: 500g Mancozeb in 200L water/acre. Available at Niphad FPO Cooperative Desk for ₹310.',
-      smsIn: 'MAATI TOMATO 422303',
-      smsOut: 'MAATI ALERT [Niphad 422303]: Clear dry window next 72 hrs (31C/16C). Complete preventative blight spray before Friday dew. Help: 1800-120-4455'
+      smsIn: 'SPOROS TOMATO 422303',
+      smsOut: 'SPOROS ALERT [Niphad 422303]: Clear dry window next 72 hrs (31C/16C). Complete preventative blight spray before Friday dew.'
     }
   };
 

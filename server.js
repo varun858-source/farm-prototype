@@ -48,7 +48,7 @@ const server = http.createServer((req, res) => {
   fs.stat(filePath, (err, stats) => {
     if (err || !stats.isFile()) {
       res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
-      res.end('<h1>404 — Page Not Found</h1><p><a href="/index.html">Return to Maati Home</a></p>');
+      res.end('<h1>404 — Page Not Found</h1><p><a href="/index.html">Return to Sporos Home</a></p>');
       return;
     }
 
@@ -66,5 +66,5 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(PORT, () => {
-  console.log(`MAATI AgriTech Ecosystem Server running at http://localhost:${PORT}`);
+  console.log(`SPOROS AgriTech Ecosystem Server running at http://localhost:${PORT}`);
 });

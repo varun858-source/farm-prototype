@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MAATI — One Platform for Everything Your Farm Needs | Field & Herd AgriTech</title>
+  <title>SPOROS — One Platform for Everything Your Farm Needs | Field & Herd AgriTech</title>
   <meta name="description" content="Grounded, field-tested AgriTech platform unifying crop intelligence, livestock intelligence, market & credit tools, local-language voice advisory, and satellite weather alerts." />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/png" href="images/sporos-mark.png" />
 </head>
 <body>
 
@@ -14,17 +15,9 @@
        ==================================================================== -->
   <header class="site-header">
     <div class="nav-inner">
-      <a href="index.html" class="brand-logo" aria-label="Maati Home">
-        <span class="brand-mark" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
-            <path d="M12 22V10M12 10C12 6 15.5 3 20 3C20 7.5 17 11 12 10ZM12 13C12 9 8.5 6 4 6C4 10.5 7 14 12 13Z"/>
-            <path d="M4 22h16"/>
-          </svg>
-        </span>
-        <span>
-          MAATI
-          <span class="brand-sub">Field &amp; Herd Platform</span>
-        </span>
+      <a href="index.html" class="brand-logo" aria-label="Sporos Home">
+        <img src="images/sporos-logo.png" alt="SPOROS" class="brand-logo-img" />
+        <span class="brand-sub">Field &amp; Herd Platform</span>
       </a>
 
       <nav class="primary-nav" aria-label="Primary Navigation">
@@ -55,20 +48,12 @@
           </select>
         </div>
 
-        <a href="#login" class="nav-login-link" data-open-modal="login" data-i18n="navLogin">Log in</a>
-        <a href="#get-started" class="btn btn-burgundy" data-open-modal="signup" data-i18n="navGetStarted">Get Started</a>
-
         <button type="button" id="mobile-menu-btn" class="mobile-menu-toggle" aria-label="Toggle Menu" aria-expanded="false">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <path d="M3 6h18M3 12h18M3 18h18"/>
           </svg>
         </button>
       </div>
-    </div>
-
-    <!-- Thin solid Burgundy progress line directly under solid navigation bar -->
-    <div class="hero-progress-track" id="hero-progress-track" aria-hidden="true">
-      <div class="hero-progress-bar" id="hero-progress-bar"></div>
     </div>
 
     <!-- Full-Screen Mobile Menu Drawer -->
@@ -82,10 +67,6 @@
         <a href="satellite-weather.html" class="mobile-nav-link"><span data-i18n="navSatellite">Satellite &amp; Weather</span> <span>→</span></a>
         <a href="about.html" class="mobile-nav-link"><span data-i18n="navAbout">About</span> <span>→</span></a>
       </div>
-      <div class="mobile-drawer-footer">
-        <a href="#get-started" class="btn btn-burgundy btn-lg" data-open-modal="signup" data-i18n="navGetStarted">Get Started — Try the App</a>
-        <a href="#login" class="btn btn-outline-green btn-lg" data-open-modal="login" data-i18n="navLogin">Log in to Existing Farm Account</a>
-      </div>
     </div>
   </header>
 
@@ -97,28 +78,6 @@
       <div class="hero-sticky-viewport">
         <!-- Untinted, Unfiltered 240-Frame Macro Growth Time-Lapse Canvas -->
         <canvas id="hero-canvas" width="1280" height="720" aria-label="Time-lapse of microgreen sprouts and a burgundy bloom growing in a terracotta pot"></canvas>
-
-        <!-- Top Functional Sequence HUD -->
-        <div class="hero-hud-top">
-          <div class="hero-status-pill">
-            <span class="status-dot" aria-hidden="true"></span>
-            <span id="hero-frame-counter">FRAME 001 / 240 · 0%</span>
-            <span>·</span>
-            <span id="hero-load-status">LOADING SEQUENCE...</span>
-          </div>
-
-          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; pointer-events: auto;">
-            <div class="hero-quick-controls" role="group" aria-label="Jump to growth beat">
-              <button type="button" class="hero-step-btn active" title="0–25%: One platform">01 · 0–25%</button>
-              <button type="button" class="hero-step-btn" title="25–50%: Every field watched">02 · 25–50%</button>
-              <button type="button" class="hero-step-btn" title="50–78%: Seedling to harvest">03 · 50–78%</button>
-              <button type="button" class="hero-step-btn" title="78–100%: Built for the field">04 · 78–100%</button>
-            </div>
-            <button type="button" id="toggle-reduced-motion" class="hero-status-pill" style="cursor: pointer;">
-              Static / Reduced Motion View
-            </button>
-          </div>
-        </div>
 
         <!-- Four Flat Honey Cream Text Cards with Green Tea Headlines & Burgundy Body Text -->
         <div class="hero-cards-layer">
@@ -133,7 +92,7 @@
               Crop intelligence and livestock intelligence, backed by market, advisory, and satellite tools — in one place.
             </p>
             <div class="hero-beat-footer">
-              <a href="#get-started" class="btn btn-burgundy" data-open-modal="signup">Start free with your first field</a>
+              <button type="button" class="btn btn-burgundy btn-launching" data-launching-soon="true">Launching Soon</button>
               <a href="#flagship-pillars" class="btn btn-outline-green">Explore 6 Flagship Tools ↓</a>
             </div>
           </article>
@@ -201,7 +160,7 @@
           </div>
           <div>
             <p class="lead-copy" style="margin-bottom: 1.25rem;">
-              On a real family farm or cooperative, crop residue feeds the dairy shed, cattle manure rebuilds topsoil carbon, and milk payouts fund seed and fertilizer before harvest arrives. Maati connects field agronomy, dairy herd care, mandi pricing, local-language advisory, and orbital weather alerts into one clear record.
+              On a real family farm or cooperative, crop residue feeds the dairy shed, cattle manure rebuilds topsoil carbon, and milk payouts fund seed and fertilizer before harvest arrives. Sporos connects field agronomy, dairy herd care, mandi pricing, local-language advisory, and orbital weather alerts into one clear record.
             </p>
             <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
               <a href="crop-tech.html" class="btn btn-cream">01 · Crop Intelligence</a>
@@ -407,7 +366,7 @@
           <span class="eyebrow eyebrow-cream">BEYOND THE FARM GATE</span>
           <h2 class="h2-section">Growing well is half the job. Selling fairly, getting credit, and staying ahead of weather is the rest.</h2>
           <p class="lead-copy">
-            Every field and herd tool on Maati connects directly to three supporting ecosystem layers — each with its own dedicated workspace.
+            Every field and herd tool on Sporos connects directly to three supporting ecosystem layers — each with its own dedicated workspace.
           </p>
         </div>
 
@@ -490,33 +449,33 @@
     <section class="section-cream section-pad">
       <div class="container">
         <div class="section-header reveal-up">
-          <span class="eyebrow eyebrow-burgundy">FIELD-VERIFIED NUMBERS · Q3 2026</span>
-          <h2 class="h2-section">Measured across working farms, FPOs, and cooperative dairies</h2>
+          <span class="eyebrow eyebrow-burgundy">BOOTSTRAPPED STARTUP METRICS · GROUND TRUTH</span>
+          <h2 class="h2-section">Built from the dirt up. 100% bootstrapped, zero vanity metrics.</h2>
           <p class="lead-copy">
-            Every figure below comes from active seasonal cohorts audited alongside partner Farmer Producer Organizations (FPOs) and district dairy unions.
+            We are a 26-person independent agritech startup. We don't inflate numbers with fake signups or corporate fluff. Here is what defines our platform right now:
           </p>
         </div>
 
         <div class="grid-4">
           <div class="card-structured reveal-up">
             <div class="card-structured-head">
-              <span class="mono-tag">ACTIVE FARMERS</span>
-              <span class="mono-tag">9 STATES</span>
+              <span class="mono-tag">CORE TEAM</span>
+              <span class="mono-tag">SPECIALISTS</span>
             </div>
             <div class="card-structured-body">
-              <div class="stat-value-burgundy" data-count-to="148400" data-comma="true" data-suffix="+">1,48,400+</div>
-              <p style="font-weight: 600;">Working smallholder &amp; mid-sized farms onboarded via mobile app, WhatsApp, and village FPO desks.</p>
+              <div class="stat-value-burgundy" data-count-to="26">26</div>
+              <p style="font-weight: 600;">Agronomists, veterinarians, computer vision researchers, and field specialists working as one tight, agile crew.</p>
             </div>
           </div>
 
           <div class="card-structured reveal-up">
             <div class="card-structured-head">
-              <span class="mono-tag">MONITORED LAND</span>
-              <span class="mono-tag">5-DAY PASS</span>
+              <span class="mono-tag">CAPITAL</span>
+              <span class="mono-tag">INDEPENDENT</span>
             </div>
             <div class="card-structured-body">
-              <div class="stat-value-burgundy" data-count-to="620000" data-comma="true">6,20,000</div>
-              <p style="font-weight: 600;">Acres watched weekly combining Sentinel-2 NDVI passes, village weather stations, and soil logs.</p>
+              <div class="stat-value-burgundy" data-count-to="100" data-suffix="%">100%</div>
+              <p style="font-weight: 600;">Bootstrapped &amp; founder-backed. Zero venture debt, zero external pressure to compromise farmer privacy or push pesticide sales.</p>
             </div>
           </div>
 
@@ -527,18 +486,18 @@
             </div>
             <div class="card-structured-body">
               <div class="stat-value-burgundy" data-count-to="12">12</div>
-              <p style="font-weight: 600;">Supported local languages across voice AI, WhatsApp advisory, and 2G SMS alerts.</p>
+              <p style="font-weight: 600;">Indian regional languages supported across conversational voice AI, WhatsApp bots, and basic 2G feature phone SMS.</p>
             </div>
           </div>
 
           <div class="card-structured reveal-up">
             <div class="card-structured-head">
-              <span class="mono-tag">NET MARGIN UPLIFT</span>
-              <span class="mono-tag">3-SEASON COHORT</span>
+              <span class="mono-tag">LIGHTWEIGHT AI</span>
+              <span class="mono-tag">OFFLINE-READY</span>
             </div>
             <div class="card-structured-body">
-              <div class="stat-value-burgundy" data-count-to="18.4" data-decimals="1" data-prefix="+" data-suffix="%">+18.4%</div>
-              <p style="font-weight: 600;">Average net farm &amp; dairy margin gain from reduced spray waste, balanced feed, and timed mandi sales.</p>
+              <div class="stat-value-burgundy">&lt;50 KB</div>
+              <p style="font-weight: 600;">Ultra-compressed diagnostic payloads and on-device models that diagnose leaf diseases smoothly even on 2G edge networks.</p>
             </div>
           </div>
         </div>
@@ -553,18 +512,18 @@
         <div class="card-cream" style="background-color: var(--green-tea); color: var(--honey-cream); border: 3px solid var(--honey-cream); padding: 3rem;">
           <div class="grid-2" style="align-items: center;">
             <div>
-              <span class="eyebrow eyebrow-cream">GET STARTED IN 3 MINUTES</span>
-              <h2 class="h2-section">Start free with your first field or dairy shed today.</h2>
+              <span class="eyebrow eyebrow-cream">LAUNCHING SOON</span>
+              <h2 class="h2-section">Sporos is launching soon for your first field or dairy shed.</h2>
               <p class="lead-copy">
-                Whether you farm 2 acres of vegetables and keep 3 buffaloes, or manage a 2,500-farmer FPO and procurement network — Maati works on the phone already in your pocket.
+                Whether you farm 2 acres of vegetables and keep 3 buffaloes, or manage a 2,500-farmer FPO and procurement network — Sporos works on the phone already in your pocket.
               </p>
             </div>
             <div style="display: flex; flex-direction: column; gap: 1rem; align-items: flex-start;">
               <div style="display: flex; flex-wrap: wrap; gap: 1rem; width: 100%;">
-                <a href="#get-started" class="btn btn-burgundy btn-lg" data-open-modal="signup">Start free with your first field →</a>
+                <button type="button" class="btn btn-burgundy btn-lg btn-launching" data-launching-soon="true">Launching Soon</button>
                 <a href="advisory.html" class="btn btn-outline-cream btn-lg">Talk to an advisor</a>
               </div>
-              <p class="mono-tag">FREE FOR UP TO 5 ACRES &amp; 5 CATTLE · NO CREDIT CARD REQUIRED · WORKS ON 2G/3G</p>
+              <p class="mono-tag">PILOT ROLLOUT UNDERWAY · MULTI-STATE COVERAGE · WORKS ON 2G/3G/4G/5G</p>
             </div>
           </div>
         </div>
@@ -579,19 +538,12 @@
     <div class="container">
       <div class="footer-top-grid">
         <div>
-          <a href="index.html" class="brand-logo" style="color: var(--honey-cream); margin-bottom: 1rem;">
-            <span class="brand-mark" style="background-color: var(--honey-cream); color: var(--green-tea); border-color: var(--honey-cream);">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
-                <path d="M12 22V10M12 10C12 6 15.5 3 20 3C20 7.5 17 11 12 10ZM12 13C12 9 8.5 6 4 6C4 10.5 7 14 12 13Z"/>
-                <path d="M4 22h16"/>
-              </svg>
-            </span>
-            <span>MAATI</span>
+          <a href="index.html" class="brand-logo footer-brand-logo" aria-label="Sporos Home" style="color: var(--honey-cream); margin-bottom: 1rem;">
+            <img src="images/sporos-logo-light.png" alt="SPOROS" class="brand-logo-img footer-logo-img" />
           </a>
           <p style="font-size: 0.95rem; margin-bottom: 1.25rem;">
             Grounded, plainspoken agricultural and dairy intelligence built for working farmers, FPO cooperatives, rural lenders, and institutional buyers.
           </p>
-          <p class="mono-tag">TOLL-FREE KISAN DESK: 1800-120-4455</p>
         </div>
 
         <div>
@@ -635,7 +587,7 @@
           <ul class="footer-links" style="margin-bottom: 1rem;">
             <li><a href="advisory.html">24×7 Voice &amp; SMS Help Center</a></li>
             <li><a href="advisory.html#whatsapp-bot">WhatsApp Bot Setup</a></li>
-            <li><a href="about.html#contact">Partner an FPO or Dairy Union</a></li>
+            <li><a href="about.html">About Our 26-Person Team</a></li>
           </ul>
           <label class="mono-tag" for="footer-lang-select" style="display: block; margin-bottom: 0.4rem;">SITE LANGUAGE</label>
           <div class="lang-select-wrap" style="border-color: var(--honey-cream); width: 100%;">
@@ -654,8 +606,8 @@
       </div>
 
       <div class="footer-bottom">
-        <span>© 2026 Maati AgriTech Platform. Built for the field, not just the boardroom.</span>
-        <span>Strict Flat 3-Color Accessibility Standard · Zero Farmer Data Sold to Third Parties</span>
+        <span>© 2026 Sporos AgriTech Platform. Built for the field, not just the boardroom.</span>
+        <span>Zero Farmer Data Sold to Third Parties</span>
       </div>
     </div>
   </footer>
@@ -667,38 +619,22 @@
     <div class="modal-card">
       <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; padding-bottom: 0.85rem; border-bottom: 2px solid var(--green-tea);">
         <div>
-          <span class="eyebrow eyebrow-burgundy" style="margin-bottom: 0.4rem;">MAATI FARM ACCOUNT</span>
-          <h2 class="h3-card" id="modal-title" style="margin-bottom: 0;">Start free with your first field or herd</h2>
+          <span class="eyebrow eyebrow-burgundy" style="margin-bottom: 0.4rem;">SPOROS PLATFORM</span>
+          <h2 class="h3-card" id="modal-title" style="margin-bottom: 0;">Sporos is Launching Soon</h2>
         </div>
         <button type="button" id="modal-close-btn" class="btn btn-outline-green" style="padding: 0.35rem 0.65rem;" aria-label="Close modal">✕</button>
       </div>
       <p id="modal-subtitle" style="margin-bottom: 1.25rem; font-size: 0.95rem;">
-        No credit card needed. Add your mobile number and village pin code to begin.
+        We are preparing for public launch across Maharashtra, Punjab, Haryana, Tamil Nadu, and Andhra Pradesh. Direct field registration and farmer onboarding will be available shortly.
       </p>
-      <form id="modal-form">
-        <div class="form-field">
-          <label for="modal-phone">Mobile Number (SMS &amp; WhatsApp)</label>
-          <input type="tel" id="modal-phone" class="form-input" placeholder="+91 98230 XXXXX" required />
-        </div>
-        <div class="form-field">
-          <label for="modal-pincode">Village Pin Code / Mandi Block</label>
-          <input type="text" id="modal-pincode" class="form-input" placeholder="e.g. 422303 (Niphad, Nashik)" required />
-        </div>
-        <div class="form-field">
-          <label for="modal-role">Primary Farm Activity</label>
-          <select id="modal-role" class="form-input">
-            <option value="mixed">Mixed Crop + Dairy Livestock Farm</option>
-            <option value="crop">Crop &amp; Horticulture Farmer</option>
-            <option value="dairy">Dairy &amp; Cattle Herd Owner</option>
-            <option value="fpo">FPO / Cooperative / Institutional Buyer</option>
-          </select>
-        </div>
-        <button type="submit" id="modal-submit-btn" class="btn btn-burgundy btn-lg" style="width: 100%;">Create Free Farm Profile</button>
-        <div id="modal-feedback" style="display: none; margin-top: 1rem; padding: 0.85rem; background-color: var(--green-tea); color: var(--honey-cream); font-weight: 600; font-size: 0.92rem;"></div>
-      </form>
+      <div style="text-align: center; padding: 0.5rem 0 0.5rem;">
+        <button type="button" id="modal-submit-btn" class="btn btn-burgundy btn-lg btn-launching" style="width: 100%; justify-content: center;">Launching Soon</button>
+      </div>
+      <div id="modal-feedback" style="display: none; margin-top: 1rem; padding: 0.85rem; background-color: var(--green-tea); color: var(--honey-cream); font-weight: 600; font-size: 0.92rem;"></div>
     </div>
   </div>
 
+  <script src="translations.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
