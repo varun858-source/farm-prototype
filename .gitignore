@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Build artifacts
+dist/
+build/
+.next/
+.turbo/
+out/
+
+# Cache
+.cache/
+.vercel/
+.parcel-cache/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
